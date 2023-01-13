@@ -30,7 +30,7 @@ export default function forgotPassword() {
         if (user) {
           router.push("/homepage");
         } else {
-          console.log("login");
+          /* console.log("login"); */
         }
     }, [user]);
 
