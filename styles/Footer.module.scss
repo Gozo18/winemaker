@@ -1,0 +1,57 @@
+@import "variables.scss";
+
+.footerBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 4rem 4rem 3rem;
+    min-height: 6rem;
+    background-color: $main;
+    color: $white;
+    border-radius: 0.5rem 0.5rem 0 0;
+
+    @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 2rem 1rem 5rem;
+    }
+}
+
+.footerColumn {
+    display: flex;
+    flex-direction: column;
+
+    a {
+        margin-bottom: 1rem;
+
+        @media (max-width: 767px) {
+            text-align: center;
+        }
+    }
+}
+
+.footerLogout {
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+        text-align: center;
+    }
+}
+
+.footerOrg {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    a {
+        margin-bottom: 1rem;
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+
+    sup {
+        font-weight: normal;
+    }
+}
