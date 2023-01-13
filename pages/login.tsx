@@ -30,7 +30,7 @@ export default function login() {
         }
     };
 
-    const onChange = (e) => {
+    const onChange = (e:any) => {
         setFormData((prevState) => ({
         ...prevState,
         [e.target.id]: e.target.value,
