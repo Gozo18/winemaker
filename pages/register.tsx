@@ -31,14 +31,14 @@ export default function register() {
         }
     };
 
-    const onChange = (e) => {
+    const onChange = (e:any) => {
         setFormData((prevState) => ({
         ...prevState,
         [e.target.id]: e.target.value,
         }));
     };
 
-    const onSubmit = async (e) => {
+    const onSubmit = async (e:any) => {
         e.preventDefault();
 
         createUserWithEmailAndPassword(auth, email, password)

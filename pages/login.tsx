@@ -37,7 +37,7 @@ export default function login() {
         }));
     };
 
-    const onSubmit = async (e) => {
+    const onSubmit = async (e:any) => {
         e.preventDefault();
 
         signInWithEmailAndPassword(auth, email, password)
