@@ -9,7 +9,7 @@ export default function homepage() {
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
 
-    if (loading) return <h1>Loading</h1>;
+    if (loading) return <p>Loading</p>;
 
     if (!user) router.push("/login");
 
@@ -21,7 +21,7 @@ export default function homepage() {
           <div className={styles.homeNav}>
             <Link href="/current-wines"><FcHighBattery /> <span>Aktuální sklep</span></Link>
             <Link href="/history"><FcCalendar /> <span>Historie vín</span></Link>
-            <Link href="/to-do"><FcTodoList /> <span>Poznámky</span></Link>
+            <Link href="/notes"><FcTodoList /> <span>Poznámky</span></Link>
             <Link href="/additives"><FcBiomass /> <span>Přípravky</span></Link>
             <Link href="/wineyards"><FcLandscape /> <span>Vinohrady</span></Link>
             <Link href="/sprays"><FcBiohazard /> <span>Postřiky</span></Link>

@@ -2,10 +2,9 @@ import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
-import styles from '../styles/CurrentWines.module.scss'
+import styles from '../styles/History.module.scss'
 
-export default function currentWines() {
-
+export default function history() {
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
 
@@ -15,8 +14,17 @@ export default function currentWines() {
 
     if (user)
       return (
-        <div className={styles.currentBox}>
-            <h2>Aktuální sklep</h2>
+        <div className={styles.historyBox}>
+            <h2>Historie vín</h2>
+
+            <div className={styles.historySubmenu}>
+                <h3 className={styles.activeYear}>2022</h3>
+                <h3>2021</h3>
+                <h3>2020</h3>
+                <h3>2019</h3>
+                <h3>2018</h3>
+                <h3>2017</h3>
+            </div>
 
             <div className={styles.gridBox}>
                 <Link href="/wine/veltlinske-zelene-pozdni-sber-2022" className={styles.wineBox}>
