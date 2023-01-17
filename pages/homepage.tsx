@@ -1,13 +1,9 @@
 import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { useRouter, NextRouter } from "next/router"
-import { FcHighBattery, FcCalendar, FcTodoList, FcBiomass, FcLandscape } from "react-icons/fc";
+import { useRouter } from "next/router"
+import { FcHighBattery, FcCalendar, FcTodoList, FcBiomass, FcLandscape, FcBiohazard } from "react-icons/fc";
 import styles from '../styles/Home.module.scss'
-
-interface WithRouterProps {
-    router: NextRouter
-  }
 
 export default function homepage() {
     const router = useRouter();
@@ -20,7 +16,7 @@ export default function homepage() {
     if (user)
       return (
         <div className={styles.homeBox}>
-          <h2>Moje vína</h2>
+          <h2>Moje vinařství</h2>
 
           <div className={styles.homeNav}>
             <Link href="/current-wines"><FcHighBattery /> <span>Aktuální sklep</span></Link>
@@ -28,10 +24,10 @@ export default function homepage() {
             <Link href="/to-do"><FcTodoList /> <span>Poznámky</span></Link>
             <Link href="/additives"><FcBiomass /> <span>Přípravky</span></Link>
             <Link href="/wineyards"><FcLandscape /> <span>Vinohrady</span></Link>
+            <Link href="/sprays"><FcBiohazard /> <span>Postřiky</span></Link>
           </div>
-
 
           
         </div>
-      );
+    );
 }
