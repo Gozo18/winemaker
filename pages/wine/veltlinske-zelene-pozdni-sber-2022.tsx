@@ -55,9 +55,34 @@ export default function currentWine() {
             <h3>
                 síra
             </h3>
+            <div className={styles.notes}>
+                <div className={styles.note}>
+                    <div>
+                        <div className={styles.noteDate}>Datum: 27.10.2022</div>
+                        <div>Síra: 30 g</div>
+                    </div>
+                    <div className={styles.noteIcons}>
+                        <VscEdit /> <VscTrash />
+                    </div>
+                </div>
+
+            </div>
             <h3>
                 přípravky
             </h3>
+            <div className={styles.notes}>
+                <div className={styles.note}>
+                    <div>
+                        <div className={styles.noteDate}>Datum: 27.10.2022</div>
+                        <div>Kvasinky: VitiFerm Pinot</div>
+                        <div>Množství: 500 g</div>
+                    </div>
+                    <div className={styles.noteIcons}>
+                        <VscEdit /> <VscTrash />
+                    </div>
+                </div>
+
+            </div>
             <h3>
                 stáčení
             </h3>
@@ -70,6 +95,18 @@ export default function currentWine() {
             <h3>
                 nádoba
             </h3>
+            <div className={styles.notes}>
+                <div className={styles.note}>
+                    <div>
+                        <div className={styles.noteDate}>Datum: 27.10.2022</div>
+                        <div>Nádoba: Tank č. 1 - 1.000 l</div>
+                    </div>
+                    <div className={styles.noteIcons}>
+                        <VscEdit /> <VscTrash />
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     );
