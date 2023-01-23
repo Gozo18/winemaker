@@ -2,7 +2,7 @@ import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
-import { VscEdit, VscTrash } from "react-icons/vsc";
+import { VscEdit, VscTrash } from "react-icons/vsc"
 import styles from '../styles/Additives.module.scss'
 
 export default function sprays() {
