@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { VscSignIn, VscSignOut, VscSettingsGear, VscAccount } from "react-icons/vsc";
+import { VscSignIn, VscSignOut, VscSettingsGear, VscAccount, VscHome } from "react-icons/vsc";
 import styles from '../styles/Nav.module.scss'
 
 export default function Nav() {
@@ -21,6 +21,7 @@ export default function Nav() {
         {user && (
           <ul>
             <li><Link href="/homepage"><VscAccount />{user.email}</Link></li>
+            <li><Link href="/homepage"><VscHome />Domů</Link></li>
             <li className={styles.logoutButton}><span onClick={() => auth.signOut()}><VscSignOut /> Odhlásit</span></li>
           </ul>
         )}
