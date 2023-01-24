@@ -18,15 +18,15 @@ export default function wineyards() {
             <h2>Vinohrady</h2>
 
             <div className={styles.gridBox}>
-                <Link href="/wineyard/stara-hora-pavlov">
+                <Link href="/wineyard/stara-hora">
                     <h3>Stará hora</h3>
                     <p>Pavlov</p>
                 </Link>
-                <Link href="/wineyard/stara-hora-pavlov">
+                <Link href="/wineyard/stara-hora">
                     <h3>Pod Pálavou</h3>
                     <p>Pavlov</p>
                 </Link>
-                <Link href="/wineyard/stara-hora-pavlov">
+                <Link href="/wineyard/stara-hora">
                     <h3>Slunný vrch</h3>
                     <p>Pavlov</p>
                 </Link>
