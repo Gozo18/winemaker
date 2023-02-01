@@ -2,13 +2,13 @@ import { useState, useEffect } from "react"
 import styles from '../styles/Weather.module.scss'
 
 export default function Weather() {
-    const [weather, setWeather] = useState();
+    const [weather, setWeather]: any = useState();
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
     }, []);
 
-    function positionSuccess({ coords }) {
+    function positionSuccess({ coords }: any ) {
         const options = {method: 'GET'};
         fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.latitude}&longitude=${coords.longitude}&timezone=CET&current_weather=true&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode`, options)
         .then(response => response.json())
@@ -24,7 +24,7 @@ export default function Weather() {
 
     if (weather != undefined) {
     
-        const code = weather.current_weather.weathercode;
+        const code: number = weather.current_weather.weathercode;
         
         return (
             <div className={styles.weatherBox}>
