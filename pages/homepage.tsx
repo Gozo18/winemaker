@@ -25,8 +25,6 @@ export default function homepage() {
         <div className={styles.homeBox}>
           <h2>Moje vinařství</h2>
 
-          <Weather />
-
           <div className={styles.homeNav}>
             <Link href="/current-wines"><FcHighBattery /> <span>Aktuální sklep</span></Link>
             <Link href="/history"><FcCalendar /> <span>Historie vín</span></Link>
@@ -36,7 +34,8 @@ export default function homepage() {
             <Link href="/sprays"><FcBiohazard /> <span>Postřiky</span></Link>
           </div>
 
-          
+          <Weather />
+
         </div>
     )};
 }
