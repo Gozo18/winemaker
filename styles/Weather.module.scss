@@ -16,42 +16,9 @@
     }
 }
 
-.todayBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    width: 100%;
-
-    @media (max-width: 991px) {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-    }
-}
-
-.today {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    height: 12rem;
-    border: 1px solid $border;
-    border-radius: 0.5rem;
-
-    @media (max-width: 480px) {
-        padding: 1rem;
-        font-size: 0.8rem;
-    }
-
-    span {
-        margin-bottom: 0.5rem;
-    }
-}
-
 .forecastBox {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem;
     margin-bottom: 2rem;
     width: 100%;
@@ -79,5 +46,9 @@
     span {
         margin-bottom: 0.5rem;
         text-align: center;
+    }
+
+    span:first-child {
+        text-transform: uppercase;
     }
 }
