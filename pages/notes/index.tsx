@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { auth } from "../../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
-import Addnote from "../../components/Addnote"
+import Addnote from "../../components/AddNote"
 import Notes from "../../components/Notes"
 import styles from '../../styles/Notes.module.scss'
 
