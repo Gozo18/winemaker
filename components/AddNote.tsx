@@ -4,7 +4,7 @@ import { addDoc, collection } from "firebase/firestore"
 import { toast } from "react-toastify"
 import { useRouter } from "next/router"
 import { VscDiffAdded, VscError } from "react-icons/vsc";
-import styles from '../styles/Addnote.module.scss'
+import styles from '../styles/AddNote.module.scss'
 
 export default function AddNote(email: any) {
     const router = useRouter();
