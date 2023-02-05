@@ -4,12 +4,15 @@ import { setUser } from "../config/setUser"
 import Weather from "../components/Weather"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
+import { useStateContext } from "../config/context";
 import { FcHighBattery, FcCalendar, FcTodoList, FcBiomass, FcLandscape, FcBiohazard } from "react-icons/fc";
 import styles from '../styles/Home.module.scss'
 
 export default function homepage() {
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
+
+    const { data, setData } = useStateContext();
 
     if (loading) return <p>Loading</p>;
 
