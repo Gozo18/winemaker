@@ -1,11 +1,13 @@
-import Link from "next/link"
+import { useState, useEffect } from "react"
 import { auth } from "../../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
-import { VscEdit, VscTrash } from "react-icons/vsc";
+import AddNote from "../../components/AddNote"
+import Notes from "../../components/Notes"
 import styles from '../../styles/Notes.module.scss'
 
 export default function notes() {
+
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
 
@@ -13,23 +15,17 @@ export default function notes() {
 
     if (!user) router.push("/login");
 
-    if (user)
-      return (
-        <div className={styles.notesBox}>
-            <h2>Poznámky</h2>
+    if (user) {
 
-            <div className={styles.notes}>
-                <div className={styles.note}>
-                    <div>
-                        <div className={styles.noteDate}>Datum: 25.11.2022</div>
-                        <div>Dodat síru u VZ ps 2022.</div>
-                    </div>
-                    <div className={styles.noteIcons}>
-                        <VscEdit /> <VscTrash />
-                    </div>
-                </div>
+        return (
+            <div className={styles.notesBox}>
+                <h2>Poznámky {user.email}</h2>
+
+                <AddNote email={user.email} />
+
+                <Notes email={user.email} />
 
             </div>
-        </div>
-    );
+        );
+    }
 }
