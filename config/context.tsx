@@ -1,8 +1,18 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react"
 
-const Context = createContext();
+type contextType = {
+    data: any,
+    setData: any,
+};
 
-export const StateContext = ({ children }) => {
+const contextDefaultValues: contextType = {
+    data: {},
+    setData: () => {},
+};
+
+const Context = createContext<contextType>(contextDefaultValues);
+
+export const StateContext = ({ children }: any) => {
   //Our application state
   const [data, setData] = useState();
 
