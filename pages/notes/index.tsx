@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { auth } from "../../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
-import AddNote from "../../components/AddNote"
+import Addnote from "../../components/Addnote"
 import Notes from "../../components/Notes"
 import styles from '../../styles/Notes.module.scss'
 
@@ -21,7 +21,7 @@ export default function notes() {
             <div className={styles.notesBox}>
                 <h2>Poznámky {user.email}</h2>
 
-                <AddNote email={user.email} />
+                <Addnote email={user.email} />
 
                 <Notes email={user.email} />
 
