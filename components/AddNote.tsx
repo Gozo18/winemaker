@@ -42,21 +42,19 @@ export default function AddNote(email: any) {
         }
     }
 
-    const dateInput = new Date()
-    const year = dateInput.getFullYear()
-
-    let month: number | string = dateInput.getMonth() + 1
-    let day: number | string = dateInput.getDate()
-
-    if (month < 10) month = '0' + month
-    if (day < 10) day = '0' + day
-
-    const today = `${year}-${month}-${day}` 
-    if (visibility) {
-        setTimeout(
-        document.getElementById("datePicker").value = today
-        , 500);
-    }   
+    const datePicker = (e) => {
+        const dateInput = new Date();
+        const year = dateInput.getFullYear();
+    
+        let month: number | string = dateInput.getMonth() + 1;
+        let day: number | string = dateInput.getDate();
+    
+        if (month < 10) month = '0' + month;
+        if (day < 10) day = '0' + day;
+    
+        const today = `${year}-${month}-${day}`;
+        e.target.value = today;
+    }
 
     return (
         <>
@@ -68,7 +66,7 @@ export default function AddNote(email: any) {
                 <div className={styles.addNoteShow}>
                     <div className={styles.inputBox}>
                         <label>Přidat poznámku</label>
-                        <span>Vyberte datum  <input type="date" className={styles.date} onChange={dateValue} id="datePicker" /></span>
+                        <span>Vyberte datum  <input type="date" className={styles.date} onChange={dateValue} onLoad={datePicker} /></span>
                         <input type="text" className={styles.text} placeholder='Poznámka' onChange={textValue} />
                         <button className={styles.button} onClick={submitNote}>Přidat poznámku</button>
                     </div>
