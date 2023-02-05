@@ -19,7 +19,7 @@ export default function notes() {
 
         return (
             <div className={styles.notesBox}>
-                <h2>Poznámky {user.email}</h2>
+                <h2>Poznámky</h2>
 
                 <Addnote email={user.email} />
 
