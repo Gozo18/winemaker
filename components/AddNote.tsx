@@ -42,7 +42,7 @@ export default function AddNote(email: any) {
         }
     }
 
-    const datePicker = (e) => {
+    const datePicker = (e:any) => {
         const dateInput = new Date();
         const year = dateInput.getFullYear();
     
