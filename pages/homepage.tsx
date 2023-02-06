@@ -12,8 +12,6 @@ export default function homepage() {
     const router = useRouter();
     const [user, loading] = useAuthState(auth);
 
-    const { data, setData } = useStateContext();
-
     if (loading) return <p>Loading</p>;
 
     if (!user) router.push("/login");
