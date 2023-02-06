@@ -1,8 +1,8 @@
 import { db } from "../config/firebase"
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore"
+import { collection, getDocs } from "firebase/firestore"
 import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
-import { VscEdit, VscTrash } from "react-icons/vsc";
+import Note from "./Note"
 import styles from '../styles/Notes.module.scss'
 
 export default function Notes(email: any) {
@@ -32,33 +32,14 @@ export default function Notes(email: any) {
         querySnapshot();
     }
 
-    const deleteNote = async(e: React.MouseEvent<HTMLButtonElement>, id?: any) => {
-        try {
-            await deleteDoc(doc(db, "winemakers", email.email, "notes", id));
-            toast.success("Smazáno!");
-            setNotesLoading(false);
-        }
-        catch(err) {
-            toast.error("Něco se nepovedlo!");
-        }
-    }
-
     return (
         <>
             {notesData === undefined ? (
                 <div>Načítám...</div>
             ) : (
                 <div className={styles.notes}>
-                    {notesData.map((doc: any,i: number) => (
-                        <div className={styles.note} key={i}>
-                            <div>
-                                <div className={styles.noteDate}>Datum: {doc.date}</div>
-                                <div>{doc.text}</div>
-                            </div>
-                            <div className={styles.noteIcons}>
-                                <VscEdit /> <VscTrash onClick={(e:any) =>  { if (window.confirm('Odstranit poznámku?')) deleteNote(e, doc.id)}} />
-                            </div>
-                        </div>
+                    {notesData.map((doc: any,i: any) => (
+                            <Note note={doc} key={i} userEmail={email.email} />
                         )
                     )}
                 </div>

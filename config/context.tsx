@@ -21,13 +21,16 @@ const contextDefaultValues: contextType = {
 const Context = createContext<contextType>(contextDefaultValues);
 
 export const StateContext = ({ children }: any) => {
-  //Our application state
+  //Notes
   const [notesLoading, setNotesLoading] = useState(false);
   const [notesData, setNotesData] = useState([]);
-
   const [addNoteVisibility, setaddNoteVisibility] = useState(false);
 
-  
+  //Wines
+
+  //Wineyards
+
+  //Additives
 
   return (
     <Context.Provider
