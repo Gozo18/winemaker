@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { db } from "../config/firebase"
 import { collection, getDocs } from "firebase/firestore"
 import { toast } from "react-toastify"
@@ -8,11 +7,11 @@ import styles from '../styles/Notes.module.scss'
 
 export default function Notes(email: any) {
 
-    const { notesData, setNotesData } = useStateContext();
+    const { notesLoading, setNotesLoading, notesData, setNotesData } = useStateContext();
 
-    const [data, setData] = useState([]);
+    console.log(notesData);
 
-    if (!notesData) {
+    if (!notesLoading) {
         const querySnapshot = async() => {
             try {
                 const notesData: any = await getDocs(collection(db, "winemakers", email.email, "notes"));
@@ -25,8 +24,8 @@ export default function Notes(email: any) {
                     notesArray.push(pushData);
                 });
                 notesArray.sort((a: any, b: any) => a.timestamp - b.timestamp).reverse();
-                setData(notesArray);
-                setNotesData(true);
+                setNotesData(notesArray);
+                setNotesLoading(true);
             }
             catch(err) {
                 toast.error("Něco se nepovedlo!");
@@ -38,11 +37,11 @@ export default function Notes(email: any) {
 
     return (
         <>
-            {data === undefined ? (
+            {notesData === undefined ? (
                 <div>Načítám...</div>
             ) : (
                 <div className={styles.notes}>
-                    {data.map((doc: any,i: number) => (
+                    {notesData.map((doc: any,i: number) => (
                         <div className={styles.note} key={i}>
                             <div>
                                 <div className={styles.noteDate}>Datum: {doc.date}</div>

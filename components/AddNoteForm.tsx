@@ -7,7 +7,7 @@ import styles from '../styles/AddNote.module.scss'
 
 export default function AddNoteForm(email: any) {
 
-    const { addNoteVisibility, setaddNoteVisibility, setNotesData } = useStateContext();
+    const { addNoteVisibility, setaddNoteVisibility, setNotesLoading } = useStateContext();
 
     const [date, setDate] = useState(new Date().toJSON().slice(0, 10));
     const [text, setText] = useState("");
@@ -29,7 +29,7 @@ export default function AddNoteForm(email: any) {
             setDate("");
             setText("");
             setaddNoteVisibility("");
-            setNotesData(false);
+            setNotesLoading(false);
             toast.success("Poznámka přidána!");
         }
         catch(err) {
