@@ -43,12 +43,12 @@ export default function AddNoteForm(email: any) {
         if (addInput != null) {
             (addInput as HTMLInputElement).valueAsDate = new Date();
         }
-      },[]);
+    },[]);
 
     return (
         <div className={styles.addNoteShow}>
             <div className={styles.inputBox}>
-                <label>Přidat poznámku</label>
+                <label><strong>Přidat poznámku</strong></label>
                 <span>Vyberte datum  <input type="date" className={styles.date} onChange={dateValue} id="datePicker" /></span>
                 <textarea className={styles.text} placeholder='Vložte poznámku' onChange={textValue} />
                 <button className={styles.button} onClick={submitNote}>Přidat poznámku</button>

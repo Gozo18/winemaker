@@ -39,7 +39,9 @@ export default function Notes(email: any) {
             ) : (
                 <div className={styles.notes}>
                     {notesData.map((doc: any,i: any) => (
-                            <Note note={doc} key={i} userEmail={email.email} />
+                            <div key={i}>
+                                <Note note={doc} userEmail={email.email} />
+                            </div>
                         )
                     )}
                 </div>

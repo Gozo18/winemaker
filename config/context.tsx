@@ -7,6 +7,8 @@ type contextType = {
     setNotesData: any,
     addNoteVisibility: boolean,
     setaddNoteVisibility: any,
+    editNote: any,
+    setEditNote: any,
 };
 
 const contextDefaultValues: contextType = {
@@ -16,6 +18,8 @@ const contextDefaultValues: contextType = {
     setNotesData: () => {},
     addNoteVisibility: false,
     setaddNoteVisibility: () => {},
+    editNote: "",
+    setEditNote: () => {},
 };
 
 const Context = createContext<contextType>(contextDefaultValues);
@@ -25,6 +29,7 @@ export const StateContext = ({ children }: any) => {
   const [notesLoading, setNotesLoading] = useState(false);
   const [notesData, setNotesData] = useState([]);
   const [addNoteVisibility, setaddNoteVisibility] = useState(false);
+  const [editNote, setEditNote] = useState();
 
   //Wines
 
@@ -40,7 +45,9 @@ export const StateContext = ({ children }: any) => {
         notesData,
         setNotesData,
         addNoteVisibility,
-        setaddNoteVisibility
+        setaddNoteVisibility,
+        editNote,
+        setEditNote,
       }}
     >
       {children}
