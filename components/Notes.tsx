@@ -10,7 +10,7 @@ export default function Notes(email: any) {
 
     const { notesData, setNotesData } = useStateContext();
 
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
 
     if (!notesData) {
         const querySnapshot = async() => {
