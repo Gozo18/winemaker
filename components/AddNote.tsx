@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import AddNoteForm from "./AddNoteForm"
 import { useStateContext } from "../config/context"
 import { VscDiffAdded, VscError } from "react-icons/vsc"

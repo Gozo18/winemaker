@@ -1,15 +1,15 @@
 import { createContext, useContext, useState } from "react"
 
 type contextType = {
-    data: any,
-    setData: any,
+    notesData: boolean,
+    setNotesData: any,
     addNoteVisibility: boolean,
     setaddNoteVisibility: any,
 };
 
 const contextDefaultValues: contextType = {
-    data: {},
-    setData: () => {},
+    notesData: false,
+    setNotesData: () => {},
     addNoteVisibility: false,
     setaddNoteVisibility: () => {},
 };
@@ -18,7 +18,7 @@ const Context = createContext<contextType>(contextDefaultValues);
 
 export const StateContext = ({ children }: any) => {
   //Our application state
-  const [data, setData] = useState();
+  const [notesData, setNotesData] = useState(false);
 
   const [addNoteVisibility, setaddNoteVisibility] = useState(false);
 
@@ -27,8 +27,8 @@ export const StateContext = ({ children }: any) => {
   return (
     <Context.Provider
       value={{
-        data,
-        setData,
+        notesData,
+        setNotesData,
         addNoteVisibility,
         setaddNoteVisibility
       }}
