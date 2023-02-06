@@ -1,5 +1,5 @@
 import { db } from "../config/firebase"
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore"
 import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
 import { VscEdit, VscTrash } from "react-icons/vsc";
@@ -9,8 +9,6 @@ export default function Notes(email: any) {
 
     const { notesLoading, setNotesLoading, notesData, setNotesData } = useStateContext();
 
-    console.log(notesData);
-
     if (!notesLoading) {
         const querySnapshot = async() => {
             try {
@@ -19,7 +17,6 @@ export default function Notes(email: any) {
                 notesData.forEach((doc: any) => {
                     const pushData = doc.data();
                     pushData.id = doc.id;
-                    console.log(new Date(doc.data().date));
                     pushData.timestamp = new Date(doc.data().date);
                     notesArray.push(pushData);
                 });
@@ -35,6 +32,17 @@ export default function Notes(email: any) {
         querySnapshot();
     }
 
+    const deleteNote = async(e: React.MouseEvent<HTMLButtonElement>, id?: any) => {
+        try {
+            await deleteDoc(doc(db, "winemakers", email.email, "notes", id));
+            toast.success("Smazáno!");
+            setNotesLoading(false);
+        }
+        catch(err) {
+            toast.error("Něco se nepovedlo!");
+        }
+    }
+
     return (
         <>
             {notesData === undefined ? (
@@ -48,7 +56,7 @@ export default function Notes(email: any) {
                                 <div>{doc.text}</div>
                             </div>
                             <div className={styles.noteIcons}>
-                                <VscEdit /> <VscTrash />
+                                <VscEdit /> <VscTrash onClick={(e:any) =>  { if (window.confirm('Odstranit poznámku?')) deleteNote(e, doc.id)}} />
                             </div>
                         </div>
                         )
