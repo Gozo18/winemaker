@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react'
 import { db } from "../config/firebase"
 import { addDoc, collection } from "firebase/firestore"
 import { toast } from "react-toastify"
+import { useStateContext } from "../config/context"
 import styles from '../styles/AddNote.module.scss'
 
 export default function AddNoteForm(email: any) {
+
+    const { addNoteVisibility, setaddNoteVisibility } = useStateContext();
 
     const [date, setDate] = useState("");
     const [text, setText] = useState("");
@@ -25,6 +28,7 @@ export default function AddNoteForm(email: any) {
             });
             setDate("");
             setText("");
+            setaddNoteVisibility("");
             toast.success("Poznámka přidána!");
         }
         catch(err) {
@@ -34,9 +38,9 @@ export default function AddNoteForm(email: any) {
     }
 
     useEffect(() => {
-        const addInput = document.querySelector("#datePicker");
+        const addInput = document.getElementById("datePicker");
         if (addInput != null) {
-            addInput.valueAsDate = new Date();
+            (addInput as HTMLInputElement).valueAsDate = new Date();
         }
       },[]);
 
