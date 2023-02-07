@@ -33,22 +33,22 @@ export default function Additives({ email }: any) {
 
     additivesData.sort((a:any,b:any) => a.name.localeCompare(b.name))
 
-    let cireni = additivesData.filter(function(e) {
+    let cireni = additivesData.filter(function(e:any) {
         return e.cat === "Čiření";
     });
-    let enzymy = additivesData.filter(function(e) {
+    let enzymy = additivesData.filter(function(e:any) {
         return e.cat === "Enzymy";
     });
-    let kvasinky = additivesData.filter(function(e) {
+    let kvasinky = additivesData.filter(function(e:any) {
         return e.cat === "Kvasinky";
     });
-    let vyziva = additivesData.filter(function(e) {
+    let vyziva = additivesData.filter(function(e:any) {
         return e.cat === "Výživa";
     });
-    let taniny = additivesData.filter(function(e) {
+    let taniny = additivesData.filter(function(e:any) {
         return e.cat === "Taniny";
     });
-    let ostatni = additivesData.filter(function(e) {
+    let ostatni = additivesData.filter(function(e:any) {
         return e.cat === "Ostatní";
     });
 
