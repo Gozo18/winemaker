@@ -9,6 +9,12 @@ type contextType = {
     setaddNoteVisibility: any,
     editNote: any,
     setEditNote: any,
+    addAdditivesVisibility: boolean,
+    setaddAdditivesVisibility: any,
+    additivesLoading: boolean,
+    setAdditivesLoading: any,
+    additivesData: any,
+    setAdditivesData: any,
 };
 
 const contextDefaultValues: contextType = {
@@ -20,6 +26,12 @@ const contextDefaultValues: contextType = {
     setaddNoteVisibility: () => {},
     editNote: "",
     setEditNote: () => {},
+    addAdditivesVisibility: false,
+    setaddAdditivesVisibility: () => {},
+    additivesLoading: false,
+    setAdditivesLoading: () => {},
+    additivesData: [],
+    setAdditivesData: () => {},
 };
 
 const Context = createContext<contextType>(contextDefaultValues);
@@ -36,6 +48,9 @@ export const StateContext = ({ children }: any) => {
   //Wineyards
 
   //Additives
+  const [addAdditivesVisibility, setaddAdditivesVisibility] = useState(false);
+  const [additivesLoading, setAdditivesLoading] = useState(false);
+  const [additivesData, setAdditivesData] = useState([]);
 
   return (
     <Context.Provider
@@ -48,8 +63,14 @@ export const StateContext = ({ children }: any) => {
         setaddNoteVisibility,
         editNote,
         setEditNote,
+        addAdditivesVisibility,
+        setaddAdditivesVisibility,
+        additivesLoading,
+        setAdditivesLoading,
+        additivesData,
+        setAdditivesData,
       }}
-    >
+      >
       {children}
     </Context.Provider>
   );

@@ -7,7 +7,7 @@ import styles from '../styles/AddNote.module.scss'
 
 export default function AddNoteForm(email: any) {
 
-    const { addNoteVisibility, setaddNoteVisibility, setNotesLoading } = useStateContext();
+    const { setaddNoteVisibility, setNotesLoading } = useStateContext();
 
     const [date, setDate] = useState(new Date().toJSON().slice(0, 10));
     const [text, setText] = useState("");

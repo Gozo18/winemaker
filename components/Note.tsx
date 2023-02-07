@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { db } from "../config/firebase"
 import { doc, deleteDoc } from "firebase/firestore"
 import { toast } from "react-toastify"
