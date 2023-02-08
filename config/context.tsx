@@ -15,6 +15,8 @@ type contextType = {
     setAdditivesLoading: any,
     additivesData: any,
     setAdditivesData: any,
+    editAdditive: any,
+    setEditAdditive: any,
 };
 
 const contextDefaultValues: contextType = {
@@ -32,6 +34,8 @@ const contextDefaultValues: contextType = {
     setAdditivesLoading: () => {},
     additivesData: [],
     setAdditivesData: () => {},
+    editAdditive: "",
+    setEditAdditive: () => {},
 };
 
 const Context = createContext<contextType>(contextDefaultValues);
@@ -51,6 +55,7 @@ export const StateContext = ({ children }: any) => {
   const [addAdditivesVisibility, setaddAdditivesVisibility] = useState(false);
   const [additivesLoading, setAdditivesLoading] = useState(false);
   const [additivesData, setAdditivesData] = useState([]);
+  const [editAdditive, setEditAdditive] = useState();
 
   return (
     <Context.Provider
@@ -69,6 +74,8 @@ export const StateContext = ({ children }: any) => {
         setAdditivesLoading,
         additivesData,
         setAdditivesData,
+        editAdditive,
+        setEditAdditive,
       }}
       >
       {children}

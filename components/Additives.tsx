@@ -2,7 +2,6 @@ import { db } from "../config/firebase"
 import { collection, getDocs } from "firebase/firestore"
 import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
-import { VscEdit, VscTrash } from "react-icons/vsc";
 import styles from '../styles/Additives.module.scss'
 import Additive from "./Additive"
 

@@ -2,12 +2,12 @@ import { db } from "../config/firebase"
 import { doc, deleteDoc } from "firebase/firestore"
 import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
-import EditNote from "./EditNote"
+import AdditiveEdit from "./AdditiveEdit"
 import { VscEdit, VscTrash } from "react-icons/vsc";
 import styles from '../styles/Additives.module.scss'
 
 export default function Additive({additive, userEmail}: any) {
-    const { editNote, setEditNote, setAdditivesLoading } = useStateContext();
+    const { editAdditive, setEditAdditive, setAdditivesLoading } = useStateContext();
 
     const deleteNote = async(e: React.MouseEvent<HTMLButtonElement>, id: any) => {
         try {
@@ -21,17 +21,17 @@ export default function Additive({additive, userEmail}: any) {
         }
     }
 
-    /* const editFunc = (e: React.MouseEvent<HTMLButtonElement>, id: any) => {
-        if (id === note.id) {
-            setEditNote(note.id);
+    const editFunc = (e: React.MouseEvent<HTMLButtonElement>, id: any) => {
+        if (id === additive.id) {
+            setEditAdditive(additive.id);
         }
-    } */
+    }
 
     return (
         <>
-            {/* {(editNote === note.id) ? (
-                <EditNote note={note} userEmail={userEmail} key={key} />
-            ) : ( */}
+            {(editAdditive === additive.id) ? (
+                <AdditiveEdit additive={additive} userEmail={userEmail} />
+            ) : (
                 <div className={styles.note}>
                     <div>
                         <div className={styles.noteName}>{additive.name}</div>
@@ -41,10 +41,10 @@ export default function Additive({additive, userEmail}: any) {
                         <p>Dávkování: {additive.use}g/hl</p>
                     </div>
                     <div className={styles.noteIcons}>
-                        {/* <VscEdit onClick={(e:any) => editFunc(e, additive.id)} /> */} <VscTrash onClick={(e:any) =>  { if (window.confirm('Odstranit poznámku?')) deleteNote(e, additive.id)}} />
+                        <VscEdit onClick={(e:any) => editFunc(e, additive.id)} /> <VscTrash onClick={(e:any) =>  { if (window.confirm('Odstranit poznámku?')) deleteNote(e, additive.id)}} />
                     </div>
                 </div>
-            {/* )} */}
+            )}
         </>
     )
 }
