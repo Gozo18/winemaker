@@ -1,7 +1,8 @@
-import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
+import WineAdd from "../components/WineAdd"
+import Wines from "../components/Wines"
 import styles from '../styles/CurrentWines.module.scss'
 
 export default function currentWines() {
@@ -18,38 +19,9 @@ export default function currentWines() {
         <div className={styles.currentBox}>
             <h2>Aktuální sklep</h2>
 
-            <div className={styles.gridBox}>
-                <Link href="/wine/veltlinske-zelene-pozdni-sber-2022" className={styles.wineBox}>
-                    <h3>Veltlínské zelené</h3>
-                    <p>pozdní sběr</p>
-                    <p>2022</p>
-                </Link>
-                <Link href="/wine/veltlinske-zelene-pozdni-sber-2022" className={styles.wineBox}>
-                    <h3>Veltlínské zelené</h3>
-                    <p>pozdní sběr</p>
-                    <p>2022</p>
-                </Link>
-                <Link href="/wine/veltlinske-zelene-pozdni-sber-2022" className={styles.wineBox}>
-                    <h3>Veltlínské zelené</h3>
-                    <p>pozdní sběr</p>
-                    <p>2022</p>
-                </Link>
-                <Link href="/wine/veltlinske-zelene-pozdni-sber-2022" className={styles.wineBox}>
-                    <h3>Veltlínské zelené</h3>
-                    <p>pozdní sběr</p>
-                    <p>2022</p>
-                </Link>
-                <Link href="/wine/veltlinske-zelene-pozdni-sber-2022" className={styles.wineBox}>
-                    <h3>Veltlínské zelené</h3>
-                    <p>pozdní sběr</p>
-                    <p>2022</p>
-                </Link>
-                <Link href="/wine/veltlinske-zelene-pozdni-sber-2022" className={styles.wineBox}>
-                    <h3>Veltlínské zelené</h3>
-                    <p>pozdní sběr</p>
-                    <p>2022</p>
-                </Link>
-            </div>
+            <WineAdd email={user.email} />
+
+            <Wines email={user.email} />
         </div>
     );
 }

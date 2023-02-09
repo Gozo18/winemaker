@@ -17,6 +17,12 @@ type contextType = {
     setAdditivesData: any,
     editAdditive: any,
     setEditAdditive: any,
+    addWineVisibility: boolean,
+    setAddWineVisibility: any,
+    winesLoading: boolean,
+    setWinesLoading: any,
+    winesData: any,
+    setWinesData: any,
 };
 
 const contextDefaultValues: contextType = {
@@ -36,6 +42,12 @@ const contextDefaultValues: contextType = {
     setAdditivesData: () => {},
     editAdditive: "",
     setEditAdditive: () => {},
+    addWineVisibility: false,
+    setAddWineVisibility: () => {},
+    winesLoading: false,
+    setWinesLoading: () => {},
+    winesData: [],
+    setWinesData: () => {},
 };
 
 const Context = createContext<contextType>(contextDefaultValues);
@@ -48,6 +60,9 @@ export const StateContext = ({ children }: any) => {
   const [editNote, setEditNote] = useState();
 
   //Wines
+  const [addWineVisibility, setAddWineVisibility] = useState(false);
+  const [winesLoading, setWinesLoading] = useState(false);
+  const [winesData, setWinesData] = useState([]);
 
   //Wineyards
 
@@ -76,6 +91,12 @@ export const StateContext = ({ children }: any) => {
         setAdditivesData,
         editAdditive,
         setEditAdditive,
+        addWineVisibility,
+        setAddWineVisibility,
+        winesLoading,
+        setWinesLoading,
+        winesData,
+        setWinesData,
       }}
       >
       {children}
