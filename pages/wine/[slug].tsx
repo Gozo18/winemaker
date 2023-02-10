@@ -1,16 +1,10 @@
 import { auth } from "../../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
-import { useStateContext } from "../../config/context"
-import { toast } from "react-toastify"
-import { db } from "../../config/firebase"
-import { collection, query, where, getDocs } from "firebase/firestore"
 import { VscEdit, VscTrash } from "react-icons/vsc"
 import styles from "../../styles/Wine.module.scss"
 
 export default function wine() {
-  const { wineLoading, setWineLoading, wineData, setWineData } =
-    useStateContext()
   const router = useRouter()
   const [user, loading] = useAuthState(auth)
 
@@ -22,108 +16,109 @@ export default function wine() {
     const email = user.email
     const slug = router.query.slug
 
-    if (!wineLoading) {
-      const querySnapshot = async () => {
-        try {
-          const data: any = await getDocs(
-            query(
-              collection(db, "winemakers", email, "wines"),
-              where("slug", "==", slug)
-            )
-          )
-          const wineArray: any = []
-          data.forEach((doc: any) => {
-            const pushData = doc.data()
-            pushData.id = doc.id
-            wineArray.push(pushData)
-          })
-          setWineData(wineArray)
-          setWineLoading(true)
-        } catch (err) {
-          toast.error("Něco se nepovedlo!")
-        }
-      }
+    let winesStorage: any = localStorage.getItem("wines")
 
-      querySnapshot()
-    }
+    let winesJson: any = JSON.parse(winesStorage)
 
-    if (wineData.length > 0) {
-      const { name, sub, year, place, note } = wineData[0]
+    let thisWine = winesJson.filter(function (e: any) {
+      return e.slug === slug
+    })
 
-      return (
-        <div className={styles.wineBox}>
-          <h2>
-            {name} {year} {sub}
-          </h2>
-          <div className={styles.notes}>
-            <details>
-              <summary>
-                <span>O víně</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Sběr</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Analytika</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Síra</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Přípravky</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Stáčení</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Filtrace</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Lahvování</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Nádoba</span>
-              </summary>
-              <hr />
-              <div>wineinfo</div>
-            </details>
-          </div>
+    const { name, sub, year, place, note } = thisWine[0]
+
+    return (
+      <div className={styles.wineBox}>
+        <h2>
+          {name} {year} {sub}
+        </h2>
+        <div className={styles.notes}>
+          <details open>
+            <summary>
+              <span>O víně</span>
+            </summary>
+            <hr />
+            <div className={styles.note}>
+              <div>
+                <p>
+                  <strong>Odrůda:</strong> {name}
+                </p>
+                <p>
+                  <strong>Rok:</strong> {year}
+                </p>
+                <p>
+                  <strong>Přívlastek:</strong> {sub}
+                </p>
+                <p>
+                  <strong>Trať:</strong> {place}
+                </p>
+                <p>
+                  <strong>Poznámka:</strong> {note}
+                </p>
+              </div>
+              <div className={styles.noteIcons}>
+                <VscEdit />
+                <VscTrash />
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span>Sběr</span>
+            </summary>
+            <hr />
+            <div>wineinfo</div>
+          </details>
+          <details>
+            <summary>
+              <span>Analytika</span>
+            </summary>
+            <hr />
+            <div>wineinfo</div>
+          </details>
+          <details>
+            <summary>
+              <span>Síra</span>
+            </summary>
+            <hr />
+            <div>wineinfo</div>
+          </details>
+          <details>
+            <summary>
+              <span>Přípravky</span>
+            </summary>
+            <hr />
+            <div>wineinfo</div>
+          </details>
+          <details>
+            <summary>
+              <span>Stáčení</span>
+            </summary>
+            <hr />
+            <div>wineinfo</div>
+          </details>
+          <details>
+            <summary>
+              <span>Filtrace</span>
+            </summary>
+            <hr />
+            <div>wineinfo</div>
+          </details>
+          <details>
+            <summary>
+              <span>Lahvování</span>
+            </summary>
+            <hr />
+            <div>wineinfo</div>
+          </details>
+          <details>
+            <summary>
+              <span>Nádoba</span>
+            </summary>
+            <hr />
+            <div>wineinfo</div>
+          </details>
         </div>
-      )
-    } else {
-      return <p>Načítám...</p>
-    }
+      </div>
+    )
   }
 }

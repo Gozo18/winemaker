@@ -12,18 +12,19 @@ export default function Wines({ email }: any) {
   if (!winesLoading) {
     const querySnapshot = async () => {
       try {
-        const notesData: any = await getDocs(
+        const winesData: any = await getDocs(
           collection(db, "winemakers", email, "wines")
         )
-        const notesArray: any = []
-        notesData.forEach((doc: any) => {
+        const winesArray: any = []
+        winesData.forEach((doc: any) => {
           const pushData = doc.data()
           pushData.id = doc.id
           pushData.timestamp = new Date(doc.data().date)
-          notesArray.push(pushData)
+          winesArray.push(pushData)
         })
-        notesArray.sort((a: any, b: any) => a.timestamp - b.timestamp).reverse()
-        setWinesData(notesArray)
+        winesArray.sort((a: any, b: any) => a.timestamp - b.timestamp).reverse()
+        setWinesData(winesArray)
+        localStorage.setItem("wines", JSON.stringify(winesArray))
         setWinesLoading(true)
       } catch (err) {
         toast.error("Něco se nepovedlo!")
