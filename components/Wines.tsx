@@ -40,7 +40,7 @@ export default function Wines({ email }: any) {
       ) : (
         <div className={styles.gridBox}>
           {winesData.map((doc: any, i: any) => (
-            <Link href="/wine/veltlinske-zelene-pozdni-sber-2022" key={i}>
+            <Link href={`/wine/${doc.slug}`} key={i}>
               <h3>{doc.name}</h3>
               <p>{doc.sub}</p>
               <p>{doc.year}</p>

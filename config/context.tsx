@@ -23,6 +23,10 @@ type contextType = {
   setWinesLoading: any
   winesData: any
   setWinesData: any
+  wineLoading: boolean
+  setWineLoading: any
+  wineData: any
+  setWineData: any
 }
 
 const contextDefaultValues: contextType = {
@@ -48,6 +52,10 @@ const contextDefaultValues: contextType = {
   setWinesLoading: () => {},
   winesData: [],
   setWinesData: () => {},
+  wineLoading: false,
+  setWineLoading: () => {},
+  wineData: [],
+  setWineData: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -63,6 +71,10 @@ export const StateContext = ({ children }: any) => {
   const [addWineVisibility, setAddWineVisibility] = useState(false)
   const [winesLoading, setWinesLoading] = useState(false)
   const [winesData, setWinesData] = useState([])
+
+  //Wine
+  const [wineLoading, setWineLoading] = useState(false)
+  const [wineData, setWineData] = useState([])
 
   //Wineyards
 
@@ -97,6 +109,10 @@ export const StateContext = ({ children }: any) => {
         setWinesLoading,
         winesData,
         setWinesData,
+        wineLoading,
+        setWineLoading,
+        wineData,
+        setWineData,
       }}
     >
       {children}

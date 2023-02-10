@@ -42,6 +42,7 @@ export default function WineForm({ email }: any) {
         year: year,
         place: place,
         note: note,
+        slug: name + "-" + year + "-" + sub + "-" + place,
       })
       setAddWineVisibility(false)
       setWinesLoading(false)
