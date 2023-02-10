@@ -1,70 +1,70 @@
 @import "variables.scss";
 
 .historyBox {
-    width: 100%;
+  width: 100%;
 
-    h2 {
-        margin-bottom: 2rem;
-        text-align: center;
-    }
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
 
-    h3 {
-        text-align: center;
-        font-size: 1rem;
-    }
+  h3 {
+    text-align: center;
+    font-size: 1rem;
+  }
 }
 
 .historySubmenu {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  h3 {
+    display: block;
+    margin-left: 1rem;
     margin-bottom: 1rem;
+    padding: 1rem;
+    height: 3rem;
+    border: 1px solid $border;
+    border-radius: 0.5rem;
+    cursor: pointer;
 
-    h3 {
-        display: block;
-        margin-left: 1rem;
-        margin-bottom: 1rem;
-        padding: 1rem;
-        height: 3rem;
-        border: 1px solid $border;
-        border-radius: 0.5rem;
-        cursor: pointer;
-
-        &.activeYear {
-            background-color: $hover;
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        &:hover {
-            background-color: $hover;
-        }
+    &.activeYear {
+      background-color: $hover;
+      opacity: 0.7;
+      cursor: not-allowed;
     }
+
+    &:hover {
+      background-color: $hover;
+    }
+  }
 }
 
 .gridBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
 
-    @media (max-width: 767px) {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    border: 1px solid $border;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: $hover;
     }
-
-    >a {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 10rem;
-        border: 1px solid $border;
-        border-radius: 0.5rem;
-
-        &:hover {
-            background-color: $hover;
-        }
-    }
+  }
 }

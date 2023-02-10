@@ -1,80 +1,81 @@
 @import "variables.scss";
 
 .navBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+
+  @media (max-width: 767px) {
+    height: 4rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+
+    sup {
+      font-weight: normal;
+    }
+  }
+
+  ul {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 5rem;
-    
+    list-style: none;
+
     @media (max-width: 767px) {
-        height: 4rem;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 1rem;
+      width: 100%;
+      height: 3.5rem;
+      border-top: 1px solid $border;
+      background-color: $main;
+      color: $white;
+      font-size: 0.8rem;
+      z-index: 10;
     }
 
-    h1 {
+    li {
+      margin-left: 2rem;
+
+      svg {
+        position: relative;
+        top: 3px;
+        left: -5px;
         font-size: 1.2rem;
+      }
 
-        sup {
-            font-weight: normal;
+      span {
+        svg {
+          left: 0;
         }
+      }
+
+      @media (max-width: 767px) {
+        margin-left: 1rem;
+
+        svg {
+          top: 0;
+          left: 0;
+          margin-bottom: 0.2rem;
+        }
+
+        a,
+        span {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
     }
-
-    ul {
-        display: flex;
-        list-style: none;
-
-        @media (max-width: 767px) {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 0 1rem;
-            width: 100%;
-            height: 3.5rem;
-            border-top: 1px solid $border;
-            background-color: $main;
-            color: $white;
-            font-size: 0.8rem;
-            z-index: 10;
-        }
-
-        li {
-            margin-left: 2rem;
-
-            svg {
-                position: relative;
-                top: 3px;
-                left: -5px;
-                font-size: 1.2rem;
-            }
-
-            span {
-                svg {
-                    left: 0;
-                }
-            }
-
-            @media (max-width: 767px) {
-                margin-left: 1rem;
-                
-                svg {
-                    top: 0;
-                    left: 0;
-                    margin-bottom: 0.2rem;
-                }
-
-                a, span {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-            }
-        }
-    }
+  }
 }
 
 .logoutButton {
-    cursor: pointer;
+  cursor: pointer;
 }

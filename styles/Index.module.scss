@@ -33,11 +33,16 @@
     /* animation: move 10s infinite linear; */
 
     @keyframes move {
-      from {left: 14rem;}
-      to {left: -14rem;}
+      from {
+        left: 14rem;
+      }
+      to {
+        left: -14rem;
+      }
     }
 
-    sup, span {
+    sup,
+    span {
       font-weight: normal;
     }
   }

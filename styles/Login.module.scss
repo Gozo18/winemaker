@@ -1,94 +1,94 @@
 @import "variables.scss";
 
 .loginPage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 82vh;
 
-    @media (max-width: 767px) {
-        min-height: 65vh;
-    }
+  @media (max-width: 767px) {
+    min-height: 65vh;
+  }
 }
 
 .loginBox {
-    padding: 3rem;
+  padding: 3rem;
+  border: 1px solid $border;
+  border-radius: 0.5rem;
+
+  @media (max-width: 767px) {
+    padding: 2rem 1rem;
+    width: 100%;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    width: 20rem;
+    height: 3rem;
     border: 1px solid $border;
     border-radius: 0.5rem;
 
     @media (max-width: 767px) {
-        padding: 2rem 1rem;
-        width: 100%;
+      width: 100%;
     }
+  }
 
-    h2 {
-        margin-bottom: 2rem;
-        text-align: center;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 3rem;
+    background-color: $main;
+    color: $white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    span {
+      position: relative;
+      top: 2px;
+      font-size: 1.5rem;
     }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    input {
-        margin-bottom: 1rem;
-        padding: 0.5rem 1rem;
-        width: 20rem;
-        height: 3rem;
-        border: 1px solid $border;
-        border-radius: 0.5rem;
-
-        @media (max-width: 767px) {
-            width: 100%;
-        }
-    }
-
-    button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 2rem;
-        width: 100%;
-        height: 3rem;
-        background-color: $main;
-        color: $white;
-        border-radius: 0.5rem;
-        cursor: pointer;
-
-        span {
-            position: relative;
-            top: 2px;
-            font-size: 1.5rem;
-        }
-    }
+  }
 }
 
 .passBox {
-    position: relative;
+  position: relative;
 
-    svg {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        cursor: pointer;
-    }
+  svg {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
 }
 
 .loginLinks {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .googleButton {
-    button {
-        margin-bottom: 0;
+  button {
+    margin-bottom: 0;
 
-        span {
-            margin-right: 1rem;
-        }
+    span {
+      margin-right: 1rem;
     }
+  }
 }

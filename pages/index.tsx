@@ -1,8 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from '../styles/Index.module.scss'
-import { FcGlobe, FcFlowChart, FcMultipleDevices, FcGoogle } from "react-icons/fc"
+import Head from "next/head"
+import Image from "next/image"
+import Link from "next/link"
+import styles from "../styles/Index.module.scss"
+import {
+  FcGlobe,
+  FcFlowChart,
+  FcMultipleDevices,
+  FcGoogle,
+} from "react-icons/fc"
 
 export default function Home() {
   return (
@@ -17,7 +22,9 @@ export default function Home() {
         <div className={styles.heroBox}>
           <Image src="/hero.webp" alt="WineMaker" fill />
           <div className={styles.heroText}>
-            <h2>WineMaker <sup>beta</sup> <span>- vinařův deník</span></h2>
+            <h2>
+              WineMaker <sup>beta</sup> <span>- vinařův deník</span>
+            </h2>
           </div>
         </div>
 
@@ -38,7 +45,7 @@ export default function Home() {
 
         <div className={styles.joinBox}>
           <Link href="/register" className={styles.joinLink}>
-              Přidej se k nám!
+            Přidej se k nám!
           </Link>
         </div>
 
@@ -49,7 +56,10 @@ export default function Home() {
             </div>
             <div className={styles.blogText}>
               <h3>Vinařské záznamy kdykoliv a kdekoliv</h3>
-              <p>Procházejte, vkládejte a upravujte údaje o svých vínech kdykoliv a na jakémkoliv zařízení.</p>
+              <p>
+                Procházejte, vkládejte a upravujte údaje o svých vínech kdykoliv
+                a na jakémkoliv zařízení.
+              </p>
             </div>
           </div>
           <div className={styles.blogPost}>
@@ -58,11 +68,13 @@ export default function Home() {
             </div>
             <div className={styles.blogText}>
               <h3>Kompletní historie vín</h3>
-              <p>Historie výrobních postupů, dodaných přípravků pro evidenci a zlepšení kvality vín.</p>
+              <p>
+                Historie výrobních postupů, dodaných přípravků pro evidenci a
+                zlepšení kvality vín.
+              </p>
             </div>
           </div>
         </div>
-        
       </div>
     </>
   )
