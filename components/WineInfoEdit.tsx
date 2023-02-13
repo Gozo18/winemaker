@@ -91,7 +91,7 @@ export default function WineInfoEdit({ thisWine, email }: any) {
     <div className={styles.addNoteShow}>
       <div className={styles.inputBox}>
         <label>
-          <strong>Přidat víno</strong>
+          <strong>Upravit víno</strong>
         </label>
         <div className={styles.inputs}>
           <label>

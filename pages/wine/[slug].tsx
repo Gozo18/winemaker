@@ -40,62 +40,48 @@ export default function wine() {
           </h2>
           <div className={styles.notes}>
             <WineInfo thisWine={thisWine} email={email} />
-            <details>
-              <summary>
-                <span>Sběr</span>
-              </summary>
+            <div className={styles.divider}>
               <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Analytika</span>
-              </summary>
+              <h3>Sběr</h3>
+            </div>
+            <div className={styles.notes}>
+              <div className={styles.note}>
+                <div>
+                  <div className={styles.noteDate}>Datum: 25.10.2022</div>
+                  <div>Trať: Železná, Perná</div>
+                  <div>Cukernatost: 22,5 °NM</div>
+                </div>
+                <div className={styles.noteIcons}>edit delete</div>
+              </div>
+            </div>
+            <div className={styles.divider}>
               <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Síra</span>
-              </summary>
+              <h3>Analytika</h3>
+            </div>
+            <div className={styles.divider}>
               <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Přípravky</span>
-              </summary>
+              <h3>Síra</h3>
+            </div>
+            <div className={styles.divider}>
               <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Stáčení</span>
-              </summary>
+              <h3>Přípravky</h3>
+            </div>
+            <div className={styles.divider}>
               <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Filtrace</span>
-              </summary>
+              <h3>Stáčení</h3>
+            </div>
+            <div className={styles.divider}>
               <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Lahvování</span>
-              </summary>
+              <h3>Filtrace</h3>
+            </div>
+            <div className={styles.divider}>
               <hr />
-              <div>wineinfo</div>
-            </details>
-            <details>
-              <summary>
-                <span>Nádoba</span>
-              </summary>
+              <h3>Lahvování</h3>
+            </div>
+            <div className={styles.divider}>
               <hr />
-              <div>wineinfo</div>
-            </details>
+              <h3>Nádoba</h3>
+            </div>
           </div>
         </div>
       </>

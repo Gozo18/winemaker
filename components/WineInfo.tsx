@@ -36,11 +36,11 @@ export default function WineInfo({ thisWine, email }: any) {
       {editWineInfo ? (
         <WineInfoEdit thisWine={thisWine} email={email} />
       ) : (
-        <details>
-          <summary>
-            <span>O víně</span>
-          </summary>
-          <hr />
+        <>
+          <div className={styles.divider}>
+            <hr />
+            <h3>O víně</h3>
+          </div>
           <div className={styles.note}>
             <div>
               <p>
@@ -68,7 +68,7 @@ export default function WineInfo({ thisWine, email }: any) {
               />
             </div>
           </div>
-        </details>
+        </>
       )}
     </>
   )
