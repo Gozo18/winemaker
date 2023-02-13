@@ -1,4 +1,10 @@
 import { createContext, useContext, useState } from "react"
+import { auth } from "./firebase"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { useRouter } from "next/router"
+import { db } from "./firebase"
+import { collection, getDocs } from "firebase/firestore"
+import { toast } from "react-toastify"
 
 type contextType = {
   notesLoading: boolean
@@ -27,6 +33,12 @@ type contextType = {
   setWineLoading: any
   wineData: any
   setWineData: any
+  editWineInfo: boolean
+  setEditWineInfo: any
+  email: any
+  setEmail: any
+  loggedIn: any
+  setLoggedIn: any
 }
 
 const contextDefaultValues: contextType = {
@@ -56,11 +68,21 @@ const contextDefaultValues: contextType = {
   setWineLoading: () => {},
   wineData: [],
   setWineData: () => {},
+  editWineInfo: false,
+  setEditWineInfo: () => {},
+  email: "",
+  setEmail: () => {},
+  loggedIn: false,
+  setLoggedIn: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
 
 export const StateContext = ({ children }: any) => {
+  //User
+  const [email, setEmail] = useState()
+  const [loggedIn, setLoggedIn] = useState(false)
+
   //Notes
   const [notesLoading, setNotesLoading] = useState(false)
   const [notesData, setNotesData] = useState([])
@@ -75,6 +97,7 @@ export const StateContext = ({ children }: any) => {
   //Wine
   const [wineLoading, setWineLoading] = useState(false)
   const [wineData, setWineData] = useState([])
+  const [editWineInfo, setEditWineInfo] = useState(false)
 
   //Wineyards
 
@@ -83,6 +106,32 @@ export const StateContext = ({ children }: any) => {
   const [additivesLoading, setAdditivesLoading] = useState(false)
   const [additivesData, setAdditivesData] = useState([])
   const [editAdditive, setEditAdditive] = useState()
+
+  //Wines data
+  if (email && !winesLoading) {
+    const querySnapshot = async () => {
+      try {
+        const winesData: any = await getDocs(
+          collection(db, "winemakers", email, "wines")
+        )
+        const winesArray: any = []
+        winesData.forEach((doc: any) => {
+          const pushData = doc.data()
+          pushData.id = doc.id
+          pushData.timestamp = new Date(doc.data().date)
+          winesArray.push(pushData)
+        })
+        winesArray.sort((a: any, b: any) => a.timestamp - b.timestamp).reverse()
+        setWinesData(winesArray)
+        localStorage.setItem("wines", JSON.stringify(winesArray))
+        setWinesLoading(true)
+      } catch (err) {
+        toast.error("Něco se nepovedlo!")
+      }
+    }
+
+    querySnapshot()
+  }
 
   return (
     <Context.Provider
@@ -113,6 +162,12 @@ export const StateContext = ({ children }: any) => {
         setWineLoading,
         wineData,
         setWineData,
+        editWineInfo,
+        setEditWineInfo,
+        email,
+        setEmail,
+        loggedIn,
+        setLoggedIn,
       }}
     >
       {children}

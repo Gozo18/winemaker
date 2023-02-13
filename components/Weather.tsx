@@ -27,8 +27,6 @@ export default function Weather() {
   }
 
   if (weather != undefined) {
-    console.log(weather)
-
     const code: number = weather.current_weather.weathercode
 
     const daily: any = weather.daily

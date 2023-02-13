@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
+import { useStateContext } from "../config/context"
 import {
   VscSignIn,
   VscSignOut,
@@ -12,6 +13,11 @@ import styles from "../styles/Nav.module.scss"
 
 export default function Nav() {
   const [user, loading] = useAuthState(auth)
+  const { setEmail } = useStateContext()
+
+  if (user) {
+    setEmail(user.email)
+  }
 
   return (
     <nav className={styles.navBox}>
