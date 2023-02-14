@@ -118,10 +118,9 @@ export const StateContext = ({ children }: any) => {
         winesData.forEach((doc: any) => {
           const pushData = doc.data()
           pushData.id = doc.id
-          pushData.timestamp = new Date(doc.data().date)
           winesArray.push(pushData)
         })
-        winesArray.sort((a: any, b: any) => a.timestamp - b.timestamp).reverse()
+        winesArray.sort((a: any, b: any) => a.name.localeCompare(b.name))
         setWinesData(winesArray)
         localStorage.setItem("wines", JSON.stringify(winesArray))
         setWinesLoading(true)

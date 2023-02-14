@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import WineAdd from "../components/WineAdd"
 import Wines from "../components/Wines"
 import { useStateContext } from "../config/context"
+import BackLink from "../components/BackLink"
 import styles from "../styles/CurrentWines.module.scss"
 
 export default function currentWines() {
@@ -21,6 +22,7 @@ export default function currentWines() {
     } else {
       return (
         <div className={styles.currentBox}>
+          <BackLink />
           <h2>Aktuální sklep</h2>
 
           <WineAdd email={user.email} />

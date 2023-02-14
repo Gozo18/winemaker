@@ -29,4 +29,19 @@ a {
 
 .backLink {
   cursor: pointer;
+
+  @media (max-width: 767px) {
+    position: fixed;
+    bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $white;
+    font-size: 0.8rem;
+    z-index: 11;
+
+    svg {
+      font-size: 1.2rem;
+    }
+  }
 }

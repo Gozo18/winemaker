@@ -1,9 +1,9 @@
-import { useEffect } from "react"
 import { auth } from "../../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
 import { useStateContext } from "../../config/context"
 import WineInfo from "../../components/WineInfo"
+import BackLink from "../../components/BackLink"
 import styles from "../../styles/Wine.module.scss"
 
 export default function wine() {
@@ -32,9 +32,7 @@ export default function wine() {
     return (
       <>
         <div className={styles.wineBox}>
-          <a onClick={() => router.back()} className="backLink">
-            ⇽ zpět
-          </a>
+          <BackLink />
           <h2>
             {name} {year} <br /> {sub}
           </h2>
