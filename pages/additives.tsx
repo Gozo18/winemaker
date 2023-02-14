@@ -10,7 +10,7 @@ export default function additives() {
   const router = useRouter()
   const [user, loading] = useAuthState(auth)
 
-  if (loading) return <p>Loading</p>
+  if (loading) return <p>Načítám...</p>
 
   if (!user) router.push("/login")
 

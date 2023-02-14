@@ -42,7 +42,7 @@ export default function WineInfo({ thisWine, email }: any) {
             <h3>O víně</h3>
           </div>
           <div className={styles.note}>
-            <div>
+            <div className={styles.noteText}>
               <p>
                 <strong>Odrůda:</strong> {name}
               </p>
@@ -60,12 +60,16 @@ export default function WineInfo({ thisWine, email }: any) {
               </p>
             </div>
             <div className={styles.noteIcons}>
-              <VscEdit onClick={(e: any) => editFunc(e)} />
-              <VscTrash
+              <div
                 onClick={(e: any) => {
                   if (window.confirm("Odstranit víno?")) deleteNote(e, id)
                 }}
-              />
+              >
+                <VscTrash />
+              </div>
+              <div onClick={(e: any) => editFunc(e)}>
+                <VscEdit />
+              </div>
             </div>
           </div>
         </>
