@@ -39,6 +39,8 @@ type contextType = {
   setEmail: any
   loggedIn: any
   setLoggedIn: any
+  addPickupVisibility: boolean
+  setAddPickupVisibility: any
 }
 
 const contextDefaultValues: contextType = {
@@ -74,6 +76,8 @@ const contextDefaultValues: contextType = {
   setEmail: () => {},
   loggedIn: false,
   setLoggedIn: () => {},
+  addPickupVisibility: false,
+  setAddPickupVisibility: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -98,6 +102,9 @@ export const StateContext = ({ children }: any) => {
   const [wineLoading, setWineLoading] = useState(false)
   const [wineData, setWineData] = useState([])
   const [editWineInfo, setEditWineInfo] = useState(false)
+
+  //Pickup
+  const [addPickupVisibility, setAddPickupVisibility] = useState(false)
 
   //Wineyards
 
@@ -167,6 +174,8 @@ export const StateContext = ({ children }: any) => {
         setEmail,
         loggedIn,
         setLoggedIn,
+        addPickupVisibility,
+        setAddPickupVisibility,
       }}
     >
       {children}

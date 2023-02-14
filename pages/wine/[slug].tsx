@@ -4,7 +4,9 @@ import { useRouter } from "next/router"
 import { useStateContext } from "../../config/context"
 import WineInfo from "../../components/WineInfo"
 import BackLink from "../../components/BackLink"
-import { FcPlus } from "react-icons/fc"
+import PickupAdd from "../../components/PickupAdd"
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
+import "react-tabs/style/react-tabs.css"
 import styles from "../../styles/Wine.module.scss"
 
 export default function wine() {
@@ -31,65 +33,57 @@ export default function wine() {
     const { name, sub, year, place, note } = thisWine[0]
 
     return (
-      <>
-        <div className={styles.wineBox}>
-          <BackLink />
-          <h2>
-            {name} {year} <br /> {sub}
-          </h2>
-          <div className={styles.notes}>
-            <WineInfo thisWine={thisWine} email={email} />
-            <div className={styles.divider}>
-              <hr />
-              <h3>Sběr</h3>
-            </div>
+      <div className={styles.wineBox}>
+        <BackLink />
+        <h2>
+          {name} {year} <br /> {sub}
+        </h2>
+        <PickupAdd />
+
+        <Tabs>
+          <TabList>
+            <Tab>O víně</Tab>
+            <Tab>Sběr</Tab>
+            <Tab>Analytika</Tab>
+            <Tab>Síra</Tab>
+            <Tab>Přípravky</Tab>
+            <Tab>Stáčení</Tab>
+            <Tab>Filtrace</Tab>
+            <Tab>Lahvování</Tab>
+            <Tab>Nádoba</Tab>
+          </TabList>
+
+          <TabPanel>
             <div className={styles.notes}>
-              <div className={styles.addNote}>
-                <FcPlus />
-              </div>
-              <div className={styles.note}>
-                <div className={styles.noteText}>
-                  <div className={styles.noteDate}>Datum: 25.10.2022</div>
-                  <div>Trať: Železná, Perná</div>
-                  <div>Cukernatost: 22,5 °NM</div>
-                </div>
-                <div className={styles.noteIcons}>
-                  <div>delete</div>
-                  <div>edit</div>
-                </div>
-              </div>
+              <WineInfo thisWine={thisWine} email={email} />
             </div>
-            <div className={styles.divider}>
-              <hr />
-              <h3>Analytika</h3>
-            </div>
-            <div className={styles.divider}>
-              <hr />
-              <h3>Síra</h3>
-            </div>
-            <div className={styles.divider}>
-              <hr />
-              <h3>Přípravky</h3>
-            </div>
-            <div className={styles.divider}>
-              <hr />
-              <h3>Stáčení</h3>
-            </div>
-            <div className={styles.divider}>
-              <hr />
-              <h3>Filtrace</h3>
-            </div>
-            <div className={styles.divider}>
-              <hr />
-              <h3>Lahvování</h3>
-            </div>
-            <div className={styles.divider}>
-              <hr />
-              <h3>Nádoba</h3>
-            </div>
-          </div>
-        </div>
-      </>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+        </Tabs>
+      </div>
     )
   }
 }

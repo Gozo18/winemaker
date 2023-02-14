@@ -45,3 +45,44 @@ a {
     }
   }
 }
+
+.react-tabs {
+  @media (max-width: 767px) {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.react-tabs__tab-list {
+  background-color: $bg;
+  border: 1px solid $border !important;
+  font-size: 0.8rem;
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.react-tabs__tab {
+  padding: 1rem 12px !important;
+
+  @media (max-width: 767px) {
+    width: 6rem;
+  }
+}
+
+.react-tabs__tab:focus:after {
+  display: none;
+}
+
+.react-tabs__tab--selected {
+  border: 1px solid $border !important;
+  border-radius: 0 !important;
+}
+
+.react-tabs__tab-panel {
+  @media (max-width: 767px) {
+    width: calc(100% - 8rem);
+  }
+}
