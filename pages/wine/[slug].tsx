@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { useStateContext } from "../../config/context"
 import WineInfo from "../../components/WineInfo"
 import BackLink from "../../components/BackLink"
+import { FcPlus } from "react-icons/fc"
 import styles from "../../styles/Wine.module.scss"
 
 export default function wine() {
@@ -43,13 +44,19 @@ export default function wine() {
               <h3>Sběr</h3>
             </div>
             <div className={styles.notes}>
+              <div className={styles.addNote}>
+                <FcPlus />
+              </div>
               <div className={styles.note}>
-                <div>
+                <div className={styles.noteText}>
                   <div className={styles.noteDate}>Datum: 25.10.2022</div>
                   <div>Trať: Železná, Perná</div>
                   <div>Cukernatost: 22,5 °NM</div>
                 </div>
-                <div className={styles.noteIcons}>edit delete</div>
+                <div className={styles.noteIcons}>
+                  <div>delete</div>
+                  <div>edit</div>
+                </div>
               </div>
             </div>
             <div className={styles.divider}>

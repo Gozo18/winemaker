@@ -52,6 +52,15 @@
   }
 }
 
+.addNote {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
 .noteText {
   padding: 1rem;
 }
