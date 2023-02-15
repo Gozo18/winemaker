@@ -5,6 +5,16 @@ import { useStateContext } from "../../config/context"
 import WineInfo from "../../components/WineInfo"
 import BackLink from "../../components/BackLink"
 import PickupAdd from "../../components/PickupAdd"
+import {
+  VscBeaker,
+  VscDatabase,
+  VscFilter,
+  VscInfo,
+  VscHistory,
+  VscChecklist,
+  VscVerified,
+  VscSync,
+} from "react-icons/vsc"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 import styles from "../../styles/Wine.module.scss"
@@ -38,49 +48,70 @@ export default function wine() {
         <h2>
           {name} {year} <br /> {sub}
         </h2>
-        <PickupAdd />
 
         <Tabs>
           <TabList>
-            <Tab>O víně</Tab>
-            <Tab>Sběr</Tab>
-            <Tab>Analytika</Tab>
-            <Tab>Síra</Tab>
-            <Tab>Přípravky</Tab>
-            <Tab>Stáčení</Tab>
-            <Tab>Filtrace</Tab>
-            <Tab>Lahvování</Tab>
-            <Tab>Nádoba</Tab>
+            <Tab>
+              <VscInfo />
+              <span>O víně</span>
+            </Tab>
+            <Tab>
+              <VscHistory />
+              <span>Sběr</span>
+            </Tab>
+            <Tab>
+              <VscChecklist />
+              <span>Analytika</span>
+            </Tab>
+            <Tab>
+              <VscBeaker />
+              <span>Přípravky</span>
+            </Tab>
+            <Tab>
+              <VscSync />
+              <span>Stáčení</span>
+            </Tab>
+            <Tab>
+              <VscFilter />
+              <span>Filtrace</span>
+            </Tab>
+            <Tab>
+              <VscVerified />
+              <span>Lahvování</span>
+            </Tab>
+            <Tab>
+              <VscDatabase />
+              <span>Nádoba</span>
+            </Tab>
           </TabList>
 
           <TabPanel>
+            <h3>O víně</h3>
             <div className={styles.notes}>
               <WineInfo thisWine={thisWine} email={email} />
             </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <h3>Sběr</h3>
+            <PickupAdd />
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <h3>Analytika</h3>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <h3>Přípravky</h3>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <h3>Stáčení</h3>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <h3>Filtrace</h3>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <h3>Lahvování</h3>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Any content 2</h2>
+            <h3>Nádoba</h3>
           </TabPanel>
         </Tabs>
       </div>

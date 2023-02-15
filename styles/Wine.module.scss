@@ -12,37 +12,17 @@
       margin-bottom: 1rem;
     }
   }
+
+  h3 {
+    margin: 1rem;
+    text-align: center;
+  }
 }
 
 .notes {
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-
-.divider {
-  position: relative;
-  display: flex;
-  justify-content: center;
-
-  h3 {
-    position: relative;
-    display: inline;
-    margin-bottom: 1rem;
-    padding: 0 10px;
-    background-color: $white;
-    text-align: center;
-    font-size: 1rem;
-    z-index: 2;
-  }
-
-  hr {
-    position: absolute;
-    top: 11px;
-    width: 100%;
-    border: 1px solid $border;
-    z-index: 1;
-  }
 }
 
 .note {

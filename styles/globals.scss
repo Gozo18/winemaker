@@ -32,7 +32,7 @@ a {
 
   @media (max-width: 767px) {
     position: fixed;
-    bottom: 12px;
+    bottom: 9px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,29 +46,74 @@ a {
   }
 }
 
-.react-tabs {
-  @media (max-width: 767px) {
-    display: flex;
-    gap: 1rem;
-  }
-}
-
 .react-tabs__tab-list {
+  display: flex;
+  flex-wrap: wrap;
   background-color: $bg;
-  border: 1px solid $border !important;
+  border: 0px solid $border !important;
   font-size: 0.8rem;
-
-  @media (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 .react-tabs__tab {
+  bottom: 0 !important;
+  display: flex !important;
+  justify-content: center;
   padding: 1rem 12px !important;
+  width: 12.5%;
 
   @media (max-width: 767px) {
-    width: 6rem;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+  }
+
+  svg {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    @media (max-width: 767px) {
+      margin-right: 0;
+    }
+  }
+
+  span {
+    position: relative;
+    top: 3px;
+
+    @media (max-width: 767px) {
+      font-size: 0.8rem;
+    }
+  }
+
+  &:first-child {
+    background: #f4bfbf;
+  }
+
+  &:nth-child(2) {
+    background: #ffd9c0;
+  }
+
+  &:nth-child(3) {
+    background: #ffe9ae;
+  }
+
+  &:nth-child(4) {
+    background: #c1efff;
+  }
+
+  &:nth-child(5) {
+    background: #f7ecde;
+  }
+
+  &:nth-child(6) {
+    background: #e9dac1;
+  }
+
+  &:nth-child(7) {
+    background: #9ed2c6;
+  }
+
+  &:nth-child(8) {
+    background: #54bab9;
   }
 }
 
@@ -79,10 +124,6 @@ a {
 .react-tabs__tab--selected {
   border: 1px solid $border !important;
   border-radius: 0 !important;
-}
-
-.react-tabs__tab-panel {
-  @media (max-width: 767px) {
-    width: calc(100% - 8rem);
-  }
+  background: $white !important;
+  opacity: 0.6;
 }
