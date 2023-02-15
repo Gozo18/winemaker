@@ -1,9 +1,9 @@
-import AddNoteForm from "./AddNoteForm"
+import PickupForm from "./PickupForm"
 import { useStateContext } from "../config/context"
 import { VscDiffAdded, VscError } from "react-icons/vsc"
 import styles from "../styles/AddNote.module.scss"
 
-export default function PickupAdd() {
+export default function PickupAdd({ id }: any) {
   const { email, addPickupVisibility, setAddPickupVisibility } =
     useStateContext()
 
@@ -24,7 +24,7 @@ export default function PickupAdd() {
         </div>
       ) : (
         <div className={styles.addNoteBox}>
-          <AddNoteForm email={email} />
+          <PickupForm id={id} />
           <div className={styles.closeBox}>
             <VscError onClick={showInput} />
           </div>

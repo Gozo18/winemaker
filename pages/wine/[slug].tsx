@@ -5,6 +5,7 @@ import { useStateContext } from "../../config/context"
 import WineInfo from "../../components/WineInfo"
 import BackLink from "../../components/BackLink"
 import PickupAdd from "../../components/PickupAdd"
+import HarvestInfo from "../../components/HarvestInfo"
 import {
   VscBeaker,
   VscDatabase,
@@ -40,7 +41,7 @@ export default function wine() {
       return e.slug === slug
     })
 
-    const { name, sub, year, place, note } = thisWine[0]
+    const { name, sub, year, place, note, id } = thisWine[0]
 
     return (
       <div className={styles.wineBox}>
@@ -93,7 +94,8 @@ export default function wine() {
           </TabPanel>
           <TabPanel>
             <h3>Sběr</h3>
-            <PickupAdd />
+            <PickupAdd id={id} />
+            <HarvestInfo thisWine={thisWine} />
           </TabPanel>
           <TabPanel>
             <h3>Analytika</h3>

@@ -1,7 +1,4 @@
 import { createContext, useContext, useState } from "react"
-import { auth } from "./firebase"
-import { useAuthState } from "react-firebase-hooks/auth"
-import { useRouter } from "next/router"
 import { db } from "./firebase"
 import { collection, getDocs } from "firebase/firestore"
 import { toast } from "react-toastify"
@@ -41,6 +38,8 @@ type contextType = {
   setLoggedIn: any
   addPickupVisibility: boolean
   setAddPickupVisibility: any
+  editPickup: boolean
+  setEditPickup: any
 }
 
 const contextDefaultValues: contextType = {
@@ -78,6 +77,8 @@ const contextDefaultValues: contextType = {
   setLoggedIn: () => {},
   addPickupVisibility: false,
   setAddPickupVisibility: () => {},
+  editPickup: false,
+  setEditPickup: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -105,6 +106,7 @@ export const StateContext = ({ children }: any) => {
 
   //Pickup
   const [addPickupVisibility, setAddPickupVisibility] = useState(false)
+  const [editPickup, setEditPickup] = useState(false)
 
   //Wineyards
 
@@ -116,7 +118,7 @@ export const StateContext = ({ children }: any) => {
 
   //Wines data
   if (email && !winesLoading) {
-    const querySnapshot = async () => {
+    const wineQuery = async () => {
       try {
         const winesData: any = await getDocs(
           collection(db, "winemakers", email, "wines")
@@ -128,15 +130,40 @@ export const StateContext = ({ children }: any) => {
           winesArray.push(pushData)
         })
         winesArray.sort((a: any, b: any) => a.name.localeCompare(b.name))
-        setWinesData(winesArray)
-        localStorage.setItem("wines", JSON.stringify(winesArray))
+        winesArray.map((wine: any) => {
+          wine.harvest = []
+          const harvestQuery = async () => {
+            try {
+              const harvestData: any = await getDocs(
+                collection(db, "winemakers", email, "wines", wine.id, "harvest")
+              )
+              harvestData.forEach((doc: any, i: number) => {
+                const pushData = doc.data()
+                pushData.id = doc.id
+                pushData.timestamp = new Date(doc.data().date)
+                wine.harvest.push(pushData)
+                wine.harvest
+                  .sort((a: any, b: any) => a.timestamp - b.timestamp)
+                  .reverse()
+              })
+            } catch (err) {
+              toast.error("Něco se nepovedlo!")
+            }
+          }
+
+          harvestQuery()
+        })
+        setTimeout(() => {
+          setWinesData(winesArray)
+          localStorage.setItem("wines", JSON.stringify(winesArray))
+        }, 500)
         setWinesLoading(true)
       } catch (err) {
         toast.error("Něco se nepovedlo!")
       }
     }
 
-    querySnapshot()
+    wineQuery()
   }
 
   return (
@@ -176,6 +203,8 @@ export const StateContext = ({ children }: any) => {
         setLoggedIn,
         addPickupVisibility,
         setAddPickupVisibility,
+        editPickup,
+        setEditPickup,
       }}
     >
       {children}

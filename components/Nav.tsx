@@ -2,13 +2,7 @@ import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import EmailSet from "./EmailSet"
-import {
-  VscSignIn,
-  VscSignOut,
-  VscSettingsGear,
-  VscAccount,
-  VscHome,
-} from "react-icons/vsc"
+import { VscSignIn, VscSettingsGear } from "react-icons/vsc"
 import styles from "../styles/Nav.module.scss"
 
 export default function Nav() {
