@@ -18,13 +18,13 @@
 .gridBox {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
+  /* gap: 2rem; */
   margin-bottom: 2rem;
   width: 100%;
 
   @media (max-width: 767px) {
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    /* gap: 1rem; */
   }
 
   > a {
@@ -33,11 +33,39 @@
     justify-content: center;
     align-items: center;
     height: 10rem;
-    border: 1px solid $border;
-    border-radius: 0.5rem;
+    /* border: 1px solid $border;
+    border-radius: 0.5rem; */
 
-    &:hover {
-      background-color: $hover;
+    &:first-child {
+      background: #f4bfbf;
+    }
+
+    &:nth-child(2n) {
+      background: #ffd9c0;
+    }
+
+    &:nth-child(3n) {
+      background: #ffe9ae;
+    }
+
+    &:nth-child(4n) {
+      background: #c1efff;
+    }
+
+    &:nth-child(5n) {
+      background: #f7ecde;
+    }
+
+    &:nth-child(6n) {
+      background: #e9dac1;
+    }
+
+    &:nth-child(7n) {
+      background: #9ed2c6;
+    }
+
+    &:nth-child(8n) {
+      background: #54bab9;
     }
 
     h3 {
