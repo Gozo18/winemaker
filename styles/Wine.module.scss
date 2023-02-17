@@ -40,7 +40,7 @@
     left: 0;
     width: 0.5rem;
     height: 100%;
-    background-color: $green;
+    background-color: $add;
     border-radius: 0.5rem 0 0 0.5rem;
   }
 
@@ -88,12 +88,12 @@
     cursor: pointer;
 
     &:first-child {
-      background-color: $red;
+      background-color: $delete;
       border-radius: 0 0.5rem 0 0;
     }
 
     &:nth-child(2) {
-      background-color: $button;
+      background-color: $edit;
       border-radius: 0 0 0.5rem 0;
     }
   }
