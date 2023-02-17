@@ -34,6 +34,14 @@ export default function HarvestInfoItem({ w, wineId, key }: any) {
     }
   }
 
+  const timestamp = new Date(w.date)
+  const dateFormat =
+    timestamp.getDate() +
+    "." +
+    (timestamp.getMonth() + 1) +
+    "." +
+    timestamp.getFullYear()
+
   return (
     <>
       {editPickup === w.id ? (
@@ -42,7 +50,7 @@ export default function HarvestInfoItem({ w, wineId, key }: any) {
         <div className={styles.note} key={key}>
           <div className={styles.noteText}>
             <p>
-              <strong>Datum:</strong> {w.date}
+              <strong>Datum:</strong> {dateFormat}
             </p>
             <p>
               <strong>Cukernatost:</strong> {w.sugar}

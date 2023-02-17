@@ -29,6 +29,14 @@ export default function Note({ note, key, userEmail }: any) {
     }
   }
 
+  const timestamp = new Date(note.date)
+  const dateFormat =
+    timestamp.getDate() +
+    "." +
+    (timestamp.getMonth() + 1) +
+    "." +
+    timestamp.getFullYear()
+
   return (
     <>
       {editNote === note.id ? (
@@ -36,7 +44,7 @@ export default function Note({ note, key, userEmail }: any) {
       ) : (
         <div className={styles.note} key={key}>
           <div>
-            <div className={styles.noteDate}>Datum: {note.date}</div>
+            <div className={styles.noteDate}>Datum: {dateFormat}</div>
             <div>{note.text}</div>
           </div>
           <div className={styles.noteIcons}>

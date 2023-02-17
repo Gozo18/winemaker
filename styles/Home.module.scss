@@ -21,6 +21,10 @@
     gap: 1rem;
   }
 
+  @media (max-width: 767px) {
+    gap: 0.5rem;
+  }
+
   > a {
     display: flex;
     flex-direction: column;
