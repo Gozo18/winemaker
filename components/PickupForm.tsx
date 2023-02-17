@@ -61,7 +61,7 @@ export default function PickupForm({ id }: any) {
     <div className={styles.addNoteShow}>
       <div className={styles.inputBox}>
         <label>
-          <strong>Přidat víno</strong>
+          <strong>Přidat sběr</strong>
         </label>
         <div className={styles.inputs}>
           <span>
