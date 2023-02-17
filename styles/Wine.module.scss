@@ -29,7 +29,6 @@
   margin-bottom: 1rem;
   width: 100%;
   border: 1px solid $border;
-  border-radius: 0.5rem;
 
   strong {
     font-size: 0.8rem;
@@ -70,12 +69,10 @@
 
     &:first-child {
       background-color: $red;
-      border-radius: 0 0 0 0.5rem;
     }
 
     &:nth-child(2) {
       background-color: $button;
-      border-radius: 0 0 0.5rem 0;
     }
   }
 }
