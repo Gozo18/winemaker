@@ -43,18 +43,22 @@ export default function Note({ note, key, userEmail }: any) {
         <EditNote note={note} userEmail={userEmail} key={key} />
       ) : (
         <div className={styles.note} key={key}>
-          <div>
+          <div className={styles.noteText}>
             <div className={styles.noteDate}>Datum: {dateFormat}</div>
             <div>{note.text}</div>
           </div>
           <div className={styles.noteIcons}>
-            <VscEdit onClick={(e: any) => editFunc(e, note.id)} />{" "}
-            <VscTrash
+            <div onClick={(e: any) => editFunc(e, note.id)}>
+              <VscEdit />
+            </div>
+            <div
               onClick={(e: any) => {
                 if (window.confirm("Odstranit poznámku?"))
                   deleteNote(e, note.id)
               }}
-            />
+            >
+              <VscTrash />
+            </div>
           </div>
         </div>
       )}
