@@ -48,9 +48,6 @@ export default function Note({ note, key, userEmail }: any) {
             <div>{note.text}</div>
           </div>
           <div className={styles.noteIcons}>
-            <div onClick={(e: any) => editFunc(e, note.id)}>
-              <VscEdit />
-            </div>
             <div
               onClick={(e: any) => {
                 if (window.confirm("Odstranit poznámku?"))
@@ -58,6 +55,9 @@ export default function Note({ note, key, userEmail }: any) {
               }}
             >
               <VscTrash />
+            </div>
+            <div onClick={(e: any) => editFunc(e, note.id)}>
+              <VscEdit />
             </div>
           </div>
         </div>
