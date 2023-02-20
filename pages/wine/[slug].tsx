@@ -45,10 +45,14 @@ export default function wine() {
 
     return (
       <div className={styles.wineBox}>
-        <BackLink />
-        <h2>
-          {name} {year} <br /> {sub}
-        </h2>
+        <div className={styles.headerBox}>
+          <BackLink />
+          <h2>
+            {name} {year} - {sub}
+          </h2>
+
+          <div></div>
+        </div>
 
         <Tabs>
           <TabList>
@@ -87,14 +91,19 @@ export default function wine() {
           </TabList>
 
           <TabPanel>
-            <h3>O víně</h3>
+            <div className={styles.headerBox}>
+              <h3>O víně</h3>
+            </div>
             <div className={styles.notes}>
               <WineInfo thisWine={thisWine} email={email} />
             </div>
           </TabPanel>
           <TabPanel>
-            <h3>Sběr</h3>
-            <PickupAdd id={id} />
+            <div className={styles.headerBox}>
+              <div className={styles.headerBoxEmpty}></div>
+              <h3>Sběr</h3>
+              <PickupAdd id={id} />
+            </div>
             <HarvestInfo thisWine={thisWine} />
           </TabPanel>
           <TabPanel>

@@ -36,21 +36,33 @@ export default function Additive({ additive, userEmail }: any) {
         <AdditiveEdit additive={additive} userEmail={userEmail} />
       ) : (
         <div className={styles.note}>
-          <div>
+          <div className={styles.noteText}>
             <div className={styles.noteName}>{additive.name}</div>
-            <p>Balení: {additive.pack}g/ml</p>
-            <p>Cena: {additive.price},- Kč</p>
-            <p>Popis: {additive.desc}</p>
-            <p>Dávkování: {additive.use}g/hl</p>
+            <p>
+              <strong>Balení:</strong> {additive.pack}g/ml
+            </p>
+            <p>
+              <strong>Cena:</strong> {additive.price},- Kč
+            </p>
+            <p>
+              <strong>Popis:</strong> {additive.desc}
+            </p>
+            <p>
+              <strong>Dávkování:</strong> {additive.use}g/hl
+            </p>
           </div>
           <div className={styles.noteIcons}>
-            <VscEdit onClick={(e: any) => editFunc(e, additive.id)} />{" "}
-            <VscTrash
+            <div
               onClick={(e: any) => {
                 if (window.confirm("Odstranit poznámku?"))
                   deleteNote(e, additive.id)
               }}
-            />
+            >
+              <VscTrash />
+            </div>
+            <div onClick={(e: any) => editFunc(e, additive.id)}>
+              <VscEdit />
+            </div>
           </div>
         </div>
       )}

@@ -2,8 +2,10 @@ import { db } from "../config/firebase"
 import { collection, getDocs } from "firebase/firestore"
 import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
-import styles from "../styles/Additives.module.scss"
 import Additive from "./Additive"
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
+import "react-tabs/style/react-tabs.css"
+import styles from "../styles/Additives.module.scss"
 
 export default function Additives({ email }: any) {
   const {
@@ -63,77 +65,77 @@ export default function Additives({ email }: any) {
         <div>Načítám...</div>
       ) : (
         <div className={styles.notes}>
-          <details open>
-            <summary>
-              <span>Čiření ({cireni.length})</span>
-            </summary>
-            <hr />
-            {cireni.map((doc: any, i: any) => (
-              <div key={i}>
-                <Additive additive={doc} userEmail={email} />
-              </div>
-            ))}
-          </details>
+          <Tabs>
+            <TabList>
+              <Tab>
+                <span>Čiření ({cireni.length})</span>
+              </Tab>
+              <Tab>
+                <span>Enzymy ({enzymy.length})</span>
+              </Tab>
+              <Tab>
+                <span>Kvasinky ({kvasinky.length})</span>
+              </Tab>
+              <Tab>
+                <span>Výživa ({vyziva.length})</span>
+              </Tab>
+              <Tab>
+                <span>Taniny ({taniny.length})</span>
+              </Tab>
+              <Tab>
+                <span>Ostatní ({ostatni.length})</span>
+              </Tab>
+            </TabList>
 
-          <details>
-            <summary>
-              <span>Enzymy ({enzymy.length})</span>
-            </summary>
-            <hr />
-            {enzymy.map((doc: any, i: any) => (
-              <div key={i}>
-                <Additive additive={doc} userEmail={email} />
-              </div>
-            ))}
-          </details>
-
-          <details>
-            <summary>
-              <span>Kvasinky ({kvasinky.length})</span>
-            </summary>
-            <hr />
-            {kvasinky.map((doc: any, i: any) => (
-              <div key={i}>
-                <Additive additive={doc} userEmail={email} />
-              </div>
-            ))}
-          </details>
-
-          <details>
-            <summary>
-              <span>Výživa ({vyziva.length})</span>
-            </summary>
-            <hr />
-            {vyziva.map((doc: any, i: any) => (
-              <div key={i}>
-                <Additive additive={doc} userEmail={email} />
-              </div>
-            ))}
-          </details>
-
-          <details>
-            <summary>
-              <span>Taniny ({taniny.length})</span>
-            </summary>
-            <hr />
-            {taniny.map((doc: any, i: any) => (
-              <div key={i}>
-                <Additive additive={doc} userEmail={email} />
-              </div>
-            ))}
-          </details>
-
-          <details>
-            <summary>
-              <span>Ostatní ({ostatni.length})</span>
-            </summary>
-            <hr />
-            {ostatni.map((doc: any, i: any) => (
-              <div key={i}>
-                <Additive additive={doc} userEmail={email} />
-              </div>
-            ))}
-          </details>
+            <TabPanel>
+              <h3>Čiření</h3>
+              {cireni.map((doc: any, i: any) => (
+                <div key={i}>
+                  <Additive additive={doc} userEmail={email} />
+                </div>
+              ))}
+            </TabPanel>
+            <TabPanel>
+              <h3>Enzymy</h3>
+              {enzymy.map((doc: any, i: any) => (
+                <div key={i}>
+                  <Additive additive={doc} userEmail={email} />
+                </div>
+              ))}
+            </TabPanel>
+            <TabPanel>
+              <h3>Kvasinky</h3>
+              {kvasinky.map((doc: any, i: any) => (
+                <div key={i}>
+                  <Additive additive={doc} userEmail={email} />
+                </div>
+              ))}
+            </TabPanel>
+            <TabPanel>
+              <h3>Výživa</h3>
+              {vyziva.map((doc: any, i: any) => (
+                <div key={i}>
+                  <Additive additive={doc} userEmail={email} />
+                </div>
+              ))}
+            </TabPanel>
+            <TabPanel>
+              <h3>Taniny</h3>
+              {taniny.map((doc: any, i: any) => (
+                <div key={i}>
+                  <Additive additive={doc} userEmail={email} />
+                </div>
+              ))}
+            </TabPanel>
+            <TabPanel>
+              <h3>Ostatní</h3>
+              {ostatni.map((doc: any, i: any) => (
+                <div key={i}>
+                  <Additive additive={doc} userEmail={email} />
+                </div>
+              ))}
+            </TabPanel>
+          </Tabs>
         </div>
       )}
     </>

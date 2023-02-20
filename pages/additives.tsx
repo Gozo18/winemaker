@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
 import AdditivesAdd from "../components/AdditivesAdd"
 import Additives from "../components/Additives"
+import BackLink from "../components/BackLink"
 import styles from "../styles/Additives.module.scss"
 
 export default function additives() {
@@ -17,9 +18,13 @@ export default function additives() {
   if (user) {
     return (
       <div className={styles.additivesBox}>
-        <h2>Přípravky</h2>
+        <div className={styles.headerBox}>
+          <BackLink />
 
-        <AdditivesAdd email={user.email} />
+          <h2>Přípravky</h2>
+
+          <AdditivesAdd email={user.email} />
+        </div>
 
         <Additives email={user.email} />
       </div>

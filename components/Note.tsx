@@ -44,7 +44,9 @@ export default function Note({ note, key, userEmail }: any) {
       ) : (
         <div className={styles.note} key={key}>
           <div className={styles.noteText}>
-            <div className={styles.noteDate}>Datum: {dateFormat}</div>
+            <div className={styles.noteDate}>
+              <strong>Datum:</strong> {dateFormat}
+            </div>
             <div>{note.text}</div>
           </div>
           <div className={styles.noteIcons}>

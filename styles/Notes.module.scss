@@ -4,13 +4,25 @@
   width: 100%;
 
   h2 {
-    margin-bottom: 2rem;
     text-align: center;
   }
 
   h3 {
     text-align: center;
     font-size: 1rem;
+  }
+}
+
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  min-height: 3rem;
+
+  @media (max-width: 767px) {
+    margin-bottom: 1rem;
   }
 }
 
@@ -25,18 +37,20 @@
   display: flex;
   margin-bottom: 1rem;
   width: 100%;
-  border: 1px solid $border;
-  border-radius: 0.5rem;
+  background-color: #f7f7f7;
 
   &:before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 0.5rem;
+    width: 0.2rem;
     height: 100%;
     background-color: $add;
-    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  strong {
+    font-size: 0.8rem;
   }
 }
 
@@ -55,8 +69,11 @@
 
 .noteDate {
   margin-bottom: 1rem;
+}
+
+.noteName {
+  margin-bottom: 1rem;
   font-weight: bold;
-  font-size: 0.8rem;
 }
 
 .noteIcons {
@@ -76,12 +93,10 @@
 
     &:first-child {
       background-color: $delete;
-      border-radius: 0 0.5rem 0 0;
     }
 
     &:nth-child(2) {
       background-color: $edit;
-      border-radius: 0 0 0.5rem 0;
     }
   }
 }

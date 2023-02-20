@@ -22,10 +22,13 @@ export default function currentWines() {
     } else {
       return (
         <div className={styles.currentBox}>
-          <BackLink />
-          <h2>Aktuální sklep</h2>
+          <div className={styles.headerBox}>
+            <BackLink />
 
-          <WineAdd email={user.email} />
+            <h2>Aktuální sklep</h2>
+
+            <WineAdd email={user.email} />
+          </div>
 
           <Wines email={user.email} />
         </div>

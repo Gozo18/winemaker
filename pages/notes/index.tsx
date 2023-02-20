@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
 import Addnote from "../../components/AddNote"
 import Notes from "../../components/Notes"
+import BackLink from "../../components/BackLink"
 import styles from "../../styles/Notes.module.scss"
 
 export default function notes() {
@@ -16,9 +17,13 @@ export default function notes() {
   if (user) {
     return (
       <div className={styles.notesBox}>
-        <h2>Poznámky</h2>
+        <div className={styles.headerBox}>
+          <BackLink />
 
-        <Addnote email={user.email} />
+          <h2>Poznámky</h2>
+
+          <Addnote email={user.email} />
+        </div>
 
         <Notes email={user.email} />
       </div>
