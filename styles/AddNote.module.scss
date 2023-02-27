@@ -79,22 +79,31 @@
   cursor: pointer;
 }
 
-.date {
+/* .date {
   max-width: 10rem;
-}
+} */
 
 .inputs {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 2rem;
 
+  @media (max-width: 767px) {
+    gap: 1rem;
+  }
+
   label {
     margin-bottom: 0;
     width: calc(50% - 1rem);
 
     @media (max-width: 767px) {
+      width: calc(50% - 0.5rem);
       font-size: 0.8rem;
     }
+  }
+
+  .longLabel {
+    width: 100%;
   }
 
   input {
@@ -109,5 +118,10 @@
     height: 3rem;
     border: 1px solid $border;
     background-color: $white;
+  }
+
+  textarea {
+    width: 100%;
+    border-radius: 0;
   }
 }

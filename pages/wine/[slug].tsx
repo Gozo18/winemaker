@@ -6,6 +6,8 @@ import WineInfo from "../../components/WineInfo"
 import BackLink from "../../components/BackLink"
 import PickupAdd from "../../components/PickupAdd"
 import HarvestInfo from "../../components/HarvestInfo"
+import AnalyticsAdd from "../../components/AnalyticsAdd"
+import AnalyticsInfo from "../../components/AnalyticsInfo"
 import {
   VscBeaker,
   VscDatabase,
@@ -81,12 +83,12 @@ export default function wine() {
               <span>Filtrace</span>
             </Tab>
             <Tab>
-              <VscVerified />
-              <span>Lahvování</span>
-            </Tab>
-            <Tab>
               <VscDatabase />
               <span>Nádoba</span>
+            </Tab>
+            <Tab>
+              <VscVerified />
+              <span>Lahvování</span>
             </Tab>
           </TabList>
 
@@ -107,7 +109,12 @@ export default function wine() {
             <HarvestInfo thisWine={thisWine} />
           </TabPanel>
           <TabPanel>
-            <h3>Analytika</h3>
+            <div className={styles.headerBox}>
+              <div className={styles.headerBoxEmpty}></div>
+              <h3>Analytika</h3>
+              <AnalyticsAdd id={id} />
+            </div>
+            <AnalyticsInfo thisWine={thisWine} />
           </TabPanel>
           <TabPanel>
             <h3>Přípravky</h3>
@@ -119,10 +126,10 @@ export default function wine() {
             <h3>Filtrace</h3>
           </TabPanel>
           <TabPanel>
-            <h3>Lahvování</h3>
+            <h3>Nádoba</h3>
           </TabPanel>
           <TabPanel>
-            <h3>Nádoba</h3>
+            <h3>Lahvování</h3>
           </TabPanel>
         </Tabs>
       </div>

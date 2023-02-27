@@ -64,7 +64,7 @@ export default function PickupForm({ id }: any) {
           <strong>Přidat sběr</strong>
         </label>
         <div className={styles.inputs}>
-          <span>
+          <label>
             Vyberte datum{" "}
             <input
               type="date"
@@ -72,7 +72,7 @@ export default function PickupForm({ id }: any) {
               onChange={dateValue}
               id="datePicker"
             />
-          </span>
+          </label>
           <label>
             Cukernatost
             <input

@@ -96,7 +96,7 @@ export default function WineForm({ email }: any) {
               required
             />
           </label>
-          <label>
+          <label className={styles.longLabel}>
             Poznámka
             <input type="text" placeholder="Poznámka" onChange={noteValue} />
           </label>

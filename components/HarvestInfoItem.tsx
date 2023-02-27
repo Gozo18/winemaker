@@ -4,7 +4,6 @@ import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
 import { useRouter } from "next/router"
 import { VscEdit, VscTrash } from "react-icons/vsc"
-import WineInfoEdit from "./WineInfoEdit"
 import styles from "../styles/Wine.module.scss"
 import HarvestInfoEdit from "./HarvestInfoEdit"
 

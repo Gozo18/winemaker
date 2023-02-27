@@ -49,20 +49,19 @@ export default function AddNoteForm(email: any) {
         <label>
           <strong>Přidat poznámku</strong>
         </label>
-        <span>
-          Vyberte datum{" "}
-          <input
-            type="date"
-            className={styles.date}
-            onChange={dateValue}
-            id="datePicker"
-          />
-        </span>
-        <textarea
-          className={styles.text}
-          placeholder="Vložte poznámku"
-          onChange={textValue}
-        />
+        <div className={styles.inputs}>
+          <label className={styles.longLabel}>
+            Vyberte datum{" "}
+            <input type="date" onChange={dateValue} id="datePicker" />
+          </label>
+          <label className={styles.longLabel}>
+            <textarea
+              className={styles.text}
+              placeholder="Vložte poznámku"
+              onChange={textValue}
+            />
+          </label>
+        </div>
         <button className={styles.button} onClick={submitNote}>
           Přidat poznámku
         </button>

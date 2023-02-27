@@ -1,18 +1,18 @@
-import PickupForm from "./PickupForm"
+import AnalyticsForm from "./AnalyticsForm"
 import { useStateContext } from "../config/context"
 import { VscDiffAdded, VscError } from "react-icons/vsc"
 import styles from "../styles/AddNote.module.scss"
 
-export default function PickupAdd({ id }: any) {
-  const { addPickupVisibility, setAddPickupVisibility } = useStateContext()
+export default function AnalyticsAdd({ id }: any) {
+  const { addAnVisibility, setAddAnVisibility } = useStateContext()
 
   const showInput = () => {
-    setAddPickupVisibility(!addPickupVisibility)
+    setAddAnVisibility(!addAnVisibility)
   }
 
   return (
     <>
-      {!addPickupVisibility ? (
+      {!addAnVisibility ? (
         <div className={styles.addNoteHidden} onClick={showInput}>
           <button className={styles.button}>
             <span>
@@ -23,7 +23,7 @@ export default function PickupAdd({ id }: any) {
         </div>
       ) : (
         <div className={styles.addNoteBox}>
-          <PickupForm id={id} />
+          <AnalyticsForm id={id} />
           <div className={styles.closeBox}>
             <VscError onClick={showInput} />
           </div>

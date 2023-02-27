@@ -1,5 +1,4 @@
 import HarvestInfoItem from "./HarvestInfoItem"
-import styles from "../styles/Wine.module.scss"
 
 export default function HarvestInfo({ thisWine }: any) {
   return (

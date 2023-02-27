@@ -40,6 +40,10 @@ type contextType = {
   setAddPickupVisibility: any
   editPickup: boolean
   setEditPickup: any
+  addAnVisibility: boolean
+  setAddAnVisibility: any
+  editAn: boolean
+  setEditAn: any
 }
 
 const contextDefaultValues: contextType = {
@@ -79,6 +83,10 @@ const contextDefaultValues: contextType = {
   setAddPickupVisibility: () => {},
   editPickup: false,
   setEditPickup: () => {},
+  addAnVisibility: false,
+  setAddAnVisibility: () => {},
+  editAn: false,
+  setEditAn: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -104,9 +112,13 @@ export const StateContext = ({ children }: any) => {
   const [wineData, setWineData] = useState([])
   const [editWineInfo, setEditWineInfo] = useState(false)
 
-  //Pickup
+  //Pickup(Harvest)
   const [addPickupVisibility, setAddPickupVisibility] = useState(false)
   const [editPickup, setEditPickup] = useState(false)
+
+  //Analytics
+  const [addAnVisibility, setAddAnVisibility] = useState(false)
+  const [editAn, setEditAn] = useState(false)
 
   //Wineyards
 
@@ -152,6 +164,35 @@ export const StateContext = ({ children }: any) => {
           }
 
           harvestQuery()
+
+          wine.analytics = []
+          const analyticsQuery = async () => {
+            try {
+              const analyticsData: any = await getDocs(
+                collection(
+                  db,
+                  "winemakers",
+                  email,
+                  "wines",
+                  wine.id,
+                  "analytics"
+                )
+              )
+              analyticsData.forEach((doc: any, i: number) => {
+                const pushData = doc.data()
+                pushData.id = doc.id
+                pushData.timestamp = new Date(doc.data().date)
+                wine.analytics.push(pushData)
+                wine.analytics
+                  .sort((a: any, b: any) => a.timestamp - b.timestamp)
+                  .reverse()
+              })
+            } catch (err) {
+              toast.error("Něco se nepovedlo!")
+            }
+          }
+
+          analyticsQuery()
         })
         setTimeout(() => {
           setWinesData(winesArray)
@@ -205,6 +246,10 @@ export const StateContext = ({ children }: any) => {
         setAddPickupVisibility,
         editPickup,
         setEditPickup,
+        addAnVisibility,
+        setAddAnVisibility,
+        editAn,
+        setEditAn,
       }}
     >
       {children}
