@@ -2,6 +2,7 @@ import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
 import History from "../components/History"
+import BackLink from "../components/BackLink"
 import styles from "../styles/History.module.scss"
 
 export default function history() {
@@ -15,7 +16,13 @@ export default function history() {
   if (user)
     return (
       <div className={styles.historyBox}>
-        <h2>Historie vín</h2>
+        <div className={styles.headerBox}>
+          <BackLink />
+
+          <h2>Historie vín</h2>
+
+          <div></div>
+        </div>
 
         <History />
       </div>
