@@ -16,6 +16,9 @@ import FiltersAdd from "../../components/FiltersAdd"
 import FiltersInfo from "../../components/FiltersInfo"
 import JarsAdd from "../../components/JarsAdd"
 import JarsInfo from "../../components/JarsInfo"
+import BottlesAdd from "../../components/BottlesAdd"
+import BottlesInfo from "../../components/BottlesInfo"
+import BottlesFinish from "../../components/BottlesFinish"
 import {
   VscBeaker,
   VscDatabase,
@@ -169,7 +172,15 @@ export default function wine() {
             </div>
           </TabPanel>
           <TabPanel>
-            <h3>Lahvování</h3>
+            <div className={styles.headerBox}>
+              <div className={styles.headerBoxEmpty}></div>
+              <h3>Lahvování</h3>
+              <BottlesAdd id={id} />
+            </div>
+            <div className={styles.notes}>
+              <BottlesInfo thisWine={thisWine} />
+            </div>
+            <BottlesFinish thisWine={thisWine} />
           </TabPanel>
         </Tabs>
       </div>

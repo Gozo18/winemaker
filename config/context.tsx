@@ -60,6 +60,10 @@ type contextType = {
   setAddJarsVisibility: any
   editJars: boolean
   setEditJars: any
+  addBottlesVisibility: boolean
+  setAddBottlesVisibility: any
+  editBottles: boolean
+  setEditBottles: any
 }
 
 const contextDefaultValues: contextType = {
@@ -119,6 +123,10 @@ const contextDefaultValues: contextType = {
   setAddJarsVisibility: () => {},
   editJars: false,
   setEditJars: () => {},
+  addBottlesVisibility: false,
+  setAddBottlesVisibility: () => {},
+  editBottles: false,
+  setEditBottles: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -167,6 +175,10 @@ export const StateContext = ({ children }: any) => {
   //Jars
   const [addJarsVisibility, setAddJarsVisibility] = useState(false)
   const [editJars, setEditJars] = useState(false)
+
+  //Bottles
+  const [addBottlesVisibility, setAddBottlesVisibility] = useState(false)
+  const [editBottles, setEditBottles] = useState(false)
 
   //Wineyards
 
@@ -335,6 +347,29 @@ export const StateContext = ({ children }: any) => {
           }
 
           jarsQuery()
+
+          //bottles data
+          wine.bottles = []
+          const bottlesQuery = async () => {
+            try {
+              const bottlesData: any = await getDocs(
+                collection(db, "winemakers", email, "wines", wine.id, "bottles")
+              )
+              bottlesData.forEach((doc: any, i: number) => {
+                const pushData = doc.data()
+                pushData.id = doc.id
+                pushData.timestamp = new Date(doc.data().date)
+                wine.bottles.push(pushData)
+                wine.bottles
+                  .sort((a: any, b: any) => a.timestamp - b.timestamp)
+                  .reverse()
+              })
+            } catch (err) {
+              toast.error("Něco se nepovedlo!")
+            }
+          }
+
+          bottlesQuery()
         })
         setTimeout(() => {
           setWinesData(winesArray)
@@ -434,6 +469,10 @@ export const StateContext = ({ children }: any) => {
         setAddJarsVisibility,
         editJars,
         setEditJars,
+        addBottlesVisibility,
+        setAddBottlesVisibility,
+        editBottles,
+        setEditBottles,
       }}
     >
       {children}
