@@ -48,6 +48,18 @@ type contextType = {
   setAddAddonsVisibility: any
   editAddons: boolean
   setEditAddons: any
+  addTendsVisibility: boolean
+  setAddTendsVisibility: any
+  editTends: boolean
+  setEditTends: any
+  addFiltersVisibility: boolean
+  setAddFiltersVisibility: any
+  editFilters: boolean
+  setEditFilters: any
+  addJarsVisibility: boolean
+  setAddJarsVisibility: any
+  editJars: boolean
+  setEditJars: any
 }
 
 const contextDefaultValues: contextType = {
@@ -95,6 +107,18 @@ const contextDefaultValues: contextType = {
   setAddAddonsVisibility: () => {},
   editAddons: false,
   setEditAddons: () => {},
+  addTendsVisibility: false,
+  setAddTendsVisibility: () => {},
+  editTends: false,
+  setEditTends: () => {},
+  addFiltersVisibility: false,
+  setAddFiltersVisibility: () => {},
+  editFilters: false,
+  setEditFilters: () => {},
+  addJarsVisibility: false,
+  setAddJarsVisibility: () => {},
+  editJars: false,
+  setEditJars: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -132,6 +156,18 @@ export const StateContext = ({ children }: any) => {
   const [addAddonsVisibility, setAddAddonsVisibility] = useState(false)
   const [editAddons, setEditAddons] = useState(false)
 
+  //Tends
+  const [addTendsVisibility, setAddTendsVisibility] = useState(false)
+  const [editTends, setEditTends] = useState(false)
+
+  //Filters
+  const [addFiltersVisibility, setAddFiltersVisibility] = useState(false)
+  const [editFilters, setEditFilters] = useState(false)
+
+  //Jars
+  const [addJarsVisibility, setAddJarsVisibility] = useState(false)
+  const [editJars, setEditJars] = useState(false)
+
   //Wineyards
 
   //Additives
@@ -155,6 +191,7 @@ export const StateContext = ({ children }: any) => {
         })
         winesArray.sort((a: any, b: any) => a.name.localeCompare(b.name))
         winesArray.map((wine: any) => {
+          //harvests data
           wine.harvest = []
           const harvestQuery = async () => {
             try {
@@ -177,6 +214,7 @@ export const StateContext = ({ children }: any) => {
 
           harvestQuery()
 
+          //analytics data
           wine.analytics = []
           const analyticsQuery = async () => {
             try {
@@ -206,6 +244,7 @@ export const StateContext = ({ children }: any) => {
 
           analyticsQuery()
 
+          //addons data
           wine.addons = []
           const addonsQuery = async () => {
             try {
@@ -227,6 +266,75 @@ export const StateContext = ({ children }: any) => {
           }
 
           addonsQuery()
+
+          //tends data
+          wine.tends = []
+          const tendsQuery = async () => {
+            try {
+              const tendsData: any = await getDocs(
+                collection(db, "winemakers", email, "wines", wine.id, "tends")
+              )
+              tendsData.forEach((doc: any, i: number) => {
+                const pushData = doc.data()
+                pushData.id = doc.id
+                pushData.timestamp = new Date(doc.data().date)
+                wine.tends.push(pushData)
+                wine.tends
+                  .sort((a: any, b: any) => a.timestamp - b.timestamp)
+                  .reverse()
+              })
+            } catch (err) {
+              toast.error("Něco se nepovedlo!")
+            }
+          }
+
+          tendsQuery()
+
+          //filters data
+          wine.filters = []
+          const filtersQuery = async () => {
+            try {
+              const filtersData: any = await getDocs(
+                collection(db, "winemakers", email, "wines", wine.id, "filters")
+              )
+              filtersData.forEach((doc: any, i: number) => {
+                const pushData = doc.data()
+                pushData.id = doc.id
+                pushData.timestamp = new Date(doc.data().date)
+                wine.filters.push(pushData)
+                wine.filters
+                  .sort((a: any, b: any) => a.timestamp - b.timestamp)
+                  .reverse()
+              })
+            } catch (err) {
+              toast.error("Něco se nepovedlo!")
+            }
+          }
+
+          filtersQuery()
+
+          //jars data
+          wine.jars = []
+          const jarsQuery = async () => {
+            try {
+              const jarsData: any = await getDocs(
+                collection(db, "winemakers", email, "wines", wine.id, "jars")
+              )
+              jarsData.forEach((doc: any, i: number) => {
+                const pushData = doc.data()
+                pushData.id = doc.id
+                pushData.timestamp = new Date(doc.data().date)
+                wine.jars.push(pushData)
+                wine.jars
+                  .sort((a: any, b: any) => a.timestamp - b.timestamp)
+                  .reverse()
+              })
+            } catch (err) {
+              toast.error("Něco se nepovedlo!")
+            }
+          }
+
+          jarsQuery()
         })
         setTimeout(() => {
           setWinesData(winesArray)
@@ -265,7 +373,6 @@ export const StateContext = ({ children }: any) => {
     }
 
     additivesQuery()
-    console.log("in")
   }
 
   return (
@@ -315,6 +422,18 @@ export const StateContext = ({ children }: any) => {
         setAddAddonsVisibility,
         editAddons,
         setEditAddons,
+        addTendsVisibility,
+        setAddTendsVisibility,
+        editTends,
+        setEditTends,
+        addFiltersVisibility,
+        setAddFiltersVisibility,
+        editFilters,
+        setEditFilters,
+        addJarsVisibility,
+        setAddJarsVisibility,
+        editJars,
+        setEditJars,
       }}
     >
       {children}

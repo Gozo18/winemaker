@@ -10,6 +10,12 @@ import AnalyticsAdd from "../../components/AnalyticsAdd"
 import AnalyticsInfo from "../../components/AnalyticsInfo"
 import AddonsAdd from "../../components/AddonsAdd"
 import AddonsInfo from "../../components/AddonsInfo"
+import TendsAdd from "../../components/TendsAdd"
+import TendsInfo from "../../components/TendsInfo"
+import FiltersAdd from "../../components/FiltersAdd"
+import FiltersInfo from "../../components/FiltersInfo"
+import JarsAdd from "../../components/JarsAdd"
+import JarsInfo from "../../components/JarsInfo"
 import {
   VscBeaker,
   VscDatabase,
@@ -133,13 +139,34 @@ export default function wine() {
             </div>
           </TabPanel>
           <TabPanel>
-            <h3>Stáčení</h3>
+            <div className={styles.headerBox}>
+              <div className={styles.headerBoxEmpty}></div>
+              <h3>Stáčení</h3>
+              <TendsAdd id={id} />
+            </div>
+            <div className={styles.notes}>
+              <TendsInfo thisWine={thisWine} />
+            </div>
           </TabPanel>
           <TabPanel>
-            <h3>Filtrace</h3>
+            <div className={styles.headerBox}>
+              <div className={styles.headerBoxEmpty}></div>
+              <h3>Filtrace</h3>
+              <FiltersAdd id={id} />
+            </div>
+            <div className={styles.notes}>
+              <FiltersInfo thisWine={thisWine} />
+            </div>
           </TabPanel>
           <TabPanel>
-            <h3>Nádoba</h3>
+            <div className={styles.headerBox}>
+              <div className={styles.headerBoxEmpty}></div>
+              <h3>Nádoba</h3>
+              <JarsAdd id={id} />
+            </div>
+            <div className={styles.notes}>
+              <JarsInfo thisWine={thisWine} />
+            </div>
           </TabPanel>
           <TabPanel>
             <h3>Lahvování</h3>
