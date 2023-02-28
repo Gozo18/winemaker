@@ -44,6 +44,10 @@ type contextType = {
   setAddAnVisibility: any
   editAn: boolean
   setEditAn: any
+  addAddonsVisibility: boolean
+  setAddAddonsVisibility: any
+  editAddons: boolean
+  setEditAddons: any
 }
 
 const contextDefaultValues: contextType = {
@@ -87,6 +91,10 @@ const contextDefaultValues: contextType = {
   setAddAnVisibility: () => {},
   editAn: false,
   setEditAn: () => {},
+  addAddonsVisibility: false,
+  setAddAddonsVisibility: () => {},
+  editAddons: false,
+  setEditAddons: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -119,6 +127,10 @@ export const StateContext = ({ children }: any) => {
   //Analytics
   const [addAnVisibility, setAddAnVisibility] = useState(false)
   const [editAn, setEditAn] = useState(false)
+
+  //Addons
+  const [addAddonsVisibility, setAddAddonsVisibility] = useState(false)
+  const [editAddons, setEditAddons] = useState(false)
 
   //Wineyards
 
@@ -193,11 +205,33 @@ export const StateContext = ({ children }: any) => {
           }
 
           analyticsQuery()
+
+          wine.addons = []
+          const addonsQuery = async () => {
+            try {
+              const addonsData: any = await getDocs(
+                collection(db, "winemakers", email, "wines", wine.id, "addons")
+              )
+              addonsData.forEach((doc: any, i: number) => {
+                const pushData = doc.data()
+                pushData.id = doc.id
+                pushData.timestamp = new Date(doc.data().date)
+                wine.addons.push(pushData)
+                wine.addons
+                  .sort((a: any, b: any) => a.timestamp - b.timestamp)
+                  .reverse()
+              })
+            } catch (err) {
+              toast.error("Něco se nepovedlo!")
+            }
+          }
+
+          addonsQuery()
         })
         setTimeout(() => {
           setWinesData(winesArray)
           localStorage.setItem("wines", JSON.stringify(winesArray))
-        }, 500)
+        }, 1000)
         setWinesLoading(true)
       } catch (err) {
         toast.error("Něco se nepovedlo!")
@@ -205,6 +239,33 @@ export const StateContext = ({ children }: any) => {
     }
 
     wineQuery()
+  }
+
+  //Additives data
+  if (email && !additivesLoading) {
+    const additivesQuery = async () => {
+      try {
+        const additivesData: any = await getDocs(
+          collection(db, "winemakers", email, "additives")
+        )
+        const additivesArray: any = []
+        additivesData.forEach((doc: any) => {
+          const pushData = doc.data()
+          pushData.id = doc.id
+          additivesArray.push(pushData)
+        })
+        additivesArray.sort((a: any, b: any) => a.name.localeCompare(b.name))
+
+        setAdditivesLoading(true)
+        setAdditivesData(additivesArray)
+        localStorage.setItem("additives", JSON.stringify(additivesArray))
+      } catch (err) {
+        toast.error("Něco se nepovedlo!")
+      }
+    }
+
+    additivesQuery()
+    console.log("in")
   }
 
   return (
@@ -250,6 +311,10 @@ export const StateContext = ({ children }: any) => {
         setAddAnVisibility,
         editAn,
         setEditAn,
+        addAddonsVisibility,
+        setAddAddonsVisibility,
+        editAddons,
+        setEditAddons,
       }}
     >
       {children}

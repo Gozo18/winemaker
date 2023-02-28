@@ -1,6 +1,3 @@
-import { db } from "../config/firebase"
-import { collection, getDocs } from "firebase/firestore"
-import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
 import Additive from "./Additive"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
@@ -8,60 +5,34 @@ import "react-tabs/style/react-tabs.css"
 import styles from "../styles/Additives.module.scss"
 
 export default function Additives({ email }: any) {
-  const {
-    additivesLoading,
-    setAdditivesLoading,
-    additivesData,
-    setAdditivesData,
-  } = useStateContext()
+  const { additivesLoading } = useStateContext()
 
-  if (!additivesLoading) {
-    const querySnapshot = async () => {
-      try {
-        const notesData: any = await getDocs(
-          collection(db, "winemakers", email, "additives")
-        )
-        const notesArray: any = []
-        notesData.forEach((doc: any) => {
-          const pushData = doc.data()
-          pushData.id = doc.id
-          notesArray.push(pushData)
-        })
-        notesArray.sort((a: any, b: any) => a.timestamp - b.timestamp).reverse()
-        setAdditivesData(notesArray)
-        setAdditivesLoading(true)
-      } catch (err) {
-        toast.error("Něco se nepovedlo!")
-      }
-    }
+  let additivesStorage: any = localStorage.getItem("additives")
 
-    querySnapshot()
-  }
+  let additivesJson: any = JSON.parse(additivesStorage)
 
-  additivesData.sort((a: any, b: any) => a.name.localeCompare(b.name))
-
-  let cireni = additivesData.filter(function (e: any) {
+  let cireni = additivesJson.filter(function (e: any) {
     return e.cat === "Čiření"
   })
-  let enzymy = additivesData.filter(function (e: any) {
+  let enzymy = additivesJson.filter(function (e: any) {
     return e.cat === "Enzymy"
   })
-  let kvasinky = additivesData.filter(function (e: any) {
+  let kvasinky = additivesJson.filter(function (e: any) {
     return e.cat === "Kvasinky"
   })
-  let vyziva = additivesData.filter(function (e: any) {
+  let vyziva = additivesJson.filter(function (e: any) {
     return e.cat === "Výživa"
   })
-  let taniny = additivesData.filter(function (e: any) {
+  let taniny = additivesJson.filter(function (e: any) {
     return e.cat === "Taniny"
   })
-  let ostatni = additivesData.filter(function (e: any) {
+  let ostatni = additivesJson.filter(function (e: any) {
     return e.cat === "Ostatní"
   })
 
   return (
     <>
-      {additivesData === undefined ? (
+      {additivesStorage === undefined ? (
         <div>Načítám...</div>
       ) : (
         <div className={styles.notes}>
