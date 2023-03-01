@@ -1,8 +1,9 @@
-import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
-import { VscEdit, VscTrash } from "react-icons/vsc"
+import BackLink from "../components/BackLink"
+import SpraysAdd from "../components/SpraysAdd"
+import Sprays from "../components/Sprays"
 import styles from "../styles/Additives.module.scss"
 
 export default function sprays() {
@@ -16,29 +17,15 @@ export default function sprays() {
   if (user)
     return (
       <div className={styles.additivesBox}>
-        <h2>Postřiky</h2>
+        <div className={styles.headerBox}>
+          <BackLink />
 
-        <div className={styles.additivesSubmenu}>
-          <h3 className={styles.activeAdd}>Insekticidy</h3>
-          <h3>Fungicidy</h3>
-          <h3>Herbicidy</h3>
-          <h3>Hnojiva</h3>
-          <h3>Ostatní</h3>
+          <h2>Postřiky</h2>
+
+          <SpraysAdd email={user.email} />
         </div>
 
-        <div className={styles.notes}>
-          <div className={styles.note}>
-            <div>
-              <div className={styles.noteName}>ROCK EFFECT</div>
-              <p>Balení: 5000ml</p>
-              <p>Cena: 1905,- Kč</p>
-              <p>Popis: protipožerový efekt</p>
-            </div>
-            <div className={styles.noteIcons}>
-              <VscEdit /> <VscTrash />
-            </div>
-          </div>
-        </div>
+        <Sprays email={user.email} />
       </div>
     )
 }

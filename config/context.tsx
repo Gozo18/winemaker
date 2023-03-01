@@ -64,6 +64,14 @@ type contextType = {
   setAddBottlesVisibility: any
   editBottles: boolean
   setEditBottles: any
+  addSpraysVisibility: boolean
+  setaddSpraysVisibility: any
+  spraysLoading: boolean
+  setSpraysLoading: any
+  editSpray: any
+  setEditSpray: any
+  spraysData: any
+  setSpraysData: any
 }
 
 const contextDefaultValues: contextType = {
@@ -127,6 +135,14 @@ const contextDefaultValues: contextType = {
   setAddBottlesVisibility: () => {},
   editBottles: false,
   setEditBottles: () => {},
+  addSpraysVisibility: false,
+  setaddSpraysVisibility: () => {},
+  spraysLoading: false,
+  setSpraysLoading: () => {},
+  editSpray: "",
+  setEditSpray: () => {},
+  spraysData: [],
+  setSpraysData: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -187,6 +203,12 @@ export const StateContext = ({ children }: any) => {
   const [additivesLoading, setAdditivesLoading] = useState(false)
   const [additivesData, setAdditivesData] = useState([])
   const [editAdditive, setEditAdditive] = useState()
+
+  //Sprays
+  const [addSpraysVisibility, setaddSpraysVisibility] = useState(false)
+  const [spraysLoading, setSpraysLoading] = useState(false)
+  const [spraysData, setSpraysData] = useState([])
+  const [editSpray, setEditSpray] = useState()
 
   //Wines data
   if (email && !winesLoading) {
@@ -410,6 +432,32 @@ export const StateContext = ({ children }: any) => {
     additivesQuery()
   }
 
+  //Sprays data
+  if (email && !spraysLoading) {
+    const spraysQuery = async () => {
+      try {
+        const spraysData: any = await getDocs(
+          collection(db, "winemakers", email, "sprays")
+        )
+        const spraysArray: any = []
+        spraysData.forEach((doc: any) => {
+          const pushData = doc.data()
+          pushData.id = doc.id
+          spraysArray.push(pushData)
+        })
+        spraysArray.sort((a: any, b: any) => a.name.localeCompare(b.name))
+
+        setSpraysLoading(true)
+        setSpraysData(spraysArray)
+        localStorage.setItem("sprays", JSON.stringify(spraysArray))
+      } catch (err) {
+        toast.error("Něco se nepovedlo!")
+      }
+    }
+
+    spraysQuery()
+  }
+
   return (
     <Context.Provider
       value={{
@@ -473,6 +521,14 @@ export const StateContext = ({ children }: any) => {
         setAddBottlesVisibility,
         editBottles,
         setEditBottles,
+        addSpraysVisibility,
+        setaddSpraysVisibility,
+        spraysLoading,
+        setSpraysLoading,
+        editSpray,
+        setEditSpray,
+        spraysData,
+        setSpraysData,
       }}
     >
       {children}

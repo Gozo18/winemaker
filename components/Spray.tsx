@@ -2,22 +2,21 @@ import { db } from "../config/firebase"
 import { doc, deleteDoc } from "firebase/firestore"
 import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
-import AdditiveEdit from "./AdditiveEdit"
+import SprayEdit from "./SprayEdit"
 import { VscEdit, VscTrash } from "react-icons/vsc"
 import styles from "../styles/Additives.module.scss"
 
-export default function Additive({ additive, userEmail }: any) {
-  const { editAdditive, setEditAdditive, setAdditivesLoading } =
-    useStateContext()
+export default function Spray({ spray, userEmail }: any) {
+  const { editSpray, setEditSpray, setSpraysLoading } = useStateContext()
 
   const deleteNote = async (
     e: React.MouseEvent<HTMLButtonElement>,
     id: any
   ) => {
     try {
-      await deleteDoc(doc(db, "winemakers", userEmail, "additives", id))
+      await deleteDoc(doc(db, "winemakers", userEmail, "sprays", id))
       toast.success("Smazáno!")
-      setAdditivesLoading(false)
+      setSpraysLoading(false)
     } catch (err) {
       toast.error("Něco se nepovedlo!")
       console.log(err)
@@ -25,42 +24,42 @@ export default function Additive({ additive, userEmail }: any) {
   }
 
   const editFunc = (e: React.MouseEvent<HTMLButtonElement>, id: any) => {
-    if (id === additive.id) {
-      setEditAdditive(additive.id)
+    if (id === spray.id) {
+      setEditSpray(spray.id)
     }
   }
 
   return (
     <>
-      {editAdditive === additive.id ? (
-        <AdditiveEdit additive={additive} userEmail={userEmail} />
+      {editSpray === spray.id ? (
+        <SprayEdit spray={spray} userEmail={userEmail} />
       ) : (
         <div className={styles.note}>
           <div className={styles.noteText}>
-            <div className={styles.noteName}>{additive.name}</div>
+            <div className={styles.noteName}>{spray.name}</div>
             <p>
-              <strong>Balení:</strong> {additive.pack}g/ml
+              <strong>Balení:</strong> {spray.pack}g/ml
             </p>
             <p>
-              <strong>Cena:</strong> {additive.price},- Kč
+              <strong>Cena:</strong> {spray.price},- Kč
             </p>
             <p>
-              <strong>Popis:</strong> {additive.desc}
+              <strong>Popis:</strong> {spray.desc}
             </p>
             <p>
-              <strong>Dávkování:</strong> {additive.use}g/hl
+              <strong>Dávkování:</strong> {spray.use}g/hl
             </p>
           </div>
           <div className={styles.noteIcons}>
             <div
               onClick={(e: any) => {
-                if (window.confirm("Odstranit přípravek?"))
-                  deleteNote(e, additive.id)
+                if (window.confirm("Odstranit postřik?"))
+                  deleteNote(e, spray.id)
               }}
             >
               <VscTrash />
             </div>
-            <div onClick={(e: any) => editFunc(e, additive.id)}>
+            <div onClick={(e: any) => editFunc(e, spray.id)}>
               <VscEdit />
             </div>
           </div>

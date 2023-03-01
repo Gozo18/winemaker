@@ -2,6 +2,7 @@ import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
+import BackLink from "../components/BackLink"
 import styles from "../styles/Wineyards.module.scss"
 
 export default function wineyards() {
@@ -15,7 +16,13 @@ export default function wineyards() {
   if (user)
     return (
       <div className={styles.wineyardsBox}>
-        <h2>Vinohrady</h2>
+        <div className={styles.headerBox}>
+          <BackLink />
+
+          <h2>Vinohrady</h2>
+
+          <div></div>
+        </div>
 
         <div className={styles.gridBox}>
           <Link href="/wineyard/stara-hora">

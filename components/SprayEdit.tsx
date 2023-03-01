@@ -6,8 +6,8 @@ import { useStateContext } from "../config/context"
 import { VscError } from "react-icons/vsc"
 import styles from "../styles/AddNote.module.scss"
 
-export default function AdditiveEdit({ additive, userEmail }: any) {
-  const { setEditAdditive, setAdditivesLoading } = useStateContext()
+export default function SprayEdit({ spray, userEmail }: any) {
+  const { setEditSpray, setSpraysLoading } = useStateContext()
 
   const [name, setName] = useState("")
   const [pack, setPack] = useState("")
@@ -42,20 +42,17 @@ export default function AdditiveEdit({ additive, userEmail }: any) {
 
   const submitNote = async () => {
     try {
-      await updateDoc(
-        doc(db, "winemakers", userEmail, "additives", additive.id),
-        {
-          name: name,
-          pack: pack,
-          price: price,
-          use: use,
-          desc: desc,
-          cat: cat,
-        }
-      )
-      setEditAdditive("")
-      setAdditivesLoading(false)
-      toast.success("Přípravek upraven!")
+      await updateDoc(doc(db, "winemakers", userEmail, "sprays", spray.id), {
+        name: name,
+        pack: pack,
+        price: price,
+        use: use,
+        desc: desc,
+        cat: cat,
+      })
+      setEditSpray("")
+      setSpraysLoading(false)
+      toast.success("Postřik upraven!")
     } catch (err) {
       console.log(err)
       toast.error("Něco se nepovedlo!")
@@ -63,39 +60,39 @@ export default function AdditiveEdit({ additive, userEmail }: any) {
   }
 
   const showInput = () => {
-    setEditAdditive("")
+    setEditSpray("")
   }
 
   useEffect(() => {
     const addName = document.getElementById("nameInput")
     if (addName != null) {
-      ;(addName as HTMLInputElement).value = additive.name
-      setName(additive.name)
+      ;(addName as HTMLInputElement).value = spray.name
+      setName(spray.name)
     }
     const addPack = document.getElementById("packInput")
     if (addPack != null) {
-      ;(addPack as HTMLInputElement).value = additive.pack
-      setPack(additive.pack)
+      ;(addPack as HTMLInputElement).value = spray.pack
+      setPack(spray.pack)
     }
     const addPrice = document.getElementById("priceInput")
     if (addPrice != null) {
-      ;(addPrice as HTMLInputElement).value = additive.price
-      setPrice(additive.price)
+      ;(addPrice as HTMLInputElement).value = spray.price
+      setPrice(spray.price)
     }
     const addUse = document.getElementById("useInput")
     if (addUse != null) {
-      ;(addUse as HTMLInputElement).value = additive.use
-      setUse(additive.use)
+      ;(addUse as HTMLInputElement).value = spray.use
+      setUse(spray.use)
     }
     const addDesc = document.getElementById("descInput")
     if (addDesc != null) {
-      ;(addDesc as HTMLInputElement).value = additive.desc
-      setDesc(additive.desc)
+      ;(addDesc as HTMLInputElement).value = spray.desc
+      setDesc(spray.desc)
     }
     const addCat = document.getElementById("cats")
     if (addCat != null) {
-      ;(addCat as HTMLInputElement).value = additive.cat
-      setCat(additive.cat)
+      ;(addCat as HTMLInputElement).value = spray.cat
+      setCat(spray.cat)
     }
   }, [])
 
@@ -103,7 +100,7 @@ export default function AdditiveEdit({ additive, userEmail }: any) {
     <div className={styles.addNoteShow}>
       <div className={styles.inputBox}>
         <label>
-          <strong>Upravit přípravek</strong>
+          <strong>Upravit postřik</strong>
         </label>
         <div className={styles.inputs}>
           <label>
@@ -158,16 +155,15 @@ export default function AdditiveEdit({ additive, userEmail }: any) {
           <label>
             Kategorie
             <select name="cats" id="cats" onChange={catValue}>
-              <option value="Čiření">Čiření</option>
-              <option value="Enzymy">Enzymy</option>
-              <option value="Kvasinky">Kvasinky</option>
-              <option value="Výživa">Výživa</option>
-              <option value="Taniny">Taniny</option>
+              <option value="Insekticidy">Insekticidy</option>
+              <option value="Fungicidy">Fungicidy</option>
+              <option value="Herbicidy">Herbicidy</option>
+              <option value="Hnojiva">Hnojiva</option>
               <option value="Ostatní">Ostatní</option>
             </select>
           </label>
           <button className={styles.button} onClick={submitNote}>
-            Upravit přípravek
+            Upravit postřik
           </button>
         </div>
       </div>
