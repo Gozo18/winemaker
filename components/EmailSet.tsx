@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import Link from "next/link"
 import { useStateContext } from "../config/context"
 import { auth } from "../config/firebase"
@@ -7,16 +8,18 @@ import styles from "../styles/Nav.module.scss"
 export default function EmailSet({ email }: any) {
   const { setEmail } = useStateContext()
 
-  setEmail(email)
+  useEffect(() => {
+    setEmail(email)
+  }, [email])
 
   return (
     <ul>
-      <li>
+      {/* <li>
         <Link href="/homepage">
           <VscAccount />
           {email}
         </Link>
-      </li>
+      </li> */}
       <li>
         <Link href="/homepage">
           <VscHome />
