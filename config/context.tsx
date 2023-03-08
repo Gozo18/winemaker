@@ -72,6 +72,18 @@ type contextType = {
   setEditSpray: any
   spraysData: any
   setSpraysData: any
+  addWineyardVisibility: boolean
+  setAddWineyardVisibility: any
+  wineyardsLoading: boolean
+  setWineyardsLoading: any
+  wineyardsData: any
+  setWineyardsData: any
+  editWineyardInfo: boolean
+  setEditWineyardInfo: any
+  addDoingsVisibility: boolean
+  setAddDoingsVisibility: any
+  editDoings: boolean
+  setEditDoings: any
 }
 
 const contextDefaultValues: contextType = {
@@ -143,6 +155,18 @@ const contextDefaultValues: contextType = {
   setEditSpray: () => {},
   spraysData: [],
   setSpraysData: () => {},
+  addWineyardVisibility: false,
+  setAddWineyardVisibility: () => {},
+  wineyardsLoading: false,
+  setWineyardsLoading: () => {},
+  wineyardsData: [],
+  setWineyardsData: () => {},
+  editWineyardInfo: false,
+  setEditWineyardInfo: () => {},
+  addDoingsVisibility: false,
+  setAddDoingsVisibility: () => {},
+  editDoings: false,
+  setEditDoings: () => {},
 }
 
 const Context = createContext<contextType>(contextDefaultValues)
@@ -197,6 +221,15 @@ export const StateContext = ({ children }: any) => {
   const [editBottles, setEditBottles] = useState(false)
 
   //Wineyards
+  const [addWineyardVisibility, setAddWineyardVisibility] = useState(false)
+  const [wineyardsLoading, setWineyardsLoading] = useState(false)
+  const [wineyardsData, setWineyardsData] = useState([])
+
+  const [editWineyardInfo, setEditWineyardInfo] = useState(false)
+
+  //Wineyard doings
+  const [addDoingsVisibility, setAddDoingsVisibility] = useState(false)
+  const [editDoings, setEditDoings] = useState(false)
 
   //Additives
   const [addAdditivesVisibility, setaddAdditivesVisibility] = useState(false)
@@ -458,6 +491,64 @@ export const StateContext = ({ children }: any) => {
     spraysQuery()
   }
 
+  //Wineyards data
+  if (email && !wineyardsLoading) {
+    const wineyardsQuery = async () => {
+      try {
+        const wineyardsData: any = await getDocs(
+          collection(db, "winemakers", email, "wineyards")
+        )
+        const wineyardsArray: any = []
+        wineyardsData.forEach((doc: any) => {
+          const pushData = doc.data()
+          pushData.id = doc.id
+          wineyardsArray.push(pushData)
+        })
+        wineyardsArray.sort((a: any, b: any) => a.name.localeCompare(b.name))
+        wineyardsArray.map((wineyard: any) => {
+          //addons data
+          wineyard.doings = []
+          const doingsQuery = async () => {
+            try {
+              const doingsData: any = await getDocs(
+                collection(
+                  db,
+                  "winemakers",
+                  email,
+                  "wineyards",
+                  wineyard.id,
+                  "doings"
+                )
+              )
+              doingsData.forEach((doc: any, i: number) => {
+                const pushData = doc.data()
+                pushData.id = doc.id
+                pushData.timestamp = new Date(doc.data().date)
+                wineyard.doings.push(pushData)
+                wineyard.doings
+                  .sort((a: any, b: any) => a.timestamp - b.timestamp)
+                  .reverse()
+              })
+            } catch (err) {
+              toast.error("Něco se nepovedlo!")
+            }
+          }
+
+          doingsQuery()
+          setTimeout(() => {
+            setWinesData(wineyardsArray)
+            localStorage.setItem("wineyards", JSON.stringify(wineyardsArray))
+          }, 1000)
+          setWineyardsLoading(true)
+        })
+      } catch (err) {
+        toast.error("Něco se nepovedlo!")
+      }
+    }
+
+    wineyardsQuery()
+  }
+
   return (
     <Context.Provider
       value={{
@@ -529,6 +620,18 @@ export const StateContext = ({ children }: any) => {
         setEditSpray,
         spraysData,
         setSpraysData,
+        addWineyardVisibility,
+        setAddWineyardVisibility,
+        wineyardsLoading,
+        setWineyardsLoading,
+        wineyardsData,
+        setWineyardsData,
+        editWineyardInfo,
+        setEditWineyardInfo,
+        addDoingsVisibility,
+        setAddDoingsVisibility,
+        editDoings,
+        setEditDoings,
       }}
     >
       {children}

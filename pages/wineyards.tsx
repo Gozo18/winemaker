@@ -1,8 +1,9 @@
-import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
 import BackLink from "../components/BackLink"
+import WineyardAdd from "../components/WineyardAdd"
+import Wineyards from "../components/Wineyards"
 import styles from "../styles/Wineyards.module.scss"
 
 export default function wineyards() {
@@ -21,23 +22,10 @@ export default function wineyards() {
 
           <h2>Vinohrady</h2>
 
-          <div></div>
+          <WineyardAdd />
         </div>
 
-        <div className={styles.gridBox}>
-          <Link href="/wineyard/stara-hora">
-            <h3>Stará hora</h3>
-            <p>Pavlov</p>
-          </Link>
-          <Link href="/wineyard/stara-hora">
-            <h3>Pod Pálavou</h3>
-            <p>Pavlov</p>
-          </Link>
-          <Link href="/wineyard/stara-hora">
-            <h3>Slunný vrch</h3>
-            <p>Pavlov</p>
-          </Link>
-        </div>
+        <Wineyards />
       </div>
     )
 }

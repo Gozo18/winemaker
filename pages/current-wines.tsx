@@ -30,7 +30,7 @@ export default function currentWines() {
             <WineAdd email={user.email} />
           </div>
 
-          <Wines email={user.email} />
+          <Wines />
         </div>
       )
     }

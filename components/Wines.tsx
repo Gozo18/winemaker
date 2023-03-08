@@ -2,7 +2,7 @@ import Link from "next/link"
 import { useStateContext } from "../config/context"
 import styles from "../styles/CurrentWines.module.scss"
 
-export default function Wines({ email }: any) {
+export default function Wines() {
   const { winesLoading } = useStateContext()
 
   let winesStorage: any = localStorage.getItem("wines")

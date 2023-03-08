@@ -48,7 +48,7 @@ export default function AddonsInfoEdit({ w, wineId }: any) {
       )
       setEditAddons("")
       setWinesLoading(false)
-      toast.success("Sběr upraven!")
+      toast.success("Přípravek upraven!")
     } catch (err) {
       console.log(err)
       toast.error("Něco se nepovedlo!")
@@ -86,7 +86,7 @@ export default function AddonsInfoEdit({ w, wineId }: any) {
     <div className={styles.addNoteShow}>
       <div className={styles.inputBox}>
         <label>
-          <strong>Upravit sběr</strong>
+          <strong>Upravit přípravek</strong>
         </label>
         <div className={styles.inputs}>
           <label>
@@ -128,7 +128,7 @@ export default function AddonsInfoEdit({ w, wineId }: any) {
             />
           </label>
           <button className={styles.button} onClick={submitNote}>
-            Upravit sběr
+            Upravit přípravek
           </button>
         </div>
       </div>

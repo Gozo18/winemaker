@@ -3,13 +3,13 @@ import { doc, deleteDoc } from "firebase/firestore"
 import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
 import { useRouter } from "next/router"
+import WineyardDoingsEdit from "./WineyardDoingsEdit"
 import { VscEdit, VscTrash } from "react-icons/vsc"
 import styles from "../styles/Wine.module.scss"
-import HarvestInfoEdit from "./HarvestInfoEdit"
 
-export default function HarvestInfoItem({ w, wineId }: any) {
+export default function WineyardDoingsItem({ w, wineyardId }: any) {
   const router = useRouter()
-  const { email, editPickup, setEditPickup, setWinesLoading } =
+  const { email, editDoings, setEditDoings, setWineyardsLoading } =
     useStateContext()
 
   const deleteNote = async (
@@ -18,10 +18,10 @@ export default function HarvestInfoItem({ w, wineId }: any) {
   ) => {
     try {
       await deleteDoc(
-        doc(db, "winemakers", email, "wines", wineId, "harvest", id)
+        doc(db, "winemakers", email, "wineyards", wineyardId, "doings", id)
       )
       toast.success("Smazáno!")
-      setWinesLoading(false)
+      setWineyardsLoading(false)
     } catch (err) {
       toast.error("Něco se nepovedlo!")
     }
@@ -29,7 +29,7 @@ export default function HarvestInfoItem({ w, wineId }: any) {
 
   const editFunc = (e: React.MouseEvent<HTMLButtonElement>, wid: any) => {
     if (w.id === wid) {
-      setEditPickup(w.id)
+      setEditDoings(w.id)
     }
   }
 
@@ -43,8 +43,8 @@ export default function HarvestInfoItem({ w, wineId }: any) {
 
   return (
     <>
-      {editPickup === w.id ? (
-        <HarvestInfoEdit w={w} wineId={wineId} />
+      {editDoings === w.id ? (
+        <WineyardDoingsEdit w={w} wineyardId={wineyardId} />
       ) : (
         <div className={styles.note}>
           <div className={styles.noteText}>
@@ -52,19 +52,19 @@ export default function HarvestInfoItem({ w, wineId }: any) {
               <strong>Datum:</strong> {dateFormat}
             </p>
             <p>
-              <strong>Cukernatost:</strong> {w.sugar}
+              <strong>Přípravek:</strong> {w.additive}
             </p>
             <p>
-              <strong>Trať:</strong> {w.harvestPlace}
+              <strong>Množství:</strong> {w.amount}
             </p>
             <p>
-              <strong>Poznámka:</strong> {w.harvestNote}
+              <strong>Poznámka:</strong> {w.note}
             </p>
           </div>
           <div className={styles.noteIcons}>
             <div
               onClick={(e: any) => {
-                if (window.confirm("Odstranit sběr?")) deleteNote(e, w.id)
+                if (window.confirm("Odstranit činnost?")) deleteNote(e, w.id)
               }}
             >
               <VscTrash />

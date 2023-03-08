@@ -5,17 +5,18 @@ import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
 import styles from "../styles/AddNote.module.scss"
 
-export default function AddonsForm({ id }: any) {
-  const { email, setAddAddonsVisibility, setWinesLoading } = useStateContext()
+export default function WineyardDoingsForm({ id }: any) {
+  const { email, setAddDoingsVisibility, setWineyardsLoading } =
+    useStateContext()
 
   const [date, setDate] = useState("")
   const [additive, setAdditive] = useState("")
   const [amount, setAmount] = useState("")
   const [note, setNote] = useState("")
 
-  let additivesStorage: any = localStorage.getItem("additives")
+  let spraysStorage: any = localStorage.getItem("sprays")
 
-  let additivesJson: any = JSON.parse(additivesStorage)
+  let spraysJson: any = JSON.parse(spraysStorage)
 
   const dateValue = (e: any) => {
     setDate(e.target.value)
@@ -24,6 +25,7 @@ export default function AddonsForm({ id }: any) {
   const additiveValue = (e: any) => {
     setAdditive(e.target.value)
   }
+  console.log(additive)
 
   const amountValue = (e: any) => {
     setAmount(e.target.value)
@@ -35,15 +37,18 @@ export default function AddonsForm({ id }: any) {
 
   const submitNote = async () => {
     try {
-      await addDoc(collection(db, "winemakers", email, "wines", id, "addons"), {
-        date: String(date),
-        additive: additive,
-        amount: amount,
-        note: note,
-      })
-      setAddAddonsVisibility(false)
-      setWinesLoading(false)
-      toast.success("Přípravek přidán!")
+      await addDoc(
+        collection(db, "winemakers", email, "wineyards", id, "doings"),
+        {
+          date: String(date),
+          additive: additive,
+          amount: amount,
+          note: note,
+        }
+      )
+      setAddDoingsVisibility(false)
+      setWineyardsLoading(false)
+      toast.success("Činnost přidána!")
     } catch (err) {
       console.log(err)
       toast.error("Něco se nepovedlo!")
@@ -56,18 +61,18 @@ export default function AddonsForm({ id }: any) {
       ;(addInput as HTMLInputElement).valueAsDate = new Date()
       setDate((addInput as HTMLInputElement).value)
     }
-    const arrayAdd: any = []
-    additivesJson.map((add: any) => {
-      arrayAdd.push(add.name)
+    const arraySp: any = []
+    spraysJson.map((add: any) => {
+      arraySp.push(add.name)
     })
-    setAdditive(arrayAdd[0])
+    setAdditive(arraySp[0])
   }, [])
 
   return (
     <div className={styles.addNoteShow}>
       <div className={styles.inputBox}>
         <label>
-          <strong>Přidat přípravek</strong>
+          <strong>Přidat činnost</strong>
         </label>
         <div className={styles.inputs}>
           <label>
@@ -82,7 +87,7 @@ export default function AddonsForm({ id }: any) {
           <label>
             Přípravek
             <select name="addons" id="addons" onChange={additiveValue}>
-              {additivesJson.map((add: any, i: any) => (
+              {spraysJson.map((add: any, i: any) => (
                 <option value={add.name} key={i}>
                   {add.name}
                 </option>
@@ -103,7 +108,7 @@ export default function AddonsForm({ id }: any) {
             <input type="text" placeholder="Poznámka" onChange={noteValue} />
           </label>
           <button className={styles.button} onClick={submitNote}>
-            Přidat přípravek
+            Přidat činnost
           </button>
         </div>
       </div>

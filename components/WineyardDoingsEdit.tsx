@@ -6,25 +6,29 @@ import { useStateContext } from "../config/context"
 import { VscError } from "react-icons/vsc"
 import styles from "../styles/AddNote.module.scss"
 
-export default function HarvestInfoEdit({ w, wineId }: any) {
-  const { date, sugar, harvestPlace, harvestNote, id } = w
-  const { email, setEditPickup, setWinesLoading } = useStateContext()
+export default function WineyardDoingsEdit({ w, wineyardId }: any) {
+  const { date, additive, amount, note, id } = w
+  const { email, setEditDoings, setWineyardsLoading } = useStateContext()
 
   const [dateEdit, setDate] = useState("")
-  const [sugarEdit, setSugar] = useState("")
-  const [placeEdit, setPlace] = useState("")
+  const [additiveEdit, setAdditive] = useState("")
+  const [amountEdit, setAmount] = useState("")
   const [noteEdit, setNote] = useState("")
+
+  let additivesStorage: any = localStorage.getItem("sprays")
+
+  let additivesJson: any = JSON.parse(additivesStorage)
 
   const dateValue = (e: any) => {
     setDate(e.target.value)
   }
 
-  const sugarValue = (e: any) => {
-    setSugar(e.target.value)
+  const additiveValue = (e: any) => {
+    setAdditive(e.target.value)
   }
 
-  const placeValue = (e: any) => {
-    setPlace(e.target.value)
+  const amountValue = (e: any) => {
+    setAmount(e.target.value)
   }
 
   const noteValue = (e: any) => {
@@ -34,17 +38,17 @@ export default function HarvestInfoEdit({ w, wineId }: any) {
   const submitNote = async () => {
     try {
       await updateDoc(
-        doc(db, "winemakers", email, "wines", wineId, "harvest", id),
+        doc(db, "winemakers", email, "wineyards", wineyardId, "doings", id),
         {
           date: String(dateEdit),
-          sugar: sugarEdit,
-          harvestPlace: placeEdit,
-          harvestNote: noteEdit,
+          additive: additiveEdit,
+          amount: amountEdit,
+          note: noteEdit,
         }
       )
-      setEditPickup("")
-      setWinesLoading(false)
-      toast.success("Sběr upraven!")
+      setEditDoings("")
+      setWineyardsLoading(false)
+      toast.success("Činnost upravena!")
     } catch (err) {
       console.log(err)
       toast.error("Něco se nepovedlo!")
@@ -52,29 +56,29 @@ export default function HarvestInfoEdit({ w, wineId }: any) {
   }
 
   const showInput = () => {
-    setEditPickup("")
+    setEditDoings("")
   }
 
   useEffect(() => {
-    const addDate = document.getElementById("dateInput")
+    const addDate = document.getElementById("datePicker")
     if (addDate != null) {
       ;(addDate as HTMLInputElement).value = date
       setDate(date)
     }
-    const addSugar = document.getElementById("sugarInput")
-    if (addSugar != null) {
-      ;(addSugar as HTMLInputElement).value = sugar
-      setSugar(sugar)
+    const addAditive = document.getElementById("aditiveInput")
+    if (addAditive != null) {
+      ;(addAditive as HTMLInputElement).value = additive
+      setAdditive(additive)
     }
-    const addPlace = document.getElementById("placeInput")
-    if (addPlace != null) {
-      ;(addPlace as HTMLInputElement).value = harvestPlace
-      setPlace(harvestPlace)
+    const addAmount = document.getElementById("amountInput")
+    if (addAmount != null) {
+      ;(addAmount as HTMLInputElement).value = amount
+      setAmount(amount)
     }
     const addNote = document.getElementById("noteInput")
     if (addNote != null) {
-      ;(addNote as HTMLInputElement).value = harvestNote
-      setNote(harvestNote)
+      ;(addNote as HTMLInputElement).value = note
+      setNote(note)
     }
   }, [])
 
@@ -82,7 +86,7 @@ export default function HarvestInfoEdit({ w, wineId }: any) {
     <div className={styles.addNoteShow}>
       <div className={styles.inputBox}>
         <label>
-          <strong>Upravit sběr</strong>
+          <strong>Upravit činnost</strong>
         </label>
         <div className={styles.inputs}>
           <label>
@@ -91,27 +95,27 @@ export default function HarvestInfoEdit({ w, wineId }: any) {
               type="date"
               className={styles.date}
               onChange={dateValue}
-              id="dateInput"
+              id="datePicker"
             />
           </label>
           <label>
-            Cukernatost
-            <input
-              type="text"
-              placeholder="Cukernatost"
-              onChange={sugarValue}
-              id="sugarInput"
-              required
-            />
+            Přípravek
+            <select name="addons" id="aditiveInput" onChange={additiveValue}>
+              {additivesJson.map((add: any, i: any) => (
+                <option value={add.name} key={i}>
+                  {add.name}
+                </option>
+              ))}
+            </select>
           </label>
           <label>
-            Trať
+            Množství
             <input
               type="text"
-              placeholder="Trať"
-              onChange={placeValue}
-              id="placeInput"
+              placeholder="Množství"
+              onChange={amountValue}
               required
+              id="amountInput"
             />
           </label>
           <label>
@@ -124,7 +128,7 @@ export default function HarvestInfoEdit({ w, wineId }: any) {
             />
           </label>
           <button className={styles.button} onClick={submitNote}>
-            Upravit sběr
+            Upravit činnost
           </button>
         </div>
       </div>
