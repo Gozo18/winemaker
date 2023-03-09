@@ -26,12 +26,13 @@ export default function WineyardForm() {
   }
 
   const submitNote = async () => {
+    const slug = name.replace(/\s+/g, "-") + "-" + place.replace(/\s+/g, "-")
     try {
       await addDoc(collection(db, "winemakers", email, "wineyards"), {
         name: name,
         place: place,
         note: note,
-        slug: name + "-" + place,
+        slug: slug,
       })
       setAddWineyardVisibility(false)
       setWineyardsLoading(false)

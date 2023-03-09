@@ -35,6 +35,14 @@ export default function WineForm({ email }: any) {
   }
 
   const submitNote = async () => {
+    const slug =
+      name.replace(/\s+/g, "-") +
+      "-" +
+      year +
+      "-" +
+      sub.replace(/\s+/g, "-") +
+      "-" +
+      place.replace(/\s+/g, "-")
     try {
       await addDoc(collection(db, "winemakers", email, "wines"), {
         name: name,
@@ -42,7 +50,7 @@ export default function WineForm({ email }: any) {
         year: year,
         place: place,
         note: note,
-        slug: name + "-" + year + "-" + sub + "-" + place,
+        slug: slug,
       })
       setAddWineVisibility(false)
       setWinesLoading(false)

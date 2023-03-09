@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useRouter } from "next/router"
 import { db } from "../config/firebase"
 import { doc, updateDoc } from "firebase/firestore"
 import { toast } from "react-toastify"
@@ -9,6 +10,7 @@ import styles from "../styles/AddNote.module.scss"
 export default function WineInfoEdit({ thisWine, email }: any) {
   const { name, sub, year, place, note, id } = thisWine[0]
   const { setEditWineInfo, setWinesLoading } = useStateContext()
+  const router = useRouter()
 
   const [nameForm, setNameForm] = useState("")
   const [subForm, setSubForm] = useState("")
@@ -37,6 +39,14 @@ export default function WineInfoEdit({ thisWine, email }: any) {
   }
 
   const submitNote = async () => {
+    const slug =
+      nameForm.replace(/\s+/g, "-") +
+      "-" +
+      yearForm +
+      "-" +
+      subForm.replace(/\s+/g, "-") +
+      "-" +
+      placeForm.replace(/\s+/g, "-")
     try {
       await updateDoc(doc(db, "winemakers", email, "wines", id), {
         name: nameForm,
@@ -44,11 +54,12 @@ export default function WineInfoEdit({ thisWine, email }: any) {
         year: yearForm,
         place: placeForm,
         note: noteForm,
-        slug: nameForm + "-" + yearForm + "-" + subForm + "-" + placeForm,
+        slug: slug,
       })
       setEditWineInfo(false)
       setWinesLoading(false)
       toast.success("Víno upraveno!")
+      router.push(`/current-wines`)
     } catch (err) {
       console.log(err)
       toast.error("Něco se nepovedlo!")
