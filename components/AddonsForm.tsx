@@ -34,11 +34,19 @@ export default function AddonsForm({ id }: any) {
   }
 
   const submitNote = async () => {
+    let thisAddon = additivesJson.filter(function (e: any) {
+      return e.name === additive
+    })
+    const price = (
+      (thisAddon[0].price / thisAddon[0].pack) *
+      Number(amount)
+    ).toFixed(2)
     try {
       await addDoc(collection(db, "winemakers", email, "wines", id, "addons"), {
         date: String(date),
         additive: additive,
         amount: amount,
+        price: price,
         note: note,
       })
       setAddAddonsVisibility(false)
@@ -92,7 +100,7 @@ export default function AddonsForm({ id }: any) {
           <label>
             Množství
             <input
-              type="text"
+              type="number"
               placeholder="Množství"
               onChange={amountValue}
               required

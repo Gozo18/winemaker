@@ -36,6 +36,13 @@ export default function AddonsInfoEdit({ w, wineId }: any) {
   }
 
   const submitNote = async () => {
+    let thisAddon = additivesJson.filter(function (e: any) {
+      return e.name === additiveEdit
+    })
+    const price = (
+      (thisAddon[0].price / thisAddon[0].pack) *
+      Number(amountEdit)
+    ).toFixed(2)
     try {
       await updateDoc(
         doc(db, "winemakers", email, "wines", wineId, "addons", id),
@@ -43,6 +50,7 @@ export default function AddonsInfoEdit({ w, wineId }: any) {
           date: String(dateEdit),
           additive: additiveEdit,
           amount: amountEdit,
+          price: price,
           note: noteEdit,
         }
       )

@@ -36,6 +36,13 @@ export default function WineyardDoingsForm({ id }: any) {
   }
 
   const submitNote = async () => {
+    let thisAddon = spraysJson.filter(function (e: any) {
+      return e.name === additive
+    })
+    const price = (
+      (thisAddon[0].price / thisAddon[0].pack) *
+      Number(amount)
+    ).toFixed(2)
     try {
       await addDoc(
         collection(db, "winemakers", email, "wineyards", id, "doings"),
@@ -43,6 +50,7 @@ export default function WineyardDoingsForm({ id }: any) {
           date: String(date),
           additive: additive,
           amount: amount,
+          price: price,
           note: note,
         }
       )

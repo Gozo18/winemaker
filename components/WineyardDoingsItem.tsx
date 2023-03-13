@@ -58,6 +58,9 @@ export default function WineyardDoingsItem({ w, wineyardId }: any) {
               <strong>Množství:</strong> {w.amount}
             </p>
             <p>
+              <strong>Cena:</strong> {w.price}
+            </p>
+            <p>
               <strong>Poznámka:</strong> {w.note}
             </p>
           </div>

@@ -4,8 +4,8 @@ import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
 import { useRouter } from "next/router"
 import { VscEdit, VscTrash } from "react-icons/vsc"
-import styles from "../styles/Wine.module.scss"
 import AddonsInfoEdit from "./AddonsInfoEdit"
+import styles from "../styles/Wine.module.scss"
 
 export default function AddonsInfoItem({ w, wineId }: any) {
   const router = useRouter()
@@ -56,6 +56,9 @@ export default function AddonsInfoItem({ w, wineId }: any) {
             </p>
             <p>
               <strong>Množství:</strong> {w.amount}
+            </p>
+            <p>
+              <strong>Cena:</strong> {w.price}
             </p>
             <p>
               <strong>Poznámka:</strong> {w.note}
