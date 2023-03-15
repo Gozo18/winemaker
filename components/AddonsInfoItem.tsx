@@ -55,10 +55,11 @@ export default function AddonsInfoItem({ w, wineId }: any) {
               <strong>Přípravek:</strong> {w.additive}
             </p>
             <p>
-              <strong>Množství:</strong> {w.amount}
+              <strong>Množství:</strong> {w.amount} <span>ml/g</span>
             </p>
             <p>
               <strong>Cena:</strong> {w.price}
+              <span>,- Kč</span>
             </p>
             <p>
               <strong>Poznámka:</strong> {w.note}

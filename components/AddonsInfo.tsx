@@ -13,6 +13,7 @@ export default function AddonsInfo({ thisWine }: any) {
         <div className={styles.noteText}>
           <p>
             <strong>Celková cena:</strong> {totalPrice}
+            <span>,- Kč</span>
           </p>
         </div>
       </div>

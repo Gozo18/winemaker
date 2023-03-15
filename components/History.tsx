@@ -25,8 +25,6 @@ export default function History() {
   let result2016 = winesJson.filter((wine: any) => yearCheck(wine, "2016"))
   let resultOlder = winesJson.filter((wine: any) => olderCheck(wine, "2015"))
 
-  console.log(result2022)
-
   return (
     <div>
       <Tabs>

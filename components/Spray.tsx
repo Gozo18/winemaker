@@ -38,16 +38,18 @@ export default function Spray({ spray, userEmail }: any) {
           <div className={styles.noteText}>
             <div className={styles.noteName}>{spray.name}</div>
             <p>
-              <strong>Balení:</strong> {spray.pack}g/ml
+              <strong>Balení:</strong> {spray.pack} <span>ml/g</span>
             </p>
             <p>
-              <strong>Cena:</strong> {spray.price},- Kč
+              <strong>Cena:</strong> {spray.price}
+              <span>,- Kč</span>
             </p>
             <p>
               <strong>Popis:</strong> {spray.desc}
             </p>
             <p>
-              <strong>Dávkování:</strong> {spray.use}g/hl
+              <strong>Dávkování:</strong> {spray.use}{" "}
+              <span>ml/g na 1.000 l</span>
             </p>
           </div>
           <div className={styles.noteIcons}>

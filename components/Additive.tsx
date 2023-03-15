@@ -39,16 +39,18 @@ export default function Additive({ additive, userEmail }: any) {
           <div className={styles.noteText}>
             <div className={styles.noteName}>{additive.name}</div>
             <p>
-              <strong>Balení:</strong> {additive.pack}g/ml
+              <strong>Balení:</strong> {additive.pack} <span>ml/g</span>
             </p>
             <p>
-              <strong>Cena:</strong> {additive.price},- Kč
+              <strong>Cena:</strong> {additive.price}
+              <span>,- Kč</span>
             </p>
             <p>
               <strong>Popis:</strong> {additive.desc}
             </p>
             <p>
-              <strong>Dávkování:</strong> {additive.use}g/hl
+              <strong>Dávkování:</strong> {additive.use}{" "}
+              <span>ml/g na 1.000 l</span>
             </p>
           </div>
           <div className={styles.noteIcons}>
