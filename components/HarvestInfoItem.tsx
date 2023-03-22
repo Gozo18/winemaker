@@ -4,8 +4,8 @@ import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
 import { useRouter } from "next/router"
 import { VscEdit, VscTrash } from "react-icons/vsc"
-import styles from "../styles/Wine.module.scss"
 import HarvestInfoEdit from "./HarvestInfoEdit"
+import styles from "../styles/Wine.module.scss"
 
 export default function HarvestInfoItem({ w, wineId }: any) {
   const router = useRouter()
@@ -52,7 +52,7 @@ export default function HarvestInfoItem({ w, wineId }: any) {
               <strong>Datum:</strong> {dateFormat}
             </p>
             <p>
-              <strong>Cukernatost:</strong> {w.sugar}
+              <strong>Cukernatost:</strong> {w.sugar} <span>°NM</span>
             </p>
             <p>
               <strong>Trať:</strong> {w.harvestPlace}

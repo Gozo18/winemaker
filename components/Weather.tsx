@@ -208,6 +208,20 @@ export default function Weather() {
       </div>
     )
   } else {
-    return <p>Načítám data o počasí...</p>
+    return (
+      <div className={styles.weatherBox}>
+        <h3>Načítám data o počasí...</h3>
+        <div className={styles.forecastBox}>
+          <div className={styles.forecast}></div>
+          <div className={styles.forecast}></div>
+          <div className={styles.forecast}></div>
+          <div className={styles.forecast}></div>
+          <div className={styles.forecast}></div>
+          <div className={styles.forecast}></div>
+          <div className={styles.forecast}></div>
+          <div className={styles.forecast}></div>
+        </div>
+      </div>
+    )
   }
 }
