@@ -1,0 +1,108 @@
+@import "variables.scss";
+
+.infoBox {
+  width: 100%;
+  min-height: 80vh;
+
+  h2 {
+    text-align: center;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+}
+
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+
+  @media (max-width: 767px) {
+    margin-bottom: 0;
+  }
+
+  span {
+    font-weight: normal;
+  }
+}
+
+.itemsBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.infoItem {
+  padding: 3rem;
+  border: 1px solid $border;
+  border-radius: 0.5rem;
+
+  @media (max-width: 767px) {
+    padding: 1rem;
+  }
+}
+
+.iconBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+
+  @media (max-width: 767px) {
+    margin-bottom: 1rem;
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: $button;
+  border-radius: 4rem;
+  color: $white;
+  font-size: 2.5rem;
+
+  @media (max-width: 767px) {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+  }
+}
+
+.textBox {
+  h3 {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.3rem;
+
+    @media (max-width: 767px) {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+  }
+
+  ul {
+    padding-left: 3rem;
+
+    @media (max-width: 767px) {
+      padding-left: 1rem;
+    }
+  }
+
+  li {
+    margin-bottom: 1rem;
+  }
+}

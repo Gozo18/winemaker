@@ -18,7 +18,9 @@ export default function AddonsInfo({ thisWine }: any) {
         </div>
       </div>
       {thisWine[0].addons.map((w: any, i: number) => (
-        <AddonsInfoItem w={w} wineId={thisWine[0].id} key={i} />
+        <div key={i}>
+          <AddonsInfoItem w={w} wineId={thisWine[0].id} />
+        </div>
       ))}
     </>
   )

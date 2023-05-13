@@ -2,7 +2,7 @@ import Link from "next/link"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import EmailSet from "./EmailSet"
-import { VscSignIn, VscSettingsGear } from "react-icons/vsc"
+import { VscSignIn, VscSettingsGear, VscInfo } from "react-icons/vsc"
 import styles from "../styles/Nav.module.scss"
 
 export default function Nav() {
@@ -25,6 +25,11 @@ export default function Nav() {
           <li>
             <Link href="/register">
               <VscSettingsGear /> Registrovat
+            </Link>
+          </li>
+          <li>
+            <Link href="/info">
+              <VscInfo /> Informace
             </Link>
           </li>
         </ul>

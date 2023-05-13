@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import Link from "next/link"
 import { useStateContext } from "../config/context"
 import { auth } from "../config/firebase"
-import { VscSignOut, VscAccount, VscHome } from "react-icons/vsc"
+import { VscSignOut, VscAccount, VscHome, VscInfo } from "react-icons/vsc"
 import styles from "../styles/Nav.module.scss"
 
 export default function EmailSet({ email }: any) {
@@ -24,6 +24,11 @@ export default function EmailSet({ email }: any) {
         <Link href="/homepage">
           <VscHome />
           Domů
+        </Link>
+      </li>
+      <li>
+        <Link href="/info">
+          <VscInfo /> Informace
         </Link>
       </li>
       <li className={styles.logoutButton}>
