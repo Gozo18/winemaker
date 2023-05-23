@@ -38,7 +38,7 @@ export default function info() {
                 vinohradech.
               </li>
               <li>
-                Analytické údaje, data sběru, síření, nádobě a celkové náklady
+                Analytické údaje, data sběru, síření, nádoby a celkové náklady
                 za přípravky.
               </li>
               <li>Přístupné ze všech zařízení.</li>
@@ -60,10 +60,7 @@ export default function info() {
               </li>
               <li>Jednoduchý nákup přípravků.</li>
               <li>Sklad přípravků.</li>
-              <li>
-                Analytická data každého vinaře pro prodejce přípravků a
-                příslušenství.
-              </li>
+              <li>Analytická data pro prodejce přípravků a příslušenství.</li>
               <li>Doporučení a nenásilné reklamy.</li>
               <li>Odborné články.</li>
               <li>Podklady pro Český statistický úřad.</li>
