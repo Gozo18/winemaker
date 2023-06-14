@@ -212,14 +212,30 @@ export default function Weather() {
       <div className={styles.weatherBox}>
         <h3>Načítám data o počasí...</h3>
         <div className={styles.forecastBox}>
-          <div className={styles.forecast}></div>
-          <div className={styles.forecast}></div>
-          <div className={styles.forecast}></div>
-          <div className={styles.forecast}></div>
-          <div className={styles.forecast}></div>
-          <div className={styles.forecast}></div>
-          <div className={styles.forecast}></div>
-          <div className={styles.forecast}></div>
+          <div className={styles.forecast}>
+            <div className={styles.loader}></div>
+          </div>
+          <div className={styles.forecast}>
+            <div className={styles.loader}></div>
+          </div>
+          <div className={styles.forecast}>
+            <div className={styles.loader}></div>
+          </div>
+          <div className={styles.forecast}>
+            <div className={styles.loader}></div>
+          </div>
+          <div className={styles.forecast}>
+            <div className={styles.loader}></div>
+          </div>
+          <div className={styles.forecast}>
+            <div className={styles.loader}></div>
+          </div>
+          <div className={styles.forecast}>
+            <div className={styles.loader}></div>
+          </div>
+          <div className={styles.forecast}>
+            <div className={styles.loader}></div>
+          </div>
         </div>
       </div>
     )

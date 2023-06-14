@@ -4,6 +4,8 @@ import {
   VscCompass,
   VscTypeHierarchy,
   VscShield,
+  VscHubot,
+  VscPackage,
 } from "react-icons/vsc"
 import styles from "../styles/Info.module.scss"
 
@@ -20,6 +22,42 @@ export default function info() {
         <div></div>
       </div>
       <div className={styles.itemsBox}>
+        <div className={styles.infoItem}>
+          <div className={styles.iconBox}>
+            <div className={styles.icon}>
+              <VscPackage />
+            </div>
+          </div>
+          <div className={styles.textBox}>
+            <h3>E-commerce 1.0</h3>
+            <ul>
+              <li>Masivní marketing</li>
+              <li>Dokonalé SEO</li>
+              <li>Rychlá aplikace s intuitivním UX</li>
+              <li>Logistika</li>
+            </ul>
+          </div>
+        </div>
+        <div className={styles.infoItem}>
+          <div className={styles.iconBox}>
+            <div className={styles.icon}>
+              <VscHubot />
+            </div>
+          </div>
+          <div className={styles.textBox}>
+            <h3>E-commerce 2.0</h3>
+            <ul>
+              <li>Vlastní platforma</li>
+              <li>Web pro uživatele s benefity</li>
+              <li>Rychlé objednávky</li>
+              <li>Vylepšená logistika - zboží druhý den</li>
+              <li>Data pro skladové hospodářství</li>
+              <li>Data pro detailní znalost uživatelů</li>
+              <li>Doporučení pro uživatele</li>
+              <li>Sklad uživatele</li>
+            </ul>
+          </div>
+        </div>
         <div className={styles.infoItem}>
           <div className={styles.iconBox}>
             <div className={styles.icon}>
