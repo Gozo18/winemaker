@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
@@ -16,16 +17,21 @@ export default function sprays() {
 
   if (user)
     return (
-      <div className={styles.additivesBox}>
-        <div className={styles.headerBox}>
-          <BackLink />
+      <>
+        <Head>
+          <title>WineMaker beta - postřiky</title>
+        </Head>
+        <div className={styles.additivesBox}>
+          <div className={styles.headerBox}>
+            <BackLink />
 
-          <h2>Postřiky</h2>
+            <h2>Postřiky</h2>
 
-          <SpraysAdd email={user.email} />
+            <SpraysAdd email={user.email} />
+          </div>
+
+          <Sprays email={user.email} />
         </div>
-
-        <Sprays email={user.email} />
-      </div>
+      </>
     )
 }

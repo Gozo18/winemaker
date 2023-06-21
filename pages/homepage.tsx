@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Head from "next/head"
 import { auth } from "../config/firebase"
 import { setUser } from "../config/setUser"
 import Weather from "../components/Weather"
@@ -28,32 +29,37 @@ export default function homepage() {
     setUser(email)
 
     return (
-      <div className={styles.homeBox}>
-        <h2>Moje vinařství</h2>
+      <>
+        <Head>
+          <title>WineMaker beta - domovská stránka</title>
+        </Head>
+        <div className={styles.homeBox}>
+          <h2>Moje vinařství</h2>
 
-        <div className={styles.homeNav}>
-          <Link href="/current-wines">
-            <FcHighBattery /> <span>Aktuální sklep</span>
-          </Link>
-          <Link href="/history">
-            <FcCalendar /> <span>Historie vín</span>
-          </Link>
-          <Link href="/notes/">
-            <FcTodoList /> <span>Poznámky</span>
-          </Link>
-          <Link href="/additives">
-            <FcBiomass /> <span>Přípravky</span>
-          </Link>
-          <Link href="/wineyards">
-            <FcLandscape /> <span>Vinohrady</span>
-          </Link>
-          <Link href="/sprays">
-            <FcBiohazard /> <span>Postřiky</span>
-          </Link>
+          <div className={styles.homeNav}>
+            <Link href="/current-wines">
+              <FcHighBattery /> <span>Aktuální sklep</span>
+            </Link>
+            <Link href="/history">
+              <FcCalendar /> <span>Historie vín</span>
+            </Link>
+            <Link href="/notes/">
+              <FcTodoList /> <span>Poznámky</span>
+            </Link>
+            <Link href="/additives">
+              <FcBiomass /> <span>Přípravky</span>
+            </Link>
+            <Link href="/wineyards">
+              <FcLandscape /> <span>Vinohrady</span>
+            </Link>
+            <Link href="/sprays">
+              <FcBiohazard /> <span>Postřiky</span>
+            </Link>
+          </div>
+
+          <Weather />
         </div>
-
-        <Weather />
-      </div>
+      </>
     )
   }
 }

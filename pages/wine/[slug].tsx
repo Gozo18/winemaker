@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { auth } from "../../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
@@ -57,133 +58,140 @@ export default function wine() {
     const { name, sub, year, place, note, id } = thisWine[0]
 
     return (
-      <div className={styles.wineBox}>
-        <div className={styles.headerBox}>
-          <BackLink />
-          <h2>
-            {name} {year} - {sub}
-          </h2>
+      <>
+        <Head>
+          <title>
+            WineMaker beta - {name} {year} - {sub}
+          </title>
+        </Head>
+        <div className={styles.wineBox}>
+          <div className={styles.headerBox}>
+            <BackLink />
+            <h2>
+              {name} {year} - {sub}
+            </h2>
 
-          <div></div>
+            <div></div>
+          </div>
+
+          <Tabs>
+            <TabList>
+              <Tab>
+                <VscInfo />
+                <span>O víně</span>
+              </Tab>
+              <Tab>
+                <VscHistory />
+                <span>Sběr</span>
+              </Tab>
+              <Tab>
+                <VscChecklist />
+                <span>Analytika</span>
+              </Tab>
+              <Tab>
+                <VscBeaker />
+                <span>Přípravky</span>
+              </Tab>
+              <Tab>
+                <VscSync />
+                <span>Stáčení</span>
+              </Tab>
+              <Tab>
+                <VscFilter />
+                <span>Filtrace</span>
+              </Tab>
+              <Tab>
+                <VscDatabase />
+                <span>Nádoba</span>
+              </Tab>
+              <Tab>
+                <VscVerified />
+                <span>Lahvování</span>
+              </Tab>
+            </TabList>
+
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <h3>O víně</h3>
+              </div>
+              <div className={styles.notes}>
+                <WineInfo thisWine={thisWine} email={email} />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <div className={styles.headerBoxEmpty}></div>
+                <h3>Sběr</h3>
+                <PickupAdd id={id} />
+              </div>
+              <div className={styles.notes}>
+                <HarvestInfo thisWine={thisWine} />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <div className={styles.headerBoxEmpty}></div>
+                <h3>Analytika</h3>
+                <AnalyticsAdd id={id} />
+              </div>
+              <div className={styles.notes}>
+                <AnalyticsInfo thisWine={thisWine} />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <div className={styles.headerBoxEmpty}></div>
+                <h3>Přípravky</h3>
+                <AddonsAdd id={id} />
+              </div>
+              <div className={styles.notes}>
+                <AddonsInfo thisWine={thisWine} />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <div className={styles.headerBoxEmpty}></div>
+                <h3>Stáčení</h3>
+                <TendsAdd id={id} />
+              </div>
+              <div className={styles.notes}>
+                <TendsInfo thisWine={thisWine} />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <div className={styles.headerBoxEmpty}></div>
+                <h3>Filtrace</h3>
+                <FiltersAdd id={id} />
+              </div>
+              <div className={styles.notes}>
+                <FiltersInfo thisWine={thisWine} />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <div className={styles.headerBoxEmpty}></div>
+                <h3>Nádoba</h3>
+                <JarsAdd id={id} />
+              </div>
+              <div className={styles.notes}>
+                <JarsInfo thisWine={thisWine} />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <div className={styles.headerBoxEmpty}></div>
+                <h3>Lahvování</h3>
+                <BottlesAdd id={id} />
+              </div>
+              <div className={styles.notes}>
+                <BottlesInfo thisWine={thisWine} />
+              </div>
+              <BottlesFinish thisWine={thisWine} />
+            </TabPanel>
+          </Tabs>
         </div>
-
-        <Tabs>
-          <TabList>
-            <Tab>
-              <VscInfo />
-              <span>O víně</span>
-            </Tab>
-            <Tab>
-              <VscHistory />
-              <span>Sběr</span>
-            </Tab>
-            <Tab>
-              <VscChecklist />
-              <span>Analytika</span>
-            </Tab>
-            <Tab>
-              <VscBeaker />
-              <span>Přípravky</span>
-            </Tab>
-            <Tab>
-              <VscSync />
-              <span>Stáčení</span>
-            </Tab>
-            <Tab>
-              <VscFilter />
-              <span>Filtrace</span>
-            </Tab>
-            <Tab>
-              <VscDatabase />
-              <span>Nádoba</span>
-            </Tab>
-            <Tab>
-              <VscVerified />
-              <span>Lahvování</span>
-            </Tab>
-          </TabList>
-
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <h3>O víně</h3>
-            </div>
-            <div className={styles.notes}>
-              <WineInfo thisWine={thisWine} email={email} />
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <div className={styles.headerBoxEmpty}></div>
-              <h3>Sběr</h3>
-              <PickupAdd id={id} />
-            </div>
-            <div className={styles.notes}>
-              <HarvestInfo thisWine={thisWine} />
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <div className={styles.headerBoxEmpty}></div>
-              <h3>Analytika</h3>
-              <AnalyticsAdd id={id} />
-            </div>
-            <div className={styles.notes}>
-              <AnalyticsInfo thisWine={thisWine} />
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <div className={styles.headerBoxEmpty}></div>
-              <h3>Přípravky</h3>
-              <AddonsAdd id={id} />
-            </div>
-            <div className={styles.notes}>
-              <AddonsInfo thisWine={thisWine} />
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <div className={styles.headerBoxEmpty}></div>
-              <h3>Stáčení</h3>
-              <TendsAdd id={id} />
-            </div>
-            <div className={styles.notes}>
-              <TendsInfo thisWine={thisWine} />
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <div className={styles.headerBoxEmpty}></div>
-              <h3>Filtrace</h3>
-              <FiltersAdd id={id} />
-            </div>
-            <div className={styles.notes}>
-              <FiltersInfo thisWine={thisWine} />
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <div className={styles.headerBoxEmpty}></div>
-              <h3>Nádoba</h3>
-              <JarsAdd id={id} />
-            </div>
-            <div className={styles.notes}>
-              <JarsInfo thisWine={thisWine} />
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <div className={styles.headerBoxEmpty}></div>
-              <h3>Lahvování</h3>
-              <BottlesAdd id={id} />
-            </div>
-            <div className={styles.notes}>
-              <BottlesInfo thisWine={thisWine} />
-            </div>
-            <BottlesFinish thisWine={thisWine} />
-          </TabPanel>
-        </Tabs>
-      </div>
+      </>
     )
   }
 }

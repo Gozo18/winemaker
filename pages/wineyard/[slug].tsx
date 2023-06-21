@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { auth } from "../../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
@@ -34,48 +35,55 @@ export default function wineyard() {
     const { name, place, note, id } = thisWineyard[0]
 
     return (
-      <div className={styles.wineBox}>
-        <div className={styles.headerBox}>
-          <BackLink />
-          <h2>
-            {name} - {place}
-          </h2>
+      <>
+        <Head>
+          <title>
+            WineMaker beta - {name} - {place}
+          </title>
+        </Head>
+        <div className={styles.wineBox}>
+          <div className={styles.headerBox}>
+            <BackLink />
+            <h2>
+              {name} - {place}
+            </h2>
 
-          <div></div>
+            <div></div>
+          </div>
+
+          <Tabs>
+            <TabList>
+              <Tab>
+                <VscInfo />
+                <span>O vinohradu</span>
+              </Tab>
+              <Tab>
+                <VscChecklist />
+                <span>Činnosti</span>
+              </Tab>
+            </TabList>
+
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <h3>O vinohradu</h3>
+              </div>
+              <div className={styles.notes}>
+                <WineyardInfo thisWineyard={thisWineyard} />
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className={styles.headerBox}>
+                <div className={styles.headerBoxEmpty}></div>
+                <h3>Činnosti</h3>
+                <WineyardDoingsAdd id={id} />
+              </div>
+              <div className={styles.notes}>
+                <WineyardDoings thisWineyard={thisWineyard} />
+              </div>
+            </TabPanel>
+          </Tabs>
         </div>
-
-        <Tabs>
-          <TabList>
-            <Tab>
-              <VscInfo />
-              <span>O vinohradu</span>
-            </Tab>
-            <Tab>
-              <VscChecklist />
-              <span>Činnosti</span>
-            </Tab>
-          </TabList>
-
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <h3>O vinohradu</h3>
-            </div>
-            <div className={styles.notes}>
-              <WineyardInfo thisWineyard={thisWineyard} />
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className={styles.headerBox}>
-              <div className={styles.headerBoxEmpty}></div>
-              <h3>Činnosti</h3>
-              <WineyardDoingsAdd id={id} />
-            </div>
-            <div className={styles.notes}>
-              <WineyardDoings thisWineyard={thisWineyard} />
-            </div>
-          </TabPanel>
-        </Tabs>
-      </div>
+      </>
     )
   }
 }

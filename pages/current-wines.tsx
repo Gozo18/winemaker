@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
@@ -18,20 +19,32 @@ export default function currentWines() {
 
   if (user) {
     if (!winesLoading) {
-      return <p>Načítám...</p>
+      return (
+        <>
+          <Head>
+            <title>WineMaker beta - aktuální sklep</title>
+          </Head>
+          <p>Načítám...</p>
+        </>
+      )
     } else {
       return (
-        <div className={styles.currentBox}>
-          <div className={styles.headerBox}>
-            <BackLink />
+        <>
+          <Head>
+            <title>WineMaker beta - aktuální sklep</title>
+          </Head>
+          <div className={styles.currentBox}>
+            <div className={styles.headerBox}>
+              <BackLink />
 
-            <h2>Aktuální sklep</h2>
+              <h2>Aktuální sklep</h2>
 
-            <WineAdd email={user.email} />
+              <WineAdd email={user.email} />
+            </div>
+
+            <Wines />
           </div>
-
-          <Wines />
-        </div>
+        </>
       )
     }
   }

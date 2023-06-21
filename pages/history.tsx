@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
@@ -15,16 +16,21 @@ export default function history() {
 
   if (user)
     return (
-      <div className={styles.historyBox}>
-        <div className={styles.headerBox}>
-          <BackLink />
+      <>
+        <Head>
+          <title>WineMaker beta - historie vín</title>
+        </Head>
+        <div className={styles.historyBox}>
+          <div className={styles.headerBox}>
+            <BackLink />
 
-          <h2>Historie vín</h2>
+            <h2>Historie vín</h2>
 
-          <div></div>
+            <div></div>
+          </div>
+
+          <History />
         </div>
-
-        <History />
-      </div>
+      </>
     )
 }

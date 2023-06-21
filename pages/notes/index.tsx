@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { auth } from "../../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
@@ -16,17 +17,22 @@ export default function notes() {
 
   if (user) {
     return (
-      <div className={styles.notesBox}>
-        <div className={styles.headerBox}>
-          <BackLink />
+      <>
+        <Head>
+          <title>WineMaker beta - poznámky</title>
+        </Head>
+        <div className={styles.notesBox}>
+          <div className={styles.headerBox}>
+            <BackLink />
 
-          <h2>Poznámky</h2>
+            <h2>Poznámky</h2>
 
-          <Addnote email={user.email} />
+            <Addnote email={user.email} />
+          </div>
+
+          <Notes email={user.email} />
         </div>
-
-        <Notes email={user.email} />
-      </div>
+      </>
     )
   }
 }

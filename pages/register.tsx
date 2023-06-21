@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useState, useEffect } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { toast } from "react-toastify"
@@ -75,52 +76,59 @@ export default function register() {
   }, [user])
 
   return (
-    <div className={styles.loginPage}>
-      <div className={styles.loginBox}>
-        <h2>Registrace</h2>
-        <form onSubmit={onSubmit}>
-          <input
-            type="email"
-            className="emailInput"
-            placeholder="E-mail"
-            id="email"
-            value={email}
-            onChange={onChange}
-          />
-
-          <div className={styles.passBox}>
+    <>
+      <Head>
+        <title>WineMaker beta - registrace</title>
+      </Head>
+      <div className={styles.loginPage}>
+        <div className={styles.loginBox}>
+          <h2>Registrace</h2>
+          <form onSubmit={onSubmit}>
             <input
-              type={showPassword ? "text" : "password"}
-              className="passwordInput"
-              placeholder="Heslo"
-              id="password"
-              value={password}
+              type="email"
+              className="emailInput"
+              placeholder="E-mail"
+              id="email"
+              value={email}
               onChange={onChange}
             />
 
-            <BsEye onClick={() => setShowPassword((prevState) => !prevState)} />
+            <div className={styles.passBox}>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="passwordInput"
+                placeholder="Heslo"
+                id="password"
+                value={password}
+                onChange={onChange}
+              />
+
+              <BsEye
+                onClick={() => setShowPassword((prevState) => !prevState)}
+              />
+            </div>
+
+            <button>
+              Zaregistrovat
+              <span>
+                <BsArrowRightShort />
+              </span>
+            </button>
+          </form>
+
+          <div className={styles.loginLinks}>
+            <Link href="/login">Přihlásit se</Link>
           </div>
-
-          <button>
-            Zaregistrovat
-            <span>
-              <BsArrowRightShort />
-            </span>
-          </button>
-        </form>
-
-        <div className={styles.loginLinks}>
-          <Link href="/login">Přihlásit se</Link>
-        </div>
-        <div className={styles.googleButton}>
-          <button onClick={GoogleLogin}>
-            <span>
-              <FcGoogle />
-            </span>{" "}
-            Přihlásit se přes Google
-          </button>
+          <div className={styles.googleButton}>
+            <button onClick={GoogleLogin}>
+              <span>
+                <FcGoogle />
+              </span>{" "}
+              Přihlásit se přes Google
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

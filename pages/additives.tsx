@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
@@ -16,17 +17,22 @@ export default function additives() {
 
   if (user) {
     return (
-      <div className={styles.additivesBox}>
-        <div className={styles.headerBox}>
-          <BackLink />
+      <>
+        <Head>
+          <title>WineMaker beta - přípravky</title>
+        </Head>
+        <div className={styles.additivesBox}>
+          <div className={styles.headerBox}>
+            <BackLink />
 
-          <h2>Přípravky</h2>
+            <h2>Přípravky</h2>
 
-          <AdditivesAdd email={user.email} />
+            <AdditivesAdd email={user.email} />
+          </div>
+
+          <Additives email={user.email} />
         </div>
-
-        <Additives email={user.email} />
-      </div>
+      </>
     )
   }
 }

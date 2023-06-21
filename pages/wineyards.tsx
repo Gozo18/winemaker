@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
@@ -16,16 +17,21 @@ export default function wineyards() {
 
   if (user)
     return (
-      <div className={styles.wineyardsBox}>
-        <div className={styles.headerBox}>
-          <BackLink />
+      <>
+        <Head>
+          <title>WineMaker beta - vinohrady</title>
+        </Head>
+        <div className={styles.wineyardsBox}>
+          <div className={styles.headerBox}>
+            <BackLink />
 
-          <h2>Vinohrady</h2>
+            <h2>Vinohrady</h2>
 
-          <WineyardAdd />
+            <WineyardAdd />
+          </div>
+
+          <Wineyards />
         </div>
-
-        <Wineyards />
-      </div>
+      </>
     )
 }

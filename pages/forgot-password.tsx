@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -35,30 +36,35 @@ export default function forgotPassword() {
   }, [user])
 
   return (
-    <div className={styles.loginPage}>
-      <div className={styles.loginBox}>
-        <h2>Zapomenuté heslo</h2>
-        <form onSubmit={onSubmit}>
-          <input
-            type="email"
-            className="emailInput"
-            placeholder="Email"
-            id="email"
-            value={email}
-            onChange={onChange}
-          />
+    <>
+      <Head>
+        <title>WineMaker beta - zapomenuté heslo</title>
+      </Head>
+      <div className={styles.loginPage}>
+        <div className={styles.loginBox}>
+          <h2>Zapomenuté heslo</h2>
+          <form onSubmit={onSubmit}>
+            <input
+              type="email"
+              className="emailInput"
+              placeholder="Email"
+              id="email"
+              value={email}
+              onChange={onChange}
+            />
 
-          <button>
-            Poslat odkaz na reset hesla
-            <span>
-              <BsArrowRightShort />
-            </span>
-          </button>
-        </form>
-        <div className={styles.loginLinks}>
-          <Link href="/login">Přihlásit se</Link>
+            <button>
+              Poslat odkaz na reset hesla
+              <span>
+                <BsArrowRightShort />
+              </span>
+            </button>
+          </form>
+          <div className={styles.loginLinks}>
+            <Link href="/login">Přihlásit se</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
