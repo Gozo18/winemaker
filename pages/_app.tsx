@@ -1,3 +1,4 @@
+import Script from "next/script"
 import "../styles/globals.scss"
 import type { AppProps } from "next/app"
 import { Roboto } from "@next/font/google"
@@ -12,12 +13,24 @@ const roboto = Roboto({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={roboto.className}>
-      <StateContext>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </StateContext>
-    </div>
+    <>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-TYS3F0R31Z" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-TYS3F0R31Z');
+        `}
+      </Script>
+      <div className={roboto.className}>
+        <StateContext>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </StateContext>
+      </div>
+    </>
   )
 }
