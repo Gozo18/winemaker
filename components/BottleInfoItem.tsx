@@ -7,7 +7,7 @@ import { VscEdit, VscTrash } from "react-icons/vsc"
 import styles from "../styles/Wine.module.scss"
 import BottleInfoEdit from "./BottleInfoEdit"
 
-export default function BottleInfoItem({ w, wineId, key }: any) {
+export default function BottleInfoItem({ w, wineId }: any) {
   const router = useRouter()
   const { email, editBottles, setEditBottles, setWinesLoading } =
     useStateContext()
@@ -46,7 +46,7 @@ export default function BottleInfoItem({ w, wineId, key }: any) {
       {editBottles === w.id ? (
         <BottleInfoEdit w={w} wineId={wineId} />
       ) : (
-        <div className={styles.note} key={key}>
+        <div className={styles.note}>
           <div className={styles.noteText}>
             <p>
               <strong>Datum:</strong> {dateFormat}

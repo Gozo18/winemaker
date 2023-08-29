@@ -7,7 +7,7 @@ import { VscEdit, VscTrash } from "react-icons/vsc"
 import styles from "../styles/Wine.module.scss"
 import JarsInfoItemEdit from "./JarsInfoItemEdit"
 
-export default function JarsInfoItem({ w, wineId, key }: any) {
+export default function JarsInfoItem({ w, wineId }: any) {
   const router = useRouter()
   const { email, editJars, setEditJars, setWinesLoading } = useStateContext()
 
@@ -43,7 +43,7 @@ export default function JarsInfoItem({ w, wineId, key }: any) {
       {editJars === w.id ? (
         <JarsInfoItemEdit w={w} wineId={wineId} />
       ) : (
-        <div className={styles.note} key={key}>
+        <div className={styles.note}>
           <div className={styles.noteText}>
             <p>
               <strong>Datum:</strong> {dateFormat}

@@ -59,6 +59,7 @@ export default function WineInfoEdit({ thisWine, email }: any) {
       setEditWineInfo(false)
       setWinesLoading(false)
       toast.success("Víno upraveno!")
+      /* if router */
       router.push(`/current-wines`)
     } catch (err) {
       console.log(err)

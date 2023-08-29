@@ -27,9 +27,9 @@ export default function Footer() {
       </div>
       <div className={styles.footerOrg}>
         <Link href="/">
-          <h5>
+          <h4>
             WineMaker <sup>beta</sup>
-          </h5>
+          </h4>
         </Link>
       </div>
     </div>

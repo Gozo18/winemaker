@@ -7,7 +7,7 @@ import { VscEdit, VscTrash } from "react-icons/vsc"
 import styles from "../styles/Wine.module.scss"
 import TendsInfoEdit from "./TendsInfoEdit"
 
-export default function TendsInfoItem({ w, wineId, key }: any) {
+export default function TendsInfoItem({ w, wineId }: any) {
   const router = useRouter()
   const { email, editTends, setEditTends, setWinesLoading } = useStateContext()
 
@@ -45,7 +45,7 @@ export default function TendsInfoItem({ w, wineId, key }: any) {
       {editTends === w.id ? (
         <TendsInfoEdit w={w} wineId={wineId} />
       ) : (
-        <div className={styles.note} key={key}>
+        <div className={styles.note}>
           <div className={styles.noteText}>
             <p>
               <strong>Datum:</strong> {dateFormat}
