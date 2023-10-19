@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
       <div>
         <div className={styles.heroBox}>
-          <Image src="/hero.webp" alt="WineMaker" fill />
+          <Image src="/hero.webp" alt="WineMaker" fill priority={true} />
           <div className={styles.heroText}>
             <h2>
               WineMaker <sup>beta</sup> <span>- vinařův deník</span>
@@ -52,7 +52,13 @@ export default function Home() {
         <div className={styles.blogBox}>
           <div className={styles.blogPost}>
             <div className={styles.blogImage}>
-              <Image src="/responsive.webp" alt="WineMaker responsive" fill />
+              <Image
+                src="/responsive.webp"
+                alt="WineMaker responsive"
+                fill
+                sizes="(min-width: 320px) 100vw"
+                priority={true}
+              />
             </div>
             <div className={styles.blogText}>
               <h3>Vinařské záznamy kdykoliv a kdekoliv</h3>
@@ -64,7 +70,13 @@ export default function Home() {
           </div>
           <div className={styles.blogPost}>
             <div className={styles.blogImage}>
-              <Image src="/history.jpg" alt="WineMaker history" fill />
+              <Image
+                src="/history.jpg"
+                alt="WineMaker history"
+                fill
+                sizes="(min-width: 320px) 100vw"
+                priority={true}
+              />
             </div>
             <div className={styles.blogText}>
               <h3>Kompletní historie vín</h3>
