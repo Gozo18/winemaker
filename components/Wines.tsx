@@ -20,17 +20,26 @@ export default function Wines() {
       {winesJson === undefined ? (
         <div>Načítám...</div>
       ) : (
-        <div className={styles.gridBox}>
-          {result.map((doc: any, i: any) => (
-            <Link href={`/wine/${doc.slug}`} key={i}>
-              <h3>{doc.name}</h3>
-              <p>{doc.sub}</p>
-              <p>{doc.year}</p>
-              <p>{doc.place}</p>
-              {doc.note != "" && <p>{doc.note}</p>}
-            </Link>
-          ))}
-        </div>
+        <>
+          {result.length > 0 ? (
+            <div className={styles.gridBox}>
+              {result.map((doc: any, i: any) => (
+                <Link href={`/wine/${doc.slug}`} key={i}>
+                  <h3>{doc.name}</h3>
+                  <p>{doc.sub}</p>
+                  <p>{doc.year}</p>
+                  <p>{doc.place}</p>
+                  {doc.note != "" && <p>{doc.note}</p>}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.emptyBox}>
+              <h4>Žádné víno!</h4>
+              <span>Přidejte ho.</span>
+            </div>
+          )}
+        </>
       )}
     </>
   )

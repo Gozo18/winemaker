@@ -27,7 +27,8 @@ export default function Wineyards() {
             </div>
           ) : (
             <div className={styles.emptyBox}>
-              <span>Přidejte vinohrad!</span>
+              <h4>Žádný vinohrad!</h4>
+              <span>Přidejte ho.</span>
             </div>
           )}
         </>

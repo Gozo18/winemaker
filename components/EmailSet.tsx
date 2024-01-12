@@ -33,7 +33,8 @@ export default function EmailSet({ email }: any) {
       </li>
       <li className={styles.logoutButton}>
         <span onClick={() => auth.signOut()}>
-          <VscSignOut /> Odhlásit
+          <VscSignOut /> Odhlásit{" "}
+          <span className={styles.logoutEmail}>({email})</span>
         </span>
       </li>
     </ul>

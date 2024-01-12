@@ -38,13 +38,21 @@ export default function Notes(email: any) {
       {notesData === undefined ? (
         <div>Načítám...</div>
       ) : (
-        <div className={styles.notes}>
-          {notesData.map((doc: any, i: any) => (
-            <div key={i}>
-              <Note note={doc} userEmail={email.email} />
+        <>
+          {notesData.length > 0 ? (
+            <div className={styles.notes}>
+              {notesData.map((doc: any, i: any) => (
+                <div key={i}>
+                  <Note note={doc} userEmail={email.email} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          ) : (
+            <div className={styles.emptyBox}>
+              <h4>Žádné poznámky</h4>
+            </div>
+          )}
+        </>
       )}
     </>
   )
