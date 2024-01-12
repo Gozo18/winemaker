@@ -9,8 +9,6 @@ export default function Wineyards() {
 
   let wineyardsJson: any = JSON.parse(wineyardsStorage)
 
-  console.log(wineyardsJson.length)
-
   return (
     <>
       {wineyardsJson === undefined ? (

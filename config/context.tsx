@@ -539,7 +539,6 @@ export const StateContext = ({ children }: any) => {
         setTimeout(() => {
           setWineyardsData(wineyardsArray)
           localStorage.setItem("wineyards", JSON.stringify(wineyardsArray))
-          console.log(wineyardsArray)
         }, 1000)
         setWineyardsLoading(true)
       } catch (err) {
