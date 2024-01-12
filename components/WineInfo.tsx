@@ -5,6 +5,7 @@ import { useStateContext } from "../config/context"
 import { useRouter } from "next/router"
 import { VscEdit, VscTrash } from "react-icons/vsc"
 import WineInfoEdit from "./WineInfoEdit"
+import Advertising from "./Advertising"
 import styles from "../styles/Wine.module.scss"
 
 export default function WineInfo({ thisWine, email }: any) {
@@ -36,7 +37,7 @@ export default function WineInfo({ thisWine, email }: any) {
       {editWineInfo ? (
         <WineInfoEdit thisWine={thisWine} email={email} />
       ) : (
-        <>
+        <div className={styles.infoBox}>
           <div className={styles.note}>
             <div className={styles.noteText}>
               <p>
@@ -68,7 +69,8 @@ export default function WineInfo({ thisWine, email }: any) {
               </div>
             </div>
           </div>
-        </>
+          <Advertising />
+        </div>
       )}
     </>
   )

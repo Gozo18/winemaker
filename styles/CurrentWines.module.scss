@@ -25,6 +25,13 @@
     margin-bottom: 1rem;
   }
 }
+.emptyBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 60vh;
+}
 
 .gridBox {
   display: grid;

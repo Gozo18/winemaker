@@ -535,12 +535,13 @@ export const StateContext = ({ children }: any) => {
           }
 
           doingsQuery()
-          setTimeout(() => {
-            setWinesData(wineyardsArray)
-            localStorage.setItem("wineyards", JSON.stringify(wineyardsArray))
-          }, 1000)
-          setWineyardsLoading(true)
         })
+        setTimeout(() => {
+          setWineyardsData(wineyardsArray)
+          localStorage.setItem("wineyards", JSON.stringify(wineyardsArray))
+          console.log(wineyardsArray)
+        }, 1000)
+        setWineyardsLoading(true)
       } catch (err) {
         toast.error("Něco se nepovedlo!")
       }
