@@ -34,6 +34,14 @@
   }
 }
 
+.itemsBox {
+  width: calc(100% - 10rem);
+
+  @media (max-width: 991px) {
+    width: 100%;
+  }
+}
+
 .emptyBox {
   display: flex;
   justify-content: center;
@@ -52,8 +60,8 @@
   justify-content: center;
   align-items: center;
   margin: 0 0 1rem 1rem;
-  width: 11.7rem;
-  height: auto;
+  width: 10rem;
+  height: 45vh;
   border: 1px solid $border;
   color: rgba(0, 0, 0, 0.4);
 
