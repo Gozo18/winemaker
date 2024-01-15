@@ -29,14 +29,14 @@ export default function History() {
     <div>
       <Tabs>
         <TabList>
-          <Tab>2023</Tab>
-          <Tab>2022</Tab>
-          <Tab>2021</Tab>
-          <Tab>2020</Tab>
-          <Tab>2019</Tab>
-          <Tab>2018</Tab>
-          <Tab>2017</Tab>
-          <Tab>starší</Tab>
+          <Tab>2023 ({result2023.length})</Tab>
+          <Tab>2022 ({result2022.length})</Tab>
+          <Tab>2021 ({result2021.length})</Tab>
+          <Tab>2020 ({result2020.length})</Tab>
+          <Tab>2019 ({result2019.length})</Tab>
+          <Tab>2018 ({result2018.length})</Tab>
+          <Tab>2017 ({result2017.length})</Tab>
+          <Tab>starší ({resultOlder.length})</Tab>
         </TabList>
 
         <TabPanel>

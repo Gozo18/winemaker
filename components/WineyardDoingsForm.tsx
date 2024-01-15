@@ -25,7 +25,6 @@ export default function WineyardDoingsForm({ id }: any) {
   const additiveValue = (e: any) => {
     setAdditive(e.target.value)
   }
-  console.log(additive)
 
   const amountValue = (e: any) => {
     setAmount(e.target.value)
