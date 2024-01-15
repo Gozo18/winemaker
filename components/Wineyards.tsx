@@ -21,7 +21,15 @@ export default function Wineyards() {
                 <Link href={`/wineyard/${doc.slug}`} key={i}>
                   <h3>{doc.name}</h3>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>

@@ -41,7 +41,7 @@ export default function WineyardInfoEdit({ thisWineyard }: any) {
       setEditWineyardInfo(false)
       setWineyardsLoading(false)
       toast.success("Vinohrad upraven!")
-      router.push(`/current-wines`)
+      router.push(`/wineyards`)
     } catch (err) {
       console.log(err)
       toast.error("Něco se nepovedlo!")

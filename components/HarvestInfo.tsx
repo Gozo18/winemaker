@@ -2,9 +2,8 @@ import HarvestInfoItem from "./HarvestInfoItem"
 import styles from "../styles/Wine.module.scss"
 
 export default function HarvestInfo({ thisWine }: any) {
-  console.log(thisWine[0].harvest.length)
   return (
-    <>
+    <div className={styles.outputsBox}>
       {thisWine[0].harvest.length > 0 ? (
         <>
           {thisWine[0].harvest.map((w: any, i: number) => (
@@ -16,6 +15,7 @@ export default function HarvestInfo({ thisWine }: any) {
           <h4>Žádný záznam!</h4>
         </div>
       )}
-    </>
+      <div className={styles.advBox}>Reklama</div>
+    </div>
   )
 }

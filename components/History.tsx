@@ -49,7 +49,15 @@ export default function History() {
                   <p>{doc.sub}</p>
                   <p>{doc.year}</p>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
@@ -69,7 +77,15 @@ export default function History() {
                   <p>{doc.sub}</p>
                   <p>{doc.year}</p>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
@@ -89,7 +105,15 @@ export default function History() {
                   <p>{doc.sub}</p>
                   <p>{doc.year}</p>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
@@ -109,7 +133,15 @@ export default function History() {
                   <p>{doc.sub}</p>
                   <p>{doc.year}</p>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
@@ -129,7 +161,15 @@ export default function History() {
                   <p>{doc.sub}</p>
                   <p>{doc.year}</p>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
@@ -149,7 +189,15 @@ export default function History() {
                   <p>{doc.sub}</p>
                   <p>{doc.year}</p>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
@@ -169,7 +217,15 @@ export default function History() {
                   <p>{doc.sub}</p>
                   <p>{doc.year}</p>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
@@ -189,7 +245,15 @@ export default function History() {
                   <p>{doc.sub}</p>
                   <p>{doc.year}</p>
                   <p>{doc.place}</p>
-                  {doc.note != "" && <p>{doc.note}</p>}
+                  {doc.note != "" && (
+                    <>
+                      {doc.note.length < 20 ? (
+                        <p>{doc.note}</p>
+                      ) : (
+                        <p>{doc.note.slice(0, 19)}...</p>
+                      )}
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
