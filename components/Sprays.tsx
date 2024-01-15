@@ -54,43 +54,83 @@ export default function Sprays({ email }: any) {
 
             <TabPanel>
               <h3>Insekticidy</h3>
-              {insekticidy.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Spray spray={doc} userEmail={email} />
+              {insekticidy.length > 0 ? (
+                <>
+                  {insekticidy.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Spray spray={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Fungicidy</h3>
-              {fungicidy.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Spray spray={doc} userEmail={email} />
+              {fungicidy.length > 0 ? (
+                <>
+                  {fungicidy.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Spray spray={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Herbicidy</h3>
-              {herbicidy.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Spray spray={doc} userEmail={email} />
+              {herbicidy.length > 0 ? (
+                <>
+                  {herbicidy.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Spray spray={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Hnojiva</h3>
-              {hnojiva.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Spray spray={doc} userEmail={email} />
+              {hnojiva.length > 0 ? (
+                <>
+                  {hnojiva.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Spray spray={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Ostatní</h3>
-              {ostatni.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Spray spray={doc} userEmail={email} />
+              {ostatni.length > 0 ? (
+                <>
+                  {ostatni.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Spray spray={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
           </Tabs>
         </div>

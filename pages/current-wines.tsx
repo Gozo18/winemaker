@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import WineAdd from "../components/WineAdd"
 import Wines from "../components/Wines"
 import { useStateContext } from "../config/context"
-import BackLink from "../components/BackLink"
+import { VscArrowLeft } from "react-icons/vsc"
 import styles from "../styles/CurrentWines.module.scss"
 
 export default function currentWines() {
@@ -35,7 +35,9 @@ export default function currentWines() {
           </Head>
           <div className={styles.currentBox}>
             <div className={styles.headerBox}>
-              <BackLink />
+              <a onClick={() => router.push("/homepage")} className="backLink">
+                <VscArrowLeft /> zpět
+              </a>
 
               <h2>Aktuální sklep</h2>
 

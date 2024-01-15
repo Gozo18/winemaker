@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
 import AdditivesAdd from "../components/AdditivesAdd"
 import Additives from "../components/Additives"
-import BackLink from "../components/BackLink"
+import { VscArrowLeft } from "react-icons/vsc"
 import styles from "../styles/Additives.module.scss"
 
 export default function additives() {
@@ -23,7 +23,9 @@ export default function additives() {
         </Head>
         <div className={styles.additivesBox}>
           <div className={styles.headerBox}>
-            <BackLink />
+            <a onClick={() => router.push("/homepage")} className="backLink">
+              <VscArrowLeft /> zpět
+            </a>
 
             <h2>Přípravky</h2>
 

@@ -60,51 +60,99 @@ export default function Additives({ email }: any) {
 
             <TabPanel>
               <h3>Čiření</h3>
-              {cireni.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Additive additive={doc} userEmail={email} />
+              {cireni.length > 0 ? (
+                <>
+                  {cireni.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Additive additive={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Enzymy</h3>
-              {enzymy.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Additive additive={doc} userEmail={email} />
+              {enzymy.length > 0 ? (
+                <>
+                  {enzymy.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Additive additive={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Kvasinky</h3>
-              {kvasinky.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Additive additive={doc} userEmail={email} />
+              {kvasinky.length > 0 ? (
+                <>
+                  {kvasinky.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Additive additive={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Výživa</h3>
-              {vyziva.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Additive additive={doc} userEmail={email} />
+              {vyziva.length > 0 ? (
+                <>
+                  {vyziva.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Additive additive={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Taniny</h3>
-              {taniny.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Additive additive={doc} userEmail={email} />
+              {taniny.length > 0 ? (
+                <>
+                  {taniny.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Additive additive={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
             <TabPanel>
               <h3>Ostatní</h3>
-              {ostatni.map((doc: any, i: any) => (
-                <div key={i}>
-                  <Additive additive={doc} userEmail={email} />
+              {ostatni.length > 0 ? (
+                <>
+                  {ostatni.map((doc: any, i: any) => (
+                    <div key={i}>
+                      <Additive additive={doc} userEmail={email} />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný přípravek!</h4>
                 </div>
-              ))}
+              )}
             </TabPanel>
           </Tabs>
         </div>

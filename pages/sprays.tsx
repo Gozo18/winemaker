@@ -2,7 +2,7 @@ import Head from "next/head"
 import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useRouter } from "next/router"
-import BackLink from "../components/BackLink"
+import { VscArrowLeft } from "react-icons/vsc"
 import SpraysAdd from "../components/SpraysAdd"
 import Sprays from "../components/Sprays"
 import styles from "../styles/Additives.module.scss"
@@ -23,7 +23,9 @@ export default function sprays() {
         </Head>
         <div className={styles.additivesBox}>
           <div className={styles.headerBox}>
-            <BackLink />
+            <a onClick={() => router.push("/homepage")} className="backLink">
+              <VscArrowLeft /> zpět
+            </a>
 
             <h2>Postřiky</h2>
 

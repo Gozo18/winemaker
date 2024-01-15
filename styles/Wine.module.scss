@@ -26,6 +26,19 @@
   }
 }
 
+.emptyBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 45vh;
+
+  h4 {
+    margin-bottom: 0.7rem;
+  }
+}
+
 .headerBoxEmpty {
   @media (max-width: 767px) {
     display: none;

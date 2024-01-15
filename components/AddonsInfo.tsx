@@ -17,11 +17,19 @@ export default function AddonsInfo({ thisWine }: any) {
           </p>
         </div>
       </div>
-      {thisWine[0].addons.map((w: any, i: number) => (
-        <div key={i}>
-          <AddonsInfoItem w={w} wineId={thisWine[0].id} />
+      {thisWine[0].addons.length > 0 ? (
+        <>
+          {thisWine[0].addons.map((w: any, i: number) => (
+            <div key={i}>
+              <AddonsInfoItem w={w} wineId={thisWine[0].id} />
+            </div>
+          ))}
+        </>
+      ) : (
+        <div className={styles.emptyBox}>
+          <h4>Žádný záznam!</h4>
         </div>
-      ))}
+      )}
     </>
   )
 }
