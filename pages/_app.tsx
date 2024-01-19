@@ -15,7 +15,8 @@ const roboto = Roboto({
 export default function App({ Component, pageProps }: AppProps) {
   function addSchemaJsonLd() {
     return {
-      __html: `"@context": "https://schema.org",
+      __html: `
+      {"@context": "https://schema.org",
       "@type": "OnlineStore",
       "name": "WineMaker beta - vinařův deník",
       "description": "WineMaker beta - vinařův deník, aplikace pro evidenci vín a vinohradů",
@@ -37,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
         "ratingValue": 4.9
       },
       "foundingDate": "2023-10-10"
-      `,
+    }`,
     }
   }
   return (
