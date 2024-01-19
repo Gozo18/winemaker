@@ -4,9 +4,26 @@ import styles from "../styles/Weather.module.scss"
 
 export default function Weather() {
   const [weather, setWeather]: any = useState()
+  const [geo, setGeo]: any = useState()
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
+
+    navigator.permissions &&
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then(function (PermissionStatus) {
+          if (PermissionStatus.state == "granted") {
+            //allowed
+            setGeo("allowed")
+          } else if (PermissionStatus.state == "prompt") {
+            // prompt - not yet grated or denied
+            setGeo("not yet")
+          } else {
+            //denied
+            setGeo("denied")
+          }
+        })
   }, [])
 
   function positionSuccess({ coords }: any) {
@@ -22,7 +39,7 @@ export default function Weather() {
 
   function positionError() {
     alert(
-      "There was an error getting your location. Please allow us to use your location and refresh the page."
+      "Pro zobrazení počasí ve vašem místě, prosím, povolte přístup k údajům o vaší poloze!"
     )
   }
 
@@ -94,8 +111,6 @@ export default function Weather() {
         wind: daily.windspeed_10m_max[i],
       })
     }
-
-    console.log(navigator.geolocation)
 
     return (
       <div className={styles.weatherBox}>
@@ -212,7 +227,7 @@ export default function Weather() {
   } else {
     return (
       <div className={styles.weatherBox}>
-        {!navigator.geolocation ? (
+        {geo === "denied" ? (
           <div className={styles.errorBox}>
             Pro zobrazení počasí ve vašem místě, prosím, povolte přístup k
             údajům o vaší poloze!
