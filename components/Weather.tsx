@@ -95,6 +95,8 @@ export default function Weather() {
       })
     }
 
+    console.log(navigator.geolocation)
+
     return (
       <div className={styles.weatherBox}>
         <h3>Počasí</h3>
@@ -210,10 +212,12 @@ export default function Weather() {
   } else {
     return (
       <div className={styles.weatherBox}>
-        <div className={styles.errorBox}>
-          Pro zobrazení počasí ve vašem místě, prosím, povolte přístup k údajům
-          o vaší poloze!
-        </div>
+        {!navigator.geolocation && (
+          <div className={styles.errorBox}>
+            Pro zobrazení počasí ve vašem místě, prosím, povolte přístup k
+            údajům o vaší poloze!
+          </div>
+        )}
         <h3>Načítám data o počasí...</h3>
         <div className={styles.forecastBox}>
           <div className={styles.forecast}>
