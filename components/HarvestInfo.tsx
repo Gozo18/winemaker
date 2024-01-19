@@ -1,4 +1,5 @@
 import HarvestInfoItem from "./HarvestInfoItem"
+import Advertising from "./Advertising"
 import styles from "../styles/Wine.module.scss"
 
 export default function HarvestInfo({ thisWine }: any) {
@@ -15,7 +16,7 @@ export default function HarvestInfo({ thisWine }: any) {
           <h4>Žádný záznam!</h4>
         </div>
       )}
-      <div className={styles.advBox}>Reklama</div>
+      <Advertising />
     </div>
   )
 }

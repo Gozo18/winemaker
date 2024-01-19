@@ -13,10 +13,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>WineMaker beta</title>
-        <meta name="description" content="Winemaker app" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>WineMaker beta - vinařův deník</title>
       </Head>
       <div>
         <div className={styles.heroBox}>
@@ -71,7 +68,7 @@ export default function Home() {
           <div className={styles.blogPost}>
             <div className={styles.blogImage}>
               <Image
-                src="/history.jpg"
+                src="/history.webp"
                 alt="WineMaker history"
                 fill
                 sizes="(min-width: 320px) 100vw"

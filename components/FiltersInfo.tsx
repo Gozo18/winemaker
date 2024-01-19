@@ -1,9 +1,10 @@
 import FiltersInfoItem from "./FiltersInfoItem"
 import styles from "../styles/Wine.module.scss"
+import Advertising from "./Advertising"
 
 export default function FiltersInfo({ thisWine }: any) {
   return (
-    <>
+    <div className={styles.outputsBox}>
       {thisWine[0].filters.length > 0 ? (
         <>
           {thisWine[0].filters.map((w: any, i: number) => (
@@ -15,6 +16,7 @@ export default function FiltersInfo({ thisWine }: any) {
           <h4>Žádný záznam!</h4>
         </div>
       )}
-    </>
+      <Advertising />
+    </div>
   )
 }

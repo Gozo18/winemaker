@@ -187,7 +187,6 @@ export default function wine() {
               <div className={styles.notes}>
                 <BottlesInfo thisWine={thisWine} />
               </div>
-              <BottlesFinish thisWine={thisWine} />
             </TabPanel>
           </Tabs>
         </div>

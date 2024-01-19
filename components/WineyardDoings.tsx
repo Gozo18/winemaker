@@ -3,6 +3,18 @@ import WineyardDoingsItem from "./WineyardDoingsItem"
 import styles from "../styles/Wine.module.scss"
 
 export default function WineyardDoings({ thisWineyard }: any) {
+  let totalPrice2024 = 0
+  const result2024 = thisWineyard[0].doings.filter(checkYear2024)
+  function checkYear2024(e: any) {
+    const date = new Date(e.date)
+    const year = date.getFullYear()
+    return year == 2024
+  }
+  result2024.map(
+    (w: any) => (totalPrice2024 = totalPrice2024 + Number(w.price))
+  )
+  totalPrice2024 = Math.round(totalPrice2024 * 100) / 100
+
   let totalPrice2023 = 0
   const result2023 = thisWineyard[0].doings.filter(checkYear2023)
   function checkYear2023(e: any) {
@@ -75,18 +87,6 @@ export default function WineyardDoings({ thisWineyard }: any) {
   )
   totalPrice2018 = Math.round(totalPrice2018 * 100) / 100
 
-  let totalPrice2017 = 0
-  const result2017 = thisWineyard[0].doings.filter(checkYear2017)
-  function checkYear2017(e: any) {
-    const date = new Date(e.date)
-    const year = date.getFullYear()
-    return year == 2017
-  }
-  result2017.map(
-    (w: any) => (totalPrice2017 = totalPrice2017 + Number(w.price))
-  )
-  totalPrice2017 = Math.round(totalPrice2017 * 100) / 100
-
   let totalPriceOlder = 0
   const resultOlder = thisWineyard[0].doings.filter(checkYearOlder)
   function checkYearOlder(e: any) {
@@ -102,16 +102,29 @@ export default function WineyardDoings({ thisWineyard }: any) {
     <>
       <Tabs>
         <TabList>
+          <Tab>2024 ({result2024.length})</Tab>
           <Tab>2023 ({result2023.length})</Tab>
           <Tab>2022 ({result2022.length})</Tab>
           <Tab>2021 ({result2021.length})</Tab>
           <Tab>2020 ({result2020.length})</Tab>
           <Tab>2019 ({result2019.length})</Tab>
           <Tab>2018 ({result2018.length})</Tab>
-          <Tab>2017 ({result2017.length})</Tab>
           <Tab>starší ({resultOlder.length})</Tab>
         </TabList>
 
+        <TabPanel>
+          <div className={styles.note}>
+            <div className={styles.noteText}>
+              <p>
+                <strong>Celková cena 2024:</strong> {totalPrice2024}
+                <span>,- Kč</span>
+              </p>
+            </div>
+          </div>
+          {result2024.map((w: any, i: number) => (
+            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
+          ))}
+        </TabPanel>
         <TabPanel>
           <div className={styles.note}>
             <div className={styles.noteText}>
@@ -187,19 +200,6 @@ export default function WineyardDoings({ thisWineyard }: any) {
             </div>
           </div>
           {result2018.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
-        </TabPanel>
-        <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena 2017:</strong> {totalPrice2017}
-                <span>,- Kč</span>
-              </p>
-            </div>
-          </div>
-          {result2017.map((w: any, i: number) => (
             <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
           ))}
         </TabPanel>

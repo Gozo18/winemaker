@@ -37,35 +37,37 @@ export default function WineInfo({ thisWine, email }: any) {
       {editWineInfo ? (
         <WineInfoEdit thisWine={thisWine} email={email} />
       ) : (
-        <div className={styles.infoBox}>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Odrůda:</strong> {name}
-              </p>
-              <p>
-                <strong>Rok:</strong> {year}
-              </p>
-              <p>
-                <strong>Přívlastek:</strong> {sub}
-              </p>
-              <p>
-                <strong>Trať:</strong> {place}
-              </p>
-              <p>
-                <strong>Poznámka:</strong> {note}
-              </p>
-            </div>
-            <div className={styles.noteIcons}>
-              <div
-                onClick={(e: any) => {
-                  if (window.confirm("Odstranit víno?")) deleteNote(e, id)
-                }}
-              >
-                <VscTrash />
+        <div className={styles.outputsBox}>
+          <div className={styles.itemsBox}>
+            <div className={styles.note}>
+              <div className={styles.noteText}>
+                <p>
+                  <strong>Odrůda:</strong> {name}
+                </p>
+                <p>
+                  <strong>Rok:</strong> {year}
+                </p>
+                <p>
+                  <strong>Přívlastek:</strong> {sub}
+                </p>
+                <p>
+                  <strong>Trať:</strong> {place}
+                </p>
+                <p>
+                  <strong>Poznámka:</strong> {note}
+                </p>
               </div>
-              <div onClick={(e: any) => editFunc(e)}>
-                <VscEdit />
+              <div className={styles.noteIcons}>
+                <div
+                  onClick={(e: any) => {
+                    if (window.confirm("Odstranit víno?")) deleteNote(e, id)
+                  }}
+                >
+                  <VscTrash />
+                </div>
+                <div onClick={(e: any) => editFunc(e)}>
+                  <VscEdit />
+                </div>
               </div>
             </div>
           </div>

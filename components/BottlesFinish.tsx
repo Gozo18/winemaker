@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { db } from "../config/firebase"
 import { doc, setDoc } from "firebase/firestore"
 import { toast } from "react-toastify"
@@ -29,7 +28,9 @@ export default function BottlesFinish({ thisWine }: any) {
 
   return (
     <div className={styles.bottleBox}>
-      <span className={styles.text}>Nalahvováno</span>
+      <span className={styles.text}>
+        Pokud je víno nalahvováno, zaškrtněte zde a bude přidáno do archivu.
+      </span>
       <label className={styles.switch}>
         {bottled ? (
           <input type="checkbox" onChange={checkedValue} checked />
