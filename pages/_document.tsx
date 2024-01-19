@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document"
-import Script from "next/script"
 
 export default function Document() {
   return (
@@ -9,7 +8,6 @@ export default function Document() {
           name="description"
           content="WineMaker beta - vinařův deník, aplikace pro evidenci vín a vinohradů"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:url" content="https://www.winemaker.cz/" />
         <meta property="og:type" content="website" />
@@ -26,13 +24,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script type="application/ld+json" id="schema">
-          {`
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://winemaker.cz/",
-        `}
-        </Script>
       </body>
     </Html>
   )
