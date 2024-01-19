@@ -214,8 +214,8 @@ export default function Weather() {
           Pro zobrazení počasí ve vašem místě, prosím, povolte přístup k údajům
           o vaší poloze!
         </div>
+        <h3>Načítám data o počasí...</h3>
         <div className={styles.forecastBox}>
-          <h3>Načítám data o počasí...</h3>
           <div className={styles.forecast}>
             <div className={styles.loader}></div>
           </div>
