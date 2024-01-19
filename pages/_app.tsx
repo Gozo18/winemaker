@@ -16,9 +16,28 @@ export default function App({ Component, pageProps }: AppProps) {
   function addSchemaJsonLd() {
     return {
       __html: `"@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "http://winemaker.cz/",
-  `,
+      "@type": "OnlineStore",
+      "name": "WineMaker beta - vinařův deník",
+      "description": "WineMaker beta - vinařův deník, aplikace pro evidenci vín a vinohradů",
+      "image": "http://winemaker.cz/winemakerfb.jpg",
+      "logo": "http://winemaker.cz/winemaker.webp",
+      "parentOrganization": {
+        "@type": "OnlineBusiness",
+        "name": "Winemaker beta",
+        "url": "http://winemaker.cz/"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Czech Republic",
+        "addressLocality": "Pavlov"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingCount": 20,
+        "ratingValue": 4.9
+      },
+      "foundingDate": "2023-10-10"
+      `,
     }
   }
   return (
