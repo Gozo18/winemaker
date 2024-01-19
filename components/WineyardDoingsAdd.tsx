@@ -22,12 +22,15 @@ export default function WineyardDoingsAdd({ id }: any) {
           </button>
         </div>
       ) : (
-        <div className={styles.addNoteBox}>
-          <WineyardDoingsForm id={id} />
-          <div className={styles.closeBox}>
-            <VscError onClick={showInput} />
+        <>
+          <div></div>
+          <div className={styles.addNoteBox}>
+            <WineyardDoingsForm id={id} />
+            <div className={styles.closeBox}>
+              <VscError onClick={showInput} />
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

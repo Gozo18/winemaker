@@ -22,12 +22,15 @@ export default function TendsAdd({ id }: any) {
           </button>
         </div>
       ) : (
-        <div className={styles.addNoteBox}>
-          <TendsForm id={id} />
-          <div className={styles.closeBox}>
-            <VscError onClick={showInput} />
+        <>
+          <div></div>
+          <div className={styles.addNoteBox}>
+            <TendsForm id={id} />
+            <div className={styles.closeBox}>
+              <VscError onClick={showInput} />
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

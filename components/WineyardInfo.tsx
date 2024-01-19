@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import { VscEdit, VscTrash } from "react-icons/vsc"
 import WineyardInfoEdit from "./WineyardInfoEdit"
 import styles from "../styles/Wine.module.scss"
+import Advertising from "./Advertising"
 
 export default function WineyardInfo({ thisWineyard }: any) {
   const { name, place, note, id } = thisWineyard[0]
@@ -33,38 +34,41 @@ export default function WineyardInfo({ thisWineyard }: any) {
   }
 
   return (
-    <>
+    <div className={styles.outputsBox}>
       {editWineyardInfo ? (
         <WineyardInfoEdit thisWineyard={thisWineyard} />
       ) : (
         <>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Název:</strong> {name}
-              </p>
-              <p>
-                <strong>Trať:</strong> {place}
-              </p>
-              <p>
-                <strong>Poznámka:</strong> {note}
-              </p>
-            </div>
-            <div className={styles.noteIcons}>
-              <div
-                onClick={(e: any) => {
-                  if (window.confirm("Odstranit vinohrad?")) deleteNote(e, id)
-                }}
-              >
-                <VscTrash />
+          <div className={styles.itemsBox}>
+            <div className={styles.note}>
+              <div className={styles.noteText}>
+                <p>
+                  <strong>Název:</strong> {name}
+                </p>
+                <p>
+                  <strong>Trať:</strong> {place}
+                </p>
+                <p>
+                  <strong>Poznámka:</strong> {note}
+                </p>
               </div>
-              <div onClick={(e: any) => editFunc(e)}>
-                <VscEdit />
+              <div className={styles.noteIcons}>
+                <div
+                  onClick={(e: any) => {
+                    if (window.confirm("Odstranit vinohrad?")) deleteNote(e, id)
+                  }}
+                >
+                  <VscTrash />
+                </div>
+                <div onClick={(e: any) => editFunc(e)}>
+                  <VscEdit />
+                </div>
               </div>
             </div>
           </div>
+          <Advertising />
         </>
       )}
-    </>
+    </div>
   )
 }

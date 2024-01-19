@@ -74,7 +74,7 @@ export default function WineyardInfoEdit({ thisWineyard }: any) {
     <div className={styles.addNoteShow}>
       <div className={styles.inputBox}>
         <label>
-          <strong>Upravit víno</strong>
+          <strong>Upravit vinohrad</strong>
         </label>
         <div className={styles.inputs}>
           <label>

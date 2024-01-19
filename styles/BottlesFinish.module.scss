@@ -1,7 +1,19 @@
+@import "variables.scss";
+
 .bottleBox {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 2rem 0;
+
+  @media (max-width: 991px) {
+    align-items: center;
+    flex-direction: column;
+
+    .text {
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+  }
 
   input:checked + .slider {
     background-color: #2196f3;
@@ -38,25 +50,27 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: $edit;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 10px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 23px;
+  width: 23px;
+  left: 6px;
+  bottom: 6px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 10px;
 }
 
 .text {
   display: flex;
   align-items: center;
-  margin-right: 2rem;
+  margin-right: 1rem;
 }

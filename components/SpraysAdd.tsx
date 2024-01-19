@@ -22,12 +22,15 @@ export default function SpraysAdd({ email }: any) {
           </button>
         </div>
       ) : (
-        <div className={styles.addNoteBox}>
-          <SpraysForm email={email} />
-          <div className={styles.closeBox}>
-            <VscError onClick={showInput} />
+        <>
+          <div></div>
+          <div className={styles.addNoteBox}>
+            <SpraysForm email={email} />
+            <div className={styles.closeBox}>
+              <VscError onClick={showInput} />
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

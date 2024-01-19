@@ -22,12 +22,15 @@ export default function WineAdd({ email }: any) {
           </button>
         </div>
       ) : (
-        <div className={styles.addNoteBox}>
-          <WineForm email={email} />
-          <div className={styles.closeBox}>
-            <VscError onClick={showInput} />
+        <>
+          <div></div>
+          <div className={styles.addNoteBox}>
+            <WineForm email={email} />
+            <div className={styles.closeBox}>
+              <VscError onClick={showInput} />
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

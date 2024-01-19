@@ -4,6 +4,7 @@ import { toast } from "react-toastify"
 import { useStateContext } from "../config/context"
 import Note from "./Note"
 import styles from "../styles/Notes.module.scss"
+import Advertising from "./Advertising"
 
 export default function Notes(email: any) {
   const { notesLoading, setNotesLoading, notesData, setNotesData } =
@@ -34,13 +35,13 @@ export default function Notes(email: any) {
   }
 
   return (
-    <>
+    <div className={styles.outputsBox}>
       {notesData === undefined ? (
-        <div>Načítám...</div>
+        <div className={styles.emptyBox}>Načítám...</div>
       ) : (
         <>
           {notesData.length > 0 ? (
-            <div className={styles.notes}>
+            <div className={styles.itemsBox}>
               {notesData.map((doc: any, i: any) => (
                 <div key={i}>
                   <Note note={doc} userEmail={email.email} />
@@ -54,6 +55,7 @@ export default function Notes(email: any) {
           )}
         </>
       )}
-    </>
+      <Advertising />
+    </div>
   )
 }

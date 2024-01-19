@@ -22,12 +22,15 @@ export default function AddNote(email: any) {
           </button>
         </div>
       ) : (
-        <div className={styles.addNoteBox}>
-          <AddNoteForm email={email.email} />
-          <div className={styles.closeBox}>
-            <VscError onClick={showInput} />
+        <>
+          <div></div>
+          <div className={styles.addNoteBox}>
+            <AddNoteForm email={email.email} />
+            <div className={styles.closeBox}>
+              <VscError onClick={showInput} />
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   )

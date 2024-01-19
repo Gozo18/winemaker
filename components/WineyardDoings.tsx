@@ -1,6 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import WineyardDoingsItem from "./WineyardDoingsItem"
 import styles from "../styles/Wine.module.scss"
+import Advertising from "./Advertising"
 
 export default function WineyardDoings({ thisWineyard }: any) {
   let totalPrice2024 = 0
@@ -113,108 +114,244 @@ export default function WineyardDoings({ thisWineyard }: any) {
         </TabList>
 
         <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena 2024:</strong> {totalPrice2024}
-                <span>,- Kč</span>
-              </p>
+          <div className={styles.outputsBox}>
+            <div className={styles.itemsBox}>
+              <div className={styles.note}>
+                <div className={styles.noteText}>
+                  <p>
+                    <strong>Celková cena 2024:</strong> {totalPrice2024}
+                    <span>,- Kč</span>
+                  </p>
+                </div>
+              </div>
+              {result2024.length > 0 ? (
+                <>
+                  {result2024.map((w: any, i: number) => (
+                    <WineyardDoingsItem
+                      w={w}
+                      wineyardId={thisWineyard[0].id}
+                      key={i}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný záznam!</h4>
+                </div>
+              )}
             </div>
+            <Advertising />
           </div>
-          {result2024.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
         </TabPanel>
         <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena 2023:</strong> {totalPrice2023}
-                <span>,- Kč</span>
-              </p>
+          <div className={styles.outputsBox}>
+            <div className={styles.itemsBox}>
+              <div className={styles.note}>
+                <div className={styles.noteText}>
+                  <p>
+                    <strong>Celková cena 2023:</strong> {totalPrice2023}
+                    <span>,- Kč</span>
+                  </p>
+                </div>
+              </div>
+              {result2023.length > 0 ? (
+                <>
+                  {result2023.map((w: any, i: number) => (
+                    <WineyardDoingsItem
+                      w={w}
+                      wineyardId={thisWineyard[0].id}
+                      key={i}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný záznam!</h4>
+                </div>
+              )}
             </div>
+            <Advertising />
           </div>
-          {result2023.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
         </TabPanel>
         <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena 2022:</strong> {totalPrice2022}
-                <span>,- Kč</span>
-              </p>
+          <div className={styles.outputsBox}>
+            <div className={styles.itemsBox}>
+              <div className={styles.note}>
+                <div className={styles.noteText}>
+                  <p>
+                    <strong>Celková cena 2022:</strong> {totalPrice2022}
+                    <span>,- Kč</span>
+                  </p>
+                </div>
+              </div>
+              {result2022.length > 0 ? (
+                <>
+                  {result2022.map((w: any, i: number) => (
+                    <WineyardDoingsItem
+                      w={w}
+                      wineyardId={thisWineyard[0].id}
+                      key={i}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný záznam!</h4>
+                </div>
+              )}
             </div>
+            <Advertising />
           </div>
-          {result2022.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
         </TabPanel>
         <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena 2021:</strong> {totalPrice2021}
-                <span>,- Kč</span>
-              </p>
+          <div className={styles.outputsBox}>
+            <div className={styles.itemsBox}>
+              <div className={styles.note}>
+                <div className={styles.noteText}>
+                  <p>
+                    <strong>Celková cena 2021:</strong> {totalPrice2021}
+                    <span>,- Kč</span>
+                  </p>
+                </div>
+              </div>
+              {result2021.length > 0 ? (
+                <>
+                  {result2021.map((w: any, i: number) => (
+                    <WineyardDoingsItem
+                      w={w}
+                      wineyardId={thisWineyard[0].id}
+                      key={i}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný záznam!</h4>
+                </div>
+              )}
             </div>
+            <Advertising />
           </div>
-          {result2021.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
         </TabPanel>
         <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena 2020:</strong> {totalPrice2020}
-                <span>,- Kč</span>
-              </p>
+          <div className={styles.outputsBox}>
+            <div className={styles.itemsBox}>
+              <div className={styles.note}>
+                <div className={styles.noteText}>
+                  <p>
+                    <strong>Celková cena 2020:</strong> {totalPrice2020}
+                    <span>,- Kč</span>
+                  </p>
+                </div>
+              </div>
+              {result2020.length > 0 ? (
+                <>
+                  {result2020.map((w: any, i: number) => (
+                    <WineyardDoingsItem
+                      w={w}
+                      wineyardId={thisWineyard[0].id}
+                      key={i}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný záznam!</h4>
+                </div>
+              )}
             </div>
+            <Advertising />
           </div>
-          {result2020.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
         </TabPanel>
         <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena 2019:</strong> {totalPrice2019}
-                <span>,- Kč</span>
-              </p>
+          <div className={styles.outputsBox}>
+            <div className={styles.itemsBox}>
+              <div className={styles.note}>
+                <div className={styles.noteText}>
+                  <p>
+                    <strong>Celková cena 2019:</strong> {totalPrice2019}
+                    <span>,- Kč</span>
+                  </p>
+                </div>
+              </div>
+              {result2019.length > 0 ? (
+                <>
+                  {result2019.map((w: any, i: number) => (
+                    <WineyardDoingsItem
+                      w={w}
+                      wineyardId={thisWineyard[0].id}
+                      key={i}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný záznam!</h4>
+                </div>
+              )}
             </div>
+            <Advertising />
           </div>
-          {result2019.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
         </TabPanel>
         <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena 2018:</strong> {totalPrice2018}
-                <span>,- Kč</span>
-              </p>
+          <div className={styles.outputsBox}>
+            <div className={styles.itemsBox}>
+              <div className={styles.note}>
+                <div className={styles.noteText}>
+                  <p>
+                    <strong>Celková cena 2018:</strong> {totalPrice2018}
+                    <span>,- Kč</span>
+                  </p>
+                </div>
+              </div>
+              {result2018.length > 0 ? (
+                <>
+                  {result2018.map((w: any, i: number) => (
+                    <WineyardDoingsItem
+                      w={w}
+                      wineyardId={thisWineyard[0].id}
+                      key={i}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný záznam!</h4>
+                </div>
+              )}
             </div>
+            <Advertising />
           </div>
-          {result2018.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
         </TabPanel>
         <TabPanel>
-          <div className={styles.note}>
-            <div className={styles.noteText}>
-              <p>
-                <strong>Celková cena starší:</strong> {totalPriceOlder}
-                <span>,- Kč</span>
-              </p>
+          <div className={styles.outputsBox}>
+            <div className={styles.itemsBox}>
+              <div className={styles.note}>
+                <div className={styles.noteText}>
+                  <p>
+                    <strong>Celková cena starší:</strong> {totalPriceOlder}
+                    <span>,- Kč</span>
+                  </p>
+                </div>
+              </div>
+              {resultOlder.length > 0 ? (
+                <>
+                  {resultOlder.map((w: any, i: number) => (
+                    <WineyardDoingsItem
+                      w={w}
+                      wineyardId={thisWineyard[0].id}
+                      key={i}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <h4>Žádný záznam!</h4>
+                </div>
+              )}
             </div>
+            <Advertising />
           </div>
-          {resultOlder.map((w: any, i: number) => (
-            <WineyardDoingsItem w={w} wineyardId={thisWineyard[0].id} key={i} />
-          ))}
         </TabPanel>
       </Tabs>
     </>

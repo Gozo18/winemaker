@@ -3,6 +3,7 @@ import Spray from "./Spray"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
 import styles from "../styles/Additives.module.scss"
+import Advertising from "./Advertising"
 
 export default function Sprays({ email }: any) {
   const { additivesLoading } = useStateContext()
@@ -54,83 +55,98 @@ export default function Sprays({ email }: any) {
 
             <TabPanel>
               <h3>Insekticidy</h3>
-              {insekticidy.length > 0 ? (
-                <>
-                  {insekticidy.map((doc: any, i: any) => (
-                    <div key={i}>
-                      <Spray spray={doc} userEmail={email} />
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <div className={styles.emptyBox}>
-                  <h4>Žádný přípravek!</h4>
-                </div>
-              )}
+              <div className={styles.outputsBox}>
+                {insekticidy.length > 0 ? (
+                  <div className={styles.itemsBox}>
+                    {insekticidy.map((doc: any, i: any) => (
+                      <div key={i}>
+                        <Spray spray={doc} userEmail={email} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={styles.emptyBox}>
+                    <h4>Žádný přípravek!</h4>
+                  </div>
+                )}
+                <Advertising />
+              </div>
             </TabPanel>
             <TabPanel>
               <h3>Fungicidy</h3>
-              {fungicidy.length > 0 ? (
-                <>
-                  {fungicidy.map((doc: any, i: any) => (
-                    <div key={i}>
-                      <Spray spray={doc} userEmail={email} />
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <div className={styles.emptyBox}>
-                  <h4>Žádný přípravek!</h4>
-                </div>
-              )}
+              <div className={styles.outputsBox}>
+                {fungicidy.length > 0 ? (
+                  <div className={styles.itemsBox}>
+                    {fungicidy.map((doc: any, i: any) => (
+                      <div key={i}>
+                        <Spray spray={doc} userEmail={email} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={styles.emptyBox}>
+                    <h4>Žádný přípravek!</h4>
+                  </div>
+                )}
+                <Advertising />
+              </div>
             </TabPanel>
             <TabPanel>
               <h3>Herbicidy</h3>
-              {herbicidy.length > 0 ? (
-                <>
-                  {herbicidy.map((doc: any, i: any) => (
-                    <div key={i}>
-                      <Spray spray={doc} userEmail={email} />
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <div className={styles.emptyBox}>
-                  <h4>Žádný přípravek!</h4>
-                </div>
-              )}
+              <div className={styles.outputsBox}>
+                {herbicidy.length > 0 ? (
+                  <div className={styles.itemsBox}>
+                    {herbicidy.map((doc: any, i: any) => (
+                      <div key={i}>
+                        <Spray spray={doc} userEmail={email} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={styles.emptyBox}>
+                    <h4>Žádný přípravek!</h4>
+                  </div>
+                )}
+                <Advertising />
+              </div>
             </TabPanel>
             <TabPanel>
               <h3>Hnojiva</h3>
-              {hnojiva.length > 0 ? (
-                <>
-                  {hnojiva.map((doc: any, i: any) => (
-                    <div key={i}>
-                      <Spray spray={doc} userEmail={email} />
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <div className={styles.emptyBox}>
-                  <h4>Žádný přípravek!</h4>
-                </div>
-              )}
+              <div className={styles.outputsBox}>
+                {hnojiva.length > 0 ? (
+                  <div className={styles.itemsBox}>
+                    {hnojiva.map((doc: any, i: any) => (
+                      <div key={i}>
+                        <Spray spray={doc} userEmail={email} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={styles.emptyBox}>
+                    <h4>Žádný přípravek!</h4>
+                  </div>
+                )}
+                <Advertising />
+              </div>
             </TabPanel>
             <TabPanel>
               <h3>Ostatní</h3>
-              {ostatni.length > 0 ? (
-                <>
-                  {ostatni.map((doc: any, i: any) => (
-                    <div key={i}>
-                      <Spray spray={doc} userEmail={email} />
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <div className={styles.emptyBox}>
-                  <h4>Žádný přípravek!</h4>
-                </div>
-              )}
+              <div className={styles.outputsBox}>
+                {ostatni.length > 0 ? (
+                  <div className={styles.itemsBox}>
+                    {ostatni.map((doc: any, i: any) => (
+                      <div key={i}>
+                        <Spray spray={doc} userEmail={email} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={styles.emptyBox}>
+                    <h4>Žádný přípravek!</h4>
+                  </div>
+                )}
+                <Advertising />
+              </div>
             </TabPanel>
           </Tabs>
         </div>
