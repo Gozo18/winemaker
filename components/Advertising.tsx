@@ -42,8 +42,8 @@ export default function Advertising() {
                 href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinemaker.cz%2F&amp;src=sdkpreparse"
                 className="fb-xfbml-parse-ignore"
               >
-                <span>Sdílet</span>
                 <ImFacebook2 />
+                <span>Sdílet</span>
               </Link>
             </div>
           </div>

@@ -25,6 +25,13 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <script type="application/ld+json">
+          {`
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://winemaker.cz/",
+        `}
+        </script>
       </body>
     </Html>
   )
