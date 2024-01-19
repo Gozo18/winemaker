@@ -67,3 +67,10 @@
     transform: rotate(360deg);
   }
 }
+
+.errorBox {
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  background-color: $red;
+}
