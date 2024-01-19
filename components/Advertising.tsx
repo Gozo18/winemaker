@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Script from "next/script"
 import Link from "next/link"
 import { ImFacebook2 } from "react-icons/im"
 import styles from "../styles/Wine.module.scss"
@@ -8,16 +7,13 @@ export default function Advertising() {
   return (
     <>
       <div id="fb-root"></div>
-      <Script id="fb-share">
-        {` (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-        `}
-      </Script>
+      <script
+        async
+        defer
+        crossOrigin="anonymous"
+        src="https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v18.0"
+        nonce="HGgQb27u"
+      ></script>
       <div className={styles.advBox}>
         <div className={styles.advImageBox}>
           <Image

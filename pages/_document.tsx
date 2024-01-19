@@ -19,7 +19,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://www.winemaker.cz/winemaker.webp"
+          content="https://www.winemaker.cz/winemakerfb.jpg"
         />
       </Head>
       <body>
