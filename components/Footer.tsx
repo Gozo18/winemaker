@@ -9,6 +9,8 @@ export default function Footer() {
   return (
     <div className={styles.footerBox}>
       <div className={styles.footerColumn}>
+        <Link href="/info">Informace pro vinaře</Link>
+        <Link href="/info-partners">Informace pro partnery</Link>
         {!user && (
           <>
             <Link href="/login">Přihlásit se</Link>
@@ -18,9 +20,10 @@ export default function Footer() {
         )}
         {user && (
           <>
-            <Link href="/homepage">{user.email}</Link>
             <div className={styles.footerLogout}>
-              <span onClick={() => auth.signOut()}>Odhlásit</span>
+              <span onClick={() => auth.signOut()}>
+                Odhlásit <sup>{user.email}</sup>
+              </span>
             </div>
           </>
         )}
