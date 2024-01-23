@@ -30,7 +30,7 @@ export default function Home() {
             <FcGlobe /> <span>Vždy dostupné</span>
           </div>
           <div className={styles.icon}>
-            <FcFlowChart /> <span>Detailní informace o víně</span>
+            <FcFlowChart /> <span>Informace o víně a vinohradech</span>
           </div>
           <div className={styles.icon}>
             <FcMultipleDevices /> <span>Na jakémkoliv zařízení</span>
@@ -42,7 +42,7 @@ export default function Home() {
 
         <div className={styles.joinBox}>
           <Link href="/register" className={styles.joinLink}>
-            Přidej se k nám!
+            Přidej se k nám ZDARMA!
           </Link>
         </div>
 
@@ -58,10 +58,10 @@ export default function Home() {
               />
             </div>
             <div className={styles.blogText}>
-              <h3>Vinařské záznamy kdykoliv a kdekoliv</h3>
+              <h3>Vinařské záznamy kdykoliv, kdekoliv a ZDARMA!</h3>
               <p>
-                Procházejte, vkládejte a upravujte údaje o svých vínech kdykoliv
-                a na jakémkoliv zařízení.
+                Procházejte, vkládejte a upravujte údaje o svých vínech a
+                vinohradech kdykoliv a na jakémkoliv zařízení.
               </p>
             </div>
           </div>
@@ -76,10 +76,10 @@ export default function Home() {
               />
             </div>
             <div className={styles.blogText}>
-              <h3>Kompletní historie vín</h3>
+              <h3>Kompletní historie vín a vinohradů ZDARMA!</h3>
               <p>
-                Historie výrobních postupů, dodaných přípravků pro evidenci a
-                zlepšení kvality vín.
+                Historie vinohradů, výrobních postupů, dodaných přípravků pro
+                evidenci a zlepšení kvality vín.
               </p>
             </div>
           </div>

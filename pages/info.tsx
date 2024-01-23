@@ -43,6 +43,7 @@ export default function info() {
                   za přípravky.
                 </li>
                 <li>Přístupné ze všech zařízení.</li>
+                <li>A je bez poplatků!</li>
               </ul>
             </div>
           </div>
@@ -60,6 +61,9 @@ export default function info() {
                   Autentifikace e-mailem nebo google účtem a řešená přes
                   Firebase.
                 </li>
+                <li>
+                  Vaše data se nikam neodesílají a máte nad nimi plnou kontrolu.
+                </li>
               </ul>
             </div>
           </div>
@@ -76,7 +80,7 @@ export default function info() {
                   Rozvržení a položky aplikace navrženy ve spolupráci s vinaři.
                 </li>
                 <li>
-                  Neustálý rozvoj aplikace pro nejlepší servis vinařům a pro
+                  Neustálý rozvoj aplikace pro nejlepší servis vinařům a pro co
                   nejjednodušší ovládání.
                 </li>
               </ul>
