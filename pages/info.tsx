@@ -89,13 +89,14 @@ export default function info() {
               </div>
             </div>
             <div className={styles.textBox}>
-              <h3>Kontakty</h3>
+              <h3>Kontakt</h3>
               <ul>
                 <li>
                   Budeme rádi, pokud nás kontaktujete v případě jakýchkoliv
                   dotazů nebo návrhů rozvoje.
                 </li>
                 <li>
+                  e-mail:{" "}
                   <a href="mailto:info@winemaker.cz">info@winemaker.cz</a>
                 </li>
               </ul>

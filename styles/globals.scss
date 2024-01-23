@@ -132,6 +132,7 @@ a {
 .react-tabs__tab--selected {
   border: 0 !important;
   border-radius: 0 !important;
-  background: $white !important;
-  opacity: 0.6;
+  background: $main !important;
+  color: $white !important;
+  cursor: default !important;
 }
